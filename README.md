@@ -8,6 +8,8 @@ George Lin - https://github.com/lingeorge88
 
 Tyler Grozenski - https://github.com/tgrozenski
 
+Tamiyoo Desir - https://github.com/TamiyooD
+
 * The group member's names and link to their personal githubs
 * The application name and a brief description of the application
 * Links to design documents and manuals
