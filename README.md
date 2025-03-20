@@ -1,7 +1,10 @@
 # Final Project for CS 5004 - (APPLICATION NAME/Update)
 
-(remove this and add your sections/elements)
+
 This readme should contain the following information: 
+
+## Members
+George Lin - https://github.com/lingeorge88 
 
 * The group member's names and link to their personal githubs
 * The application name and a brief description of the application
