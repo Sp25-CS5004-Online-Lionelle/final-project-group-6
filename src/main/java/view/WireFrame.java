@@ -1,6 +1,7 @@
 package view;
 
-import controller.ParkController;
+import controller.IController;
+import controller.MockController;
 import model.Park;
 import javax.swing.*;
 import java.awt.*;
@@ -20,14 +21,14 @@ public class WireFrame extends JFrame {
     private JPanel contentPanel;
     private JPanel buttonPanel;
     private JPanel logoPanel;
-    private ParkController controller;
+    private IController controller;
     private static final int TARGET_IMAGE_WIDTH = 900;
     private static final int TARGET_IMAGE_HEIGHT = 400;
     private static final int GALLERY_IMAGE_WIDTH = 280;
     private static final int GALLERY_IMAGE_HEIGHT = 210;
     
     public WireFrame() {
-        controller = new ParkController();
+        controller = new MockController();
         setTitle("Parks Explorer");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(1000, 800);
@@ -155,17 +156,20 @@ public class WireFrame extends JFrame {
     
     private void handleSearch() {
         String query = searchField.getText();
-        List<Park> results = controller.searchParks(query);
+        MockController mockController = (MockController) controller; // Cast to MockController to access search method
+        List<Park> results = mockController.searchParks(query);
         displayResults(results);
     }
     
     private void handleViewAll() {
-        List<Park> allParks = controller.getAllParks();
+        MockController mockController = (MockController) controller;
+        List<Park> allParks = mockController.getAllParks();
         displayResults(allParks);
     }
     
     private void handleRandom() {
-        Park randomPark = controller.getRandomPark();
+        MockController mockController = (MockController) controller;
+        Park randomPark = mockController.getRandomPark();
         if (randomPark != null) {
             resultsArea.setText(randomPark.toString());
             updateParkImage(randomPark.getImageUrl());

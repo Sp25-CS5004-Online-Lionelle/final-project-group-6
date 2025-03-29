@@ -13,6 +13,7 @@ title: Model Classes
 classDiagram
     note for Park "Important fields of an api response in a serialized form, could use a record here"
     Database ..> Park : uses/depends
+    ParksModel ..|> IModel : implements
     ParksModel ..> Filter : uses/depends
     ParksModel ..> Database : uses/depends
     ParksModel ..> NetUtils : uses/depends
@@ -56,6 +57,8 @@ classDiagram
     class ParksModel {
         - Database dbInstance
         + Model()
+    }
+    class IModel {
         <!-- Gets a response from the API and updates the db -->
         + getResponseAndUpdate(String query)
         <!-- Get filtered list from the database -->
@@ -109,13 +112,16 @@ classDiagram
         TextView()
         <!-- Can call superclass in constructor, then do all the custom UI work here -->
     }
+    class IView {
+        <!-- Uses FrameInstance to add ParksHome to frame -->
+        + initFrame()
+        + setListeners(ActionListener listenerOne, ActionListener listenerTwo)
+    }
+    ParksHome ..|> IView : implements
     note for ParksHome "Creates and displays main application page"
     class ParksHome {
         <!-- Assembles all other UI components into the frame, initializes and customizes frame -->
         + ParksHome()
-        <!-- Uses FrameInstance to add ParksHome to frame -->
-        + initFrame()
-        + setListeners(ActionListener listenerOne, ActionListener listenerTwo)
     }
 ```
 
@@ -128,13 +134,16 @@ title: Controller
 ---
 classDiagram
     note for ParkController "Put all the pieces together to run the app"
+    class IController {
+        + setActionListeners()
+        + runApp()
+    }
     class ParkController {
         - ParksModel model
         - ParksHome view
         + ParkController()
-        + setActionListeners()
-        + runApp()
     }
+    ParkController ..|> IController: implements
 ```
 
 ## Complete Diagram 
@@ -148,7 +157,29 @@ classDiagram
     ParksModel ..> Filter : uses/depends
     ParksModel ..> Database : uses/depends
     ParksModel ..> NetUtils : uses/depends
+    ParksModel ..|> IModel : implements
+    ParksApp ..> IController
 
+    class ParksApp {
+        + $ main()
+    }
+    class IModel {
+        <!-- Gets a response from the API and updates the db -->
+        + getResponseAndUpdate(String query)
+        <!-- Get filtered list from the database -->
+        + getFilteredData(Filter filter)
+        <!-- Turns API response into park object -->
+        - $ Park serializeResponse(String Json)
+    }
+    class ParkController {
+        - ParksModel model
+        - ParksHome view
+    }
+    ParkController ..|> IController: implements
+    class IController {
+        + setActionListeners()
+        + runApp()
+    }
     class Park {
         - String name;
         - String state;
@@ -229,21 +260,22 @@ classDiagram
         TextView()
         <!-- Can call superclass in constructor, then do all the custom UI work here -->
     }
+
+    IController ..> IModel
+    IController ..> IView
+    class ParkController {
+        - IModel model
+        - IView view
+        + ParkController()
+    }
+    class IView {
+        + setActionListeners()
+        + runApp()
+    }
+    ParksHome ..|> IView : implements
+    note for ParksHome "Creates and displays main application page"
     class ParksHome {
         <!-- Assembles all other UI components into the frame, initializes and customizes frame -->
         + ParksHome()
-        <!-- Uses FrameInstance to add ParksHome to frame -->
-        + initFrame()
-        + setListeners(ActionListener listenerOne, ActionListener listenerTwo)
-    }
-
-    ParkController ..> ParksModel
-    ParkController ..> ParksHome
-    class ParkController {
-        - ParksModel model
-        - ParksHome view
-        + ParkController()
-        + setActionListeners()
-        + runApp()
     }
 ```
