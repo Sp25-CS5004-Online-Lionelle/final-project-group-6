@@ -17,7 +17,7 @@ public class MockController implements IController {
         initializeMockData();
     }
 
-    public List<ActionListener> setActionListeners() {
+    public List<ActionListener> initActionListeners() {
         throw new UnsupportedOperationException("This method is not implemented in MockController");
     }
 
