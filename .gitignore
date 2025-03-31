@@ -1,6 +1,13 @@
 # Compiled class file
 *.class
 
+# environment variables containing api key
+.env
+.env
+.env.local
+.env.*
+!.env.example
+
 # Log file
 *.log
 
