@@ -39,6 +39,3 @@ bin
 # ingore ide files
 .vscode
 idea/
-
-# ignore .env files
-*.env
