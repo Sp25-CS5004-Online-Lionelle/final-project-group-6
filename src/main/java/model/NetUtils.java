@@ -3,10 +3,15 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.io.IOException;
+import java.util.List;
 import java.nio.charset.StandardCharsets;
 import io.github.cdimascio.dotenv.Dotenv;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import model.Records.ActivityWrapper;
+import model.Records.Activity;
 
 public class NetUtils {
+
     /**
      * Base URL for the NPS API parks endpoint with placeholders for state code and API key.
      * Format: https://developer.nps.gov/api/v1/parks?stateCode={state}&limit=20&api_key={key}
@@ -76,6 +81,25 @@ public class NetUtils {
     }
 
     /**
+     * Get a deserialized list of activities from the API, there are currently 40 total.
+     * Can be used later for filtering, and/or a dropdown in the UI.
+     * @return a String list of activities
+     */
+    public static List<Activity> getListOfActivities() {
+        String activitiesBaseUrl = "https://developer.nps.gov/api/v1/activities?limit=50&api_key=%s";
+        InputStream response = getUrlContents(String.format(activitiesBaseUrl, API_KEY));
+        try {
+            String JSON = new String(response.readAllBytes(), StandardCharsets.UTF_8);
+            ObjectMapper objectMapper = new ObjectMapper();
+            ActivityWrapper wrapper = objectMapper.readValue(JSON, ActivityWrapper.class);
+            return wrapper.data(); 
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
+        }
+    }
+
+    /**
      * Format a request to the API from a Zip code.
      * @param zip to search api
      * @return returns the formatted url
@@ -87,6 +111,15 @@ public class NetUtils {
         }
         return getParksByState(stateCode);
     }
+
+    // public static void main(String[] args) {
+    //     int count = 0;
+    //     List<Activity> response = getListOfActivities();
+    //     for (Activity activity : response) {
+    //         System.out.println(count + ": " + activity.name());
+    //         count++;
+    //     }
+    // }
 
     // public static void main(String[] args) {
     //     String response = getParksByState("WA");
