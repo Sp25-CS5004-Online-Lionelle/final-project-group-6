@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <!-- Frame Settings -->
+    <frame>
+        <width>1000</width>
+        <height>800</height>
+        <min_width>800</min_width>
+        <min_height>700</min_height>
+    </frame>
+
+    <!-- Image Panel Settings -->
+    <image_panel>
+        <target_width>900</target_width>
+        <target_height>400</target_height>
+        <gallery_width>280</gallery_width>
+        <gallery_height>210</gallery_height>
+        <min_width>400</min_width>
+        <min_height>200</min_height>
+    </image_panel>
+
+    <!-- Text Areas Settings -->
+    <text_areas>
+        <main_width>600</main_width>
+        <main_height>300</main_height>
+        <saved_width>200</saved_width>
+        <saved_height>300</saved_height>
+        <min_width>400</min_width>
+        <min_height>200</min_height>
+        <rows>10</rows>
+        <columns>40</columns>
+    </text_areas>
+
+    <!-- Font Settings -->
+    <fonts>
+        <title>
+            <name>Arial</name>
+            <style>BOLD</style>
+            <size>14</size>
+        </title>
+        <content>
+            <name>Arial</name>
+            <style>PLAIN</style>
+            <size>14</size>
+        </content>
+        <saved_list>
+            <name>Arial</name>
+            <style>PLAIN</style>
+            <size>12</size>
+        </saved_list>
+        <logoFont>
+            <name>Arial</name>
+            <style>BOLD</style>
+            <size>24</size>
+        </logoFont>
+    </fonts>
+
+    <!-- Layout Settings -->
+    <layout>
+        <split_ratio>0.7</split_ratio>
+        <divider_size>5</divider_size>
+        <padding>10</padding>
+        <small_padding>5</small_padding>
+    </layout>
+
+    <!-- Logo Settings -->
+    <logo>
+        <width>150</width>
+        <height>150</height>
+    </logo>
+
+    <!-- Search Panel Settings -->
+    <search_panel>
+        <field_columns>20</field_columns>
+        <label_text>Search by State/Zip:</label_text>
+        <button_text>Search</button_text>
+    </search_panel>
+
+    <!-- Button Panel Settings -->
+    <button_panel>
+        <buttons>
+            <view_all>View All Parks</view_all>
+            <random>Random Park</random>
+            <save>Save Results</save>
+            <load>Open Existing List</load>
+            <view_detail>View Detail</view_detail>
+            <add_to_list>Add Park to List</add_to_list>
+            <remove_from_list>Remove Park from List</remove_from_list>
+        </buttons>
+    </button_panel>
+</config>
