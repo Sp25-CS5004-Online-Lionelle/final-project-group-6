@@ -1,5 +1,10 @@
 package model;
 import model.Records.Park;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import model.Records.ParkWrapper;
+import model.Records.Park;
 import java.util.List;
 
 public class ParksModel {
@@ -29,7 +34,14 @@ public class ParksModel {
      * @param Json the JSON received from the API
      * @return a park object
      */
-    private static Park deserializeResponse(String Json) {
-        throw new UnsupportedOperationException("Unimplemented");
+    public static List<Park> deserializeResponse(String json) {
+        ObjectMapper om = new ObjectMapper();
+        try {
+            ParkWrapper wrapper = om.readValue(json, ParkWrapper.class);
+            return wrapper.data();
+        } catch (Exception e) {
+            System.err.println("Error deserializing JSON: " + e);
+            return null;
+        }
     }
 }

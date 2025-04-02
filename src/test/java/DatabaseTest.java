@@ -1,7 +1,7 @@
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import model.Database;
-import model.Records.Park;
+import model.Records.*;
 import org.junit.jupiter.api.BeforeEach;
 import java.util.Set;
 import java.util.List;
@@ -18,10 +18,16 @@ public class DatabaseTest {
     @BeforeEach
     public void setUp() {
         database = new Database();
-        park1 = new Park("Yellowstone", "Wyoming", "Yellowstone national park",
-                List.of("Hiking", "Fishing"), List.of("url1", "url2"), "123", "YS");
-        park2 = new Park("Yosemite", "California", "Yosemite national park",
-                List.of("Hiking", "Camping"), List.of("url3", "url4"), "456", "YM");
+        park1 = new Park("Yellowstone", "WY", "America's first national park", 
+            List.of(new Activity("84902834092", "Hiking"), new Activity("93280409", "Fishing")),
+            List.of(new Address("91209", "Yellowstone City", "WY", "1234 yellow street")), 
+            List.of(new ParkImage("buffalo in field", "www.urltoimage.com", "Bob Guy")), 
+            "YELL");
+        park2 = new Park("Grand Canyon", "AZ", "One of the seven natural wonders of the world", 
+            List.of(new Activity("123456789", "Rafting"), new Activity("9083409", "Hiking"), new Activity("987654321", "Camping")),
+            List.of(new Address("86023", "Grand Canyon Village", "AZ", "567 Canyon Road")), 
+            List.of(new ParkImage("Sunset over canyon", "www.grandcanyonimage.com", "Jane Doe")), 
+            "GRCA");
     }
 
     @Test
@@ -35,8 +41,8 @@ public class DatabaseTest {
     public void testGetParkByName() {
         database.updateDB(Set.of(park1, park2));
         assertEquals(park1, database.getParkByName("YELLOWstone"));
-        assertEquals(park2, database.getParkByName("yosemite"));
-        assertNull(database.getParkByName("Grand Canyon"));
+        assertEquals(park2, database.getParkByName("Grand Canyon"));
+        assertNull(database.getParkByName("yosemite"));
     }
 
     @Test
@@ -89,7 +95,8 @@ public class DatabaseTest {
     public void testGetParkByParkCode() {
         database.updateDB(Set.of(park1, park2));
 
-        assertEquals(park1, database.getParkByParkCode("ys"));
-        assertEquals(park2, database.getParkByParkCode("YM"));
+        assertEquals(park1, database.getParkByParkCode("yell"));
+        assertEquals(park1, database.getParkByParkCode("YELL"));
+        assertEquals(park2, database.getParkByParkCode("gRcA"));
     }
 }

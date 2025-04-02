@@ -170,7 +170,7 @@ public class WireFrame extends JFrame {
         Park randomPark = mockController.getRandomPark();
         if (randomPark != null) {
             resultsArea.setText(randomPark.toString());
-            updateParkImage(randomPark.imageUrls().get(0));
+            updateParkImage(randomPark.images().get(0).url());
         }
     }
     
