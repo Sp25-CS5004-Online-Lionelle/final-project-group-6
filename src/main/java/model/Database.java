@@ -1,5 +1,6 @@
 package model;
 import java.util.Collection;
+import model.Records.Park;
 
 public class Database {
 
@@ -12,15 +13,6 @@ public class Database {
      * @return the park if found, or null
      */
     public Park search(Park park) {
-        throw new UnsupportedOperationException("Unimplemented");
-    }
-
-    /**
-     * Filters the collection based on the filter passed.
-     * @param filter
-     * @return
-     */
-    public Collection<Park> filter(Filter filter) {
         throw new UnsupportedOperationException("Unimplemented");
     }
 

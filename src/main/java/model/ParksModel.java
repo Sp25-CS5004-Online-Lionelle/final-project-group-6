@@ -1,5 +1,6 @@
 package model;
-import java.util.Collection;
+import model.Records.Park;
+import java.util.List;
 
 public class ParksModel {
 
@@ -15,9 +16,11 @@ public class ParksModel {
     /**
      * Gets filtered data from the database, Filter.NONE if no filter is required
      * @param filter the filter to apply from Filter enum 
+     * 
+     * Example: List<Park> parks = getFilteredData(Filter.CONTAINS_STR, "Yellowstone");
      * @return returns a collection of parks that match the filter requirements
      */
-    public Collection<Park> getFilteredData(Filter filter) {
+    public List<Park> hasActivity(Activities filter, String query) {
         throw new UnsupportedOperationException("this is unimplemented");
     }
 
@@ -26,7 +29,7 @@ public class ParksModel {
      * @param Json the JSON received from the API
      * @return a park object
      */
-    private static Park serializeResponse(String Json) {
+    private static Park deserializeResponse(String Json) {
         throw new UnsupportedOperationException("Unimplemented");
     }
 }

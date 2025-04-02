@@ -2,7 +2,7 @@ package view;
 
 import controller.IController;
 import controller.MockController;
-import model.Park;
+import model.Records.Park;
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;
@@ -170,7 +170,7 @@ public class WireFrame extends JFrame {
         Park randomPark = mockController.getRandomPark();
         if (randomPark != null) {
             resultsArea.setText(randomPark.toString());
-            updateParkImage(randomPark.getImageUrl());
+            updateParkImage(randomPark.imageUrls().get(0));
         }
     }
     

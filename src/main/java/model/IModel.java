@@ -1,4 +1,5 @@
 package model;
+import model.Records.Park;
 import java.util.Collection;
 
 /**
@@ -17,5 +18,5 @@ public interface IModel {
          * @param filter the filter to apply from Filter enum 
          * @return returns a collection of parks that match the filter requirements
          */
-        public Collection<Park> getFilteredData(Filter filter);
+        public Collection<Park> getFilteredData(Activities filter);
 }
