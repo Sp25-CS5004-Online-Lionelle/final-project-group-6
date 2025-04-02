@@ -19,7 +19,7 @@ public class DatabaseTest {
     public void setUp() {
         database = new Database();
         park1 = new Park("Yellowstone", "Wyoming", "Yellowstone national park",
-                List.of("Hiking", "Camping"), List.of("url1", "url2"), "123", "YS");
+                List.of("Hiking", "Fishing"), List.of("url1", "url2"), "123", "YS");
         park2 = new Park("Yosemite", "California", "Yosemite national park",
                 List.of("Hiking", "Camping"), List.of("url3", "url4"), "456", "YM");
     }
@@ -65,5 +65,31 @@ public class DatabaseTest {
         database.updateDB(Set.of(park1));
         database.clear();
         assertFalse(database.contains(park1));
+    }
+
+    @Test
+    public void testGetParksByActivityName() {
+        database.updateDB(Set.of(park1, park2));
+
+        Set<Park> hikingParks = database.getParksByActivityName("Hiking");
+        assertEquals(2, hikingParks.size());
+        assertTrue(hikingParks.contains(park1));
+        assertTrue(hikingParks.contains(park2));
+
+        Set<Park> fishingParks = database.getParksByActivityName("Fishing");
+        assertEquals(1, fishingParks.size());
+        assertTrue(fishingParks.contains(park1));
+
+        Set<Park> campingParks = database.getParksByActivityName("Camping");
+        assertEquals(1, campingParks.size());
+        assertTrue(campingParks.contains(park2));
+    }
+
+    @Test
+    public void testGetParkByParkCode() {
+        database.updateDB(Set.of(park1, park2));
+
+        assertEquals(park1, database.getParkByParkCode("ys"));
+        assertEquals(park2, database.getParkByParkCode("YM"));
     }
 }

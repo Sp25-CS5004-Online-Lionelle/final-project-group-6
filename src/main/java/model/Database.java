@@ -45,6 +45,39 @@ public class Database {
     }
 
     /**
+     * Get all parks that offer a specific activity.
+     * 
+     * @param activityName the name of the activity
+     * @return a set of parks that offer the specified activity
+     */
+    public Set<Park> getParksByActivityName(String activityName) {
+        Set<Park> result = new HashSet<>();
+        for (Park park : this.parkSet) {
+            for (String activity : park.Activities()) {
+                if (activity.equalsIgnoreCase(activityName)) {
+                    result.add(park);
+                    break;
+                }
+            }
+        }
+        return result;
+    }
+
+    /**
+     * Get the park by its park code.
+     * 
+     * @return the park with the specified park code
+     */
+    public Park getParkByParkCode(String parkCode) {
+        for (Park park : this.parkSet) {
+            if (park.parkCode().equalsIgnoreCase(parkCode)) {
+                return park;
+            }
+        }
+        return null;
+    }
+
+    /**
      * Adds a park to the database.
      * 
      * @param park the park to add
