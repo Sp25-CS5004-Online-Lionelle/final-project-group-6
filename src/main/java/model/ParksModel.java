@@ -1,10 +1,7 @@
 package model;
 import model.Records.Park;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import model.Records.ParkWrapper;
-import model.Records.Park;
 import java.util.List;
 
 public class ParksModel {
@@ -30,7 +27,37 @@ public class ParksModel {
     }
 
     /**
-     * Serialize the response from the API into a Park object
+     * Gets parks by zip code from the API.
+     * 
+     * @param zip The zip code to search for
+     * @return JSON response string from the API
+     */
+    public String getParksByZip(String zip) {
+        return NetUtils.getParksByZip(zip);
+    }
+
+    /**
+     * Gets parks by state code from the API.
+     * 
+     * @param stateCode The state code to search for
+     * @return JSON response string from the API
+     */
+    public String getParksByState(String stateCode) {
+        return NetUtils.getParksByState(stateCode);
+    }
+
+    /**
+     * Gets all parks from the API.
+     * 
+     * @return JSON response string containing all parks
+     */
+    public String getAllParks() {
+        // You might want to implement this in NetUtils first
+        throw new UnsupportedOperationException("getAllParks not implemented yet");
+    }
+
+    /**
+     * Deserialize the response from the API into a Park object
      * @param Json the JSON received from the API
      * @return a park object
      */

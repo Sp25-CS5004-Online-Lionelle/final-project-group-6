@@ -183,5 +183,41 @@ public class JFrameView extends JFrame implements IView {
             }
         });
     }
+
+    /**
+     * Gets the search panel component.
+     * 
+     * @return The SearchPanel instance
+     */
+    public SearchPanel getSearchPanel() {
+        return searchPanel;
+    }
+
+    /**
+     * Gets the button panel component.
+     * 
+     * @return The ButtonPanel instance
+     */
+    public ButtonPanel getButtonPanel() {
+        return buttonPanel;
+    }
+
+    /**
+     * Gets the text panel component.
+     * 
+     * @return The TextPanel instance
+     */
+    public TextPanel getTextPanel() {
+        return textPanel;
+    }
+
+    /**
+     * Gets the saved parks panel component.
+     * 
+     * @return The SavedParksPanel instance
+     */
+    public SavedParksPanel getSavedParksPanel() {
+        return savedParksPanel;
+    }
 }
 

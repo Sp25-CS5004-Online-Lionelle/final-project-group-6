@@ -20,3 +20,6 @@
 
 **7. Add an area that displays user's saved list of parks, remove border lines**
 ![Saved List](./GuiSavedParks.png)
+
+**8. Implement displaying search result in formatted text**
+![Display List](./Search&DisplayParksByState.png)
