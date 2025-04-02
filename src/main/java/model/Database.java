@@ -1,48 +1,78 @@
 package model;
-import java.util.Collection;
+
 import model.Records.Park;
+
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Database {
 
-    /** The collection of parks from the API */
-    private Collection<Park> dataList ;
+    /** The set of parks retrieved from the API */
+    private Set<Park> parkSet;
 
     /**
-     * Search the Database for a specific park.
-     * @param park the park to search for
-     * @return the park if found, or null
+     * Constructor for the ParkSet class.
+     * 
+     * @param dataList the collection of parks
      */
-    public Park search(Park park) {
-        throw new UnsupportedOperationException("Unimplemented");
+    public Database() {
+        this.parkSet = new HashSet<>();
+    }
+
+    /**
+     * Search if the Database contains a specific park.
+     * 
+     * @param park the park to search for
+     * @return true if the park is found, false otherwise
+     */
+    public Boolean contains(Park park) {
+        return this.parkSet.contains(park);
+    }
+
+    /**
+     * Get the park by its name.
+     * 
+     * @return the park with the specified name
+     */
+    public Park getParkByName(String parkName) {
+        for (Park park : this.parkSet) {
+            if (park.Name().equalsIgnoreCase(parkName)) {
+                return park;
+            }
+        }
+        return null;
     }
 
     /**
      * Adds a park to the database.
+     * 
      * @param park the park to add
      */
-    private void savePark(Park park) {
-        throw new UnsupportedOperationException("Unimplemented");
+    public void savePark(Park park) {
+        this.parkSet.add(park);
     }
 
     /**
      * Removes a park from the database.
+     * 
      * @param park the park to remove
      */
-    private void removePark(Park park) {
-        throw new UnsupportedOperationException("Unimplemented");
+    public void removePark(Park park) {
+        this.parkSet.remove(park);
     }
 
     /**
      * Updates the database with a new collection of parks.
      */
-    private void updateDB() {
-        throw new UnsupportedOperationException("Unimplemented");
+    public void updateDB(Collection<Park> newParks) {
+        this.parkSet.addAll(newParks);
     }
 
     /**
      * Clears the database.
      */
-    private void clear() {
-        throw new UnsupportedOperationException("Unimplemented");
+    public void clear() {
+        this.parkSet.clear();
     }
 }
