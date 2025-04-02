@@ -5,6 +5,7 @@ import model.Records.Park;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
+import model.Records.Activity;
 
 public class Database {
 
@@ -37,7 +38,7 @@ public class Database {
      */
     public Park getParkByName(String parkName) {
         for (Park park : this.parkSet) {
-            if (park.Name().equalsIgnoreCase(parkName)) {
+            if (park.name().equalsIgnoreCase(parkName)) {
                 return park;
             }
         }
@@ -53,8 +54,8 @@ public class Database {
     public Set<Park> getParksByActivityName(String activityName) {
         Set<Park> result = new HashSet<>();
         for (Park park : this.parkSet) {
-            for (String activity : park.Activities()) {
-                if (activity.equalsIgnoreCase(activityName)) {
+            for (Activity activity : park.activities()) {
+                if (activity.name().equalsIgnoreCase(activityName)) {
                     result.add(park);
                     break;
                 }

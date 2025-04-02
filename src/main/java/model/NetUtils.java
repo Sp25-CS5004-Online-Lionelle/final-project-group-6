@@ -2,7 +2,9 @@ package model;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.io.File;
 import java.io.IOException;
+import java.io.FileWriter;
 import java.util.List;
 import java.nio.charset.StandardCharsets;
 import io.github.cdimascio.dotenv.Dotenv;
@@ -85,14 +87,19 @@ public class NetUtils {
      * Can be used later for filtering, and/or a dropdown in the UI.
      * @return a String list of activities
      */
-    public static List<Activity> getListOfActivities() {
+    public static List<String> getListOfActivities() {
         String activitiesBaseUrl = "https://developer.nps.gov/api/v1/activities?limit=50&api_key=%s";
         InputStream response = getUrlContents(String.format(activitiesBaseUrl, API_KEY));
         try {
             String JSON = new String(response.readAllBytes(), StandardCharsets.UTF_8);
             ObjectMapper objectMapper = new ObjectMapper();
             ActivityWrapper wrapper = objectMapper.readValue(JSON, ActivityWrapper.class);
-            return wrapper.data(); 
+            return wrapper
+                .data()
+                .stream()
+                .map(activity -> activity.name())
+                .toList(); 
+
         } catch (Exception e) {
             System.out.println(e);
             return null;
@@ -113,18 +120,18 @@ public class NetUtils {
     }
 
     // public static void main(String[] args) {
-    //     int count = 0;
-    //     List<Activity> response = getListOfActivities();
-    //     for (Activity activity : response) {
-    //         System.out.println(count + ": " + activity.name());
+    //     int count = 1;
+    //     List<String> response = getListOfActivities();
+    //     for (String activity : response) {
+    //         System.out.println(count + ": " + activity);
     //         count++;
     //     }
     // }
 
-    // public static void main(String[] args) {
-    //     String response = getParksByState("WA");
-    //     String responseZip = getParksByZip("98034");
-    //     System.out.println("Zip code search: " + responseZip);
-    //     System.out.println("Response: " + response);
-    // }
+    public static void main(String[] args) {
+        String response = getParksByState("WA");
+        String responseZip = getParksByZip("98034");
+        System.out.println("Zip code search: " + responseZip);
+        System.out.println("Response: " + response);
+    }
 }

@@ -1,6 +1,7 @@
 package controller;
 
-import model.Records.Park;
+import model.Records.*;
+import model.Records.Address;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -30,24 +31,29 @@ public class MockController implements IController {
      * This is made up mock data, demonstrates how to create a valid park object
      */
     private void initializeMockData() {
-        parks.add(new Park(
-            "Yellowstone", "WY", "America's first national park", 
-            List.of("Hiking", "Fishing", "Jogging"), List.of("https://example.com/yellowstone.jpg", "https://example.com/yellowstone2.jpg"),
-            "123 Park Ave, Yellowstone, WY", "YELL"));
-        parks.add(new Park(
-            "Grand Canyon", "AZ", "One of the world's most spectacular natural wonders", 
-            List.of("Hiking", "Fishing", "Jogging"), List.of("https://example.com/grandcanyon.jpg"),
-            "311 Park Lane, Grand Canyon, AZ", "GCAN"));
-        parks.add(new Park("Yosemite","CA", "Famous for cliffs", 
-            List.of("Hiking", "Fishing", "Jogging"), List.of("www.example.com", "www.example2.com"), 
-            "123 Yosemite BLVD, Yosemite, CA", "YOSM"));
+        parks.add(new Park("Yellowstone", "WY", "America's first national park", 
+            List.of(new Activity("84902834092", "Hiking"), new Activity("93280409", "Fishing")),
+            List.of(new Address("91209", "Yellowstone City", "WY", "1234 yellow street")), 
+            List.of(new ParkImage("buffalo in field", "www.urltoimage.com", "Bob Guy")), 
+            "YELL"));
+        parks.add(new Park("Grand Canyon", "AZ", "One of the seven natural wonders of the world", 
+            List.of(new Activity("123456789", "Rafting"), new Activity("987654321", "Camping")),
+            List.of(new Address("86023", "Grand Canyon Village", "AZ", "567 Canyon Road")), 
+            List.of(new ParkImage("Sunset over canyon", "www.grandcanyonimage.com", "Jane Doe")), 
+            "GRCA"));
+
+        parks.add(new Park("Yosemite", "CA", "Famous for its waterfalls and giant sequoia trees", 
+            List.of(new Activity("1122334455", "Rock Climbing"), new Activity("5544332211", "Wildlife Viewing")),
+            List.of(new Address("95389", "Yosemite Valley", "CA", "890 Park Lane")), 
+            List.of(new ParkImage("El Capitan view", "www.yosemiteimage.com", "John Smith")), 
+            "YOSE"));
     }
 
     public List<Park> searchParks(String query) {
         List<Park> results = new ArrayList<>();
         for (Park park : parks) {
-            if (park.stateCode().toLowerCase().contains(query.toLowerCase()) ||
-                park.Name().toLowerCase().contains(query.toLowerCase())) {
+            if (park.states().toLowerCase().contains(query.toLowerCase()) ||
+                park.name().toLowerCase().contains(query.toLowerCase())) {
                 results.add(park);
             }
         }
