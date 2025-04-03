@@ -106,7 +106,7 @@ public class Settings {
      * Throws a RuntimeException if the configuration cannot be loaded or parsed correctly.
      */
     private Settings() {
-        loadConfig(); // Load the XML document first
+        config = loadConfig(); // Load the XML document first
         
         Element root = config.getDocumentElement(); // Get the root <config> element
         // If loadConfig failed, root might be null or based on default - proceed carefully or add checks
@@ -198,23 +198,22 @@ public class Settings {
     }
 
     /**
-     * Loads the config.xml file from the classpath (expected in the view package).
+     * Loads the config.xml file from the classpath (expected in the resources directory).
      * Parses the XML file into a Document object stored in the 'config' field.
      * Throws a RuntimeException if the file cannot be found or parsed.
      */
-    private void loadConfig() {
+    private Document loadConfig() {
         try {
+            // Use getResourceAsStream to load from classpath resources
+            InputStream configStream = getClass().getClassLoader().getResourceAsStream("config.xml");
+            if (configStream == null) {
+                throw new RuntimeException("Could not find config.xml in resources. Ensure it's in src/main/resources/");
+            }
+
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
-            // Load config.xml from the same package as Settings.class
-            InputStream is = getClass().getResourceAsStream("/view/config.xml");
-            if (is == null) {
-                 // Consider reverting to useDefaultValues() or throwing a more specific error
-                throw new RuntimeException("Could not find config.xml in view package. Ensure it's in src/main/java/view/");
-            }
-            config = builder.parse(is);
+            return builder.parse(configStream);
         } catch (Exception e) {
-             // Wrap parsing/IO exceptions
             throw new RuntimeException("Failed to load or parse config.xml: " + e.getMessage(), e);
         }
     }
