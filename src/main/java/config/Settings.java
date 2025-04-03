@@ -1,4 +1,5 @@
 package config;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.Document;
@@ -7,7 +8,8 @@ import java.awt.Font;
 import java.io.InputStream;
 
 /**
- * Manages application-wide settings loaded from config.xml using a Singleton pattern.
+ * Manages application-wide settings loaded from config.xml using a Singleton
+ * pattern.
  * Parses the XML configuration file to provide easy access to various settings
  * like frame dimensions, fonts, layout parameters, and component properties.
  */
@@ -103,16 +105,18 @@ public class Settings {
     /**
      * Private constructor to prevent external instantiation (Singleton pattern).
      * Loads the configuration and initializes all final setting fields.
-     * Throws a RuntimeException if the configuration cannot be loaded or parsed correctly.
+     * Throws a RuntimeException if the configuration cannot be loaded or parsed
+     * correctly.
      */
     private Settings() {
         loadConfig(); // Load the XML document first
-        
+
         Element root = config.getDocumentElement(); // Get the root <config> element
-        // If loadConfig failed, root might be null or based on default - proceed carefully or add checks
+        // If loadConfig failed, root might be null or based on default - proceed
+        // carefully or add checks
 
         // --- Initialize fields from the loaded config ---
-        
+
         // Frame settings
         Element frame = (Element) root.getElementsByTagName("frame").item(0);
         FRAME_WIDTH = getIntValue(frame, "width");
@@ -161,7 +165,8 @@ public class Settings {
         // Logo dimension settings
         Element logoDimElement = (Element) root.getElementsByTagName("logo").item(0);
         if (logoDimElement == null) {
-            throw new RuntimeException("Configuration Error: Missing <logo> tag (for dimensions) directly under <config>");
+            throw new RuntimeException(
+                    "Configuration Error: Missing <logo> tag (for dimensions) directly under <config>");
         }
         LOGO_WIDTH = getIntValue(logoDimElement, "width");
         LOGO_HEIGHT = getIntValue(logoDimElement, "height");
@@ -207,14 +212,15 @@ public class Settings {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
             // Load config.xml from the same package as Settings.class
-            InputStream is = getClass().getResourceAsStream("/view/config.xml");
+            InputStream is = getClass().getResourceAsStream("/config.xml");
             if (is == null) {
-                 // Consider reverting to useDefaultValues() or throwing a more specific error
-                throw new RuntimeException("Could not find config.xml in view package. Ensure it's in src/main/java/view/");
+                // Consider reverting to useDefaultValues() or throwing a more specific error
+                throw new RuntimeException(
+                        "Could not find config.xml in view package. Ensure it's in src/main/java/view/");
             }
             config = builder.parse(is);
         } catch (Exception e) {
-             // Wrap parsing/IO exceptions
+            // Wrap parsing/IO exceptions
             throw new RuntimeException("Failed to load or parse config.xml: " + e.getMessage(), e);
         }
     }
@@ -231,7 +237,7 @@ public class Settings {
             config = builder.newDocument();
             Element root = config.createElement("config");
             config.appendChild(root);
-            
+
             // Example: Add default frame settings
             Element frame = config.createElement("frame");
             root.appendChild(frame);
@@ -239,15 +245,15 @@ public class Settings {
             addElement(frame, "height", "800");
             addElement(frame, "min_width", "800");
             addElement(frame, "min_height", "700");
-            
+
             // Example: Add default logo settings
             Element logo = config.createElement("logo");
             root.appendChild(logo);
             addElement(logo, "width", "300");
             addElement(logo, "height", "100");
-            
+
             // Add other default settings here...
-            
+
         } catch (Exception e) {
             // If even default creation fails, something is seriously wrong
             throw new RuntimeException("Failed to create default configuration", e);
@@ -273,9 +279,11 @@ public class Settings {
      * within the given parent element and parses it as an integer.
      *
      * @param element The parent XML element.
-     * @param tagName The tag name of the child element containing the integer value.
+     * @param tagName The tag name of the child element containing the integer
+     *                value.
      * @return The integer value parsed from the child element's text content.
-     * @throws RuntimeException if the tag is not found or the content is not a valid integer.
+     * @throws RuntimeException if the tag is not found or the content is not a
+     *                          valid integer.
      */
     private int getIntValue(Element element, String tagName) {
         // Assumes getTextContent handles basic null checks or throws appropriately
@@ -287,16 +295,18 @@ public class Settings {
      * within the given parent element.
      *
      * @param element The parent XML element.
-     * @param tagName The tag name of the child element whose text content is needed.
+     * @param tagName The tag name of the child element whose text content is
+     *                needed.
      * @return The text content of the found child element.
      * @throws RuntimeException if the element or the tag is not found.
      */
     private String getTextContent(Element element, String tagName) {
-         // Basic check - relies on caller ensuring element is not null
+        // Basic check - relies on caller ensuring element is not null
         var nodeList = element.getElementsByTagName(tagName);
-         // Simplified check - assumes item(0) exists if nodeList is not empty
+        // Simplified check - assumes item(0) exists if nodeList is not empty
         if (nodeList == null || nodeList.getLength() == 0) {
-            throw new RuntimeException("Configuration Error: Could not find required tag <" + tagName + "> inside element <" + element.getTagName() + ">");
+            throw new RuntimeException("Configuration Error: Could not find required tag <" + tagName
+                    + "> inside element <" + element.getTagName() + ">");
         }
         return nodeList.item(0).getTextContent();
     }
@@ -305,7 +315,8 @@ public class Settings {
      * Creates a Font object based on the name, style, and size specified
      * within the provided XML font element.
      *
-     * @param fontElement The XML element containing <name>, <style>, and <size> tags.
+     * @param fontElement The XML element containing <name>, <style>, and <size>
+     *                    tags.
      * @return A new Font object configured according to the XML element.
      * @throws RuntimeException if required tags are missing or values are invalid.
      */
@@ -314,7 +325,7 @@ public class Settings {
         String name = getTextContent(fontElement, "name");
         String style = getTextContent(fontElement, "style");
         int size = getIntValue(fontElement, "size");
-        
+
         // Determine font style constant
         int fontStyle = Font.PLAIN; // Default to PLAIN
         if ("BOLD".equalsIgnoreCase(style)) {
@@ -322,9 +333,9 @@ public class Settings {
         } else if ("ITALIC".equalsIgnoreCase(style)) {
             fontStyle = Font.ITALIC;
         } else if ("BOLDITALIC".equalsIgnoreCase(style) || "BOLD_ITALIC".equalsIgnoreCase(style)) {
-             fontStyle = Font.BOLD | Font.ITALIC;
+            fontStyle = Font.BOLD | Font.ITALIC;
         }
-        
+
         return new Font(name, fontStyle, size);
     }
 }

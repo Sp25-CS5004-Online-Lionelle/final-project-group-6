@@ -17,7 +17,7 @@ repositories {
 }
 
 application {
-    mainClass.set("") /** Update with main driver app location */
+    mainClass.set("ParkExplorer") /** Update with main driver app location */
 }
 
 dependencies {
@@ -48,15 +48,15 @@ test {
     useJUnitPlatform()
 }
 
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(17)
-    }
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
-}
+// java {
+//     toolchain {
+//         languageVersion = JavaLanguageVersion.of(17)
+//     }
+//     sourceCompatibility = JavaVersion.VERSION_17
+//     targetCompatibility = JavaVersion.VERSION_17
+// }
 
-wrapper {
-    gradleVersion = '8.5'
-    distributionType = Wrapper.DistributionType.BIN
-}
+// wrapper {
+//     gradleVersion = '8.5'
+//     distributionType = Wrapper.DistributionType.BIN
+// }
