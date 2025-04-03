@@ -86,4 +86,13 @@ public class SavedParksPanel extends JPanel {
     public void clearList() {
         savedParksArea.setText("");
     }
+
+    /**
+     * Gets the current list of saved parks as a string.
+     * 
+     * @return String containing all saved parks
+     */
+    public String getSavedParksList() {
+        return savedParksArea.getText();
+    }
 }
