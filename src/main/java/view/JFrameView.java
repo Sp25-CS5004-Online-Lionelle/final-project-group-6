@@ -3,6 +3,8 @@ package view;
 import javax.swing.*;
 
 import config.Settings;
+import model.NetUtils;
+import java.util.List;
 
 import java.awt.*;
 
@@ -218,6 +220,10 @@ public class JFrameView extends JFrame implements IView {
      */
     public SavedParksPanel getSavedParksPanel() {
         return savedParksPanel;
+    }
+
+    public List<String> promptActivities(List<String> activityList) {
+        return ActivitySelector.showSelector(this, "Select Activities", activityList);
     }
 }
 

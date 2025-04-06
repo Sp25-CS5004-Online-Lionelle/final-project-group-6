@@ -27,7 +27,8 @@ public class ButtonPanel extends JPanel {
     private JButton addParktoListButton;
     /** Button for removing a park from saved list */
     private JButton removeParkFromListButton;
-
+    /** Button for filtering */
+    private JButton filterButton;
     /**
      * Creates a new button panel with centered layout.
      */
@@ -41,22 +42,24 @@ public class ButtonPanel extends JPanel {
      */
     private void initializeComponents() {
         // Initialize all buttons with text from settings
-        viewAllButton = createButton(settings.VIEW_ALL_BUTTON_TEXT);
+        // viewAllButton = createButton(settings.VIEW_ALL_BUTTON_TEXT);
         randomButton = createButton(settings.RANDOM_BUTTON_TEXT);
         saveButton = createButton(settings.SAVE_BUTTON_TEXT);
         loadButton = createButton(settings.LOAD_BUTTON_TEXT);
         viewDetailButton = createButton(settings.VIEW_DETAIL_BUTTON_TEXT);
         addParktoListButton = createButton(settings.ADD_TO_LIST_BUTTON_TEXT);
+        filterButton = createButton(settings.FILTER_BUTTON_TEXT);
         removeParkFromListButton = createButton(settings.REMOVE_FROM_LIST_BUTTON_TEXT);
 
         // Add all buttons to panel
-        add(viewAllButton);
+        // add(viewAllButton);
         add(randomButton);
         add(saveButton);
         add(loadButton);
         add(viewDetailButton);
         add(addParktoListButton);
-        add(removeParkFromListButton);
+        add(filterButton);
+        // add(removeParkFromListButton);
     }
 
     /**
@@ -132,5 +135,13 @@ public class ButtonPanel extends JPanel {
      */
     public void removeFromListActionListener(ActionListener listener) {
         removeParkFromListButton.addActionListener(listener);
+    }
+
+    /**
+     * Adds listener for the "Filter Activities from List" button.
+     * @param listener
+     */
+    public void addFilterActionListener(ActionListener listener) {
+        filterButton.addActionListener(listener);
     }
 }

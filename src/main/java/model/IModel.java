@@ -1,6 +1,6 @@
 package model;
 import model.Records.Park;
-import java.util.Collection;
+import java.util.List;
 
 /**
  * Interface representing the model to be used
@@ -14,9 +14,9 @@ public interface IModel {
         public boolean updateDB(String query);
 
         /**
-         * Gets filtered data from the database, Filter.NONE if no filter is required
-         * @param filter the filter to apply from Filter enum 
-         * @return returns a collection of parks that match the filter requirements
+         * Gets filtered data from the database
+         * @param selectedActivities the activities to filter by 
+         * @return returns a list of parks that match the filter requirements
          */
-        public Collection<Park> getFilteredData(Activities filter);
+        public List<Park> getFilteredParks(List<String> selectedActivities);
 }

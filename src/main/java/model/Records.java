@@ -59,10 +59,9 @@ public final class Records {
         }
     };
     /**
-     * Record representing an activity available.
-     * Activity id is available if needed.
-     * @param title the title of the image
-     * @param url   the url of the image
+     * Record representing an image associated with a park.
+     * @param title  the title of the image
+     * @param url    the url of the image
      * @param credit the credit for the image (photographer or source)
      */
     @JsonIgnoreProperties(ignoreUnknown = true)
@@ -71,6 +70,7 @@ public final class Records {
     /**
      * Wrapper class for the list of activities returned by the NPS API.
      * Used for deserialization of the parks endpoint from the NPS API.
+     * @param data the list of parks returned by the NPS API
      */
     @JsonIgnoreProperties(ignoreUnknown = true)
     public record ParkWrapper(List<Park> data) {
@@ -78,6 +78,7 @@ public final class Records {
     /**
      * Wrapper class for the list of activities returned by the NPS API
      * Used for deserialization of the activities endpoint from the NPS API.
+     * @param data the list of activities returned by the NPS API
      */
     @JsonIgnoreProperties(ignoreUnknown = true)
     public record ActivityWrapper(List<Activity> data) {

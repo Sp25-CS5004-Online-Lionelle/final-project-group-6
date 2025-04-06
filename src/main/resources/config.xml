@@ -85,6 +85,7 @@
             <view_detail>View Detail</view_detail>
             <add_to_list>Add Park to List</add_to_list>
             <remove_from_list>Remove Park from List</remove_from_list>
+            <filter>Filter Activities</filter>
         </buttons>
     </button_panel>
 </config>

@@ -101,6 +101,8 @@ public class Settings {
     public final String ADD_TO_LIST_BUTTON_TEXT;
     /** Text for the 'Remove Park from List' button. */
     public final String REMOVE_FROM_LIST_BUTTON_TEXT;
+    /** Text for the 'filter' button */
+    public final String FILTER_BUTTON_TEXT;
 
     /**
      * Private constructor to prevent external instantiation (Singleton pattern).
@@ -187,6 +189,7 @@ public class Settings {
         VIEW_DETAIL_BUTTON_TEXT = getTextContent(buttons, "view_detail");
         ADD_TO_LIST_BUTTON_TEXT = getTextContent(buttons, "add_to_list");
         REMOVE_FROM_LIST_BUTTON_TEXT = getTextContent(buttons, "remove_from_list");
+        FILTER_BUTTON_TEXT = getTextContent(buttons, "filter");
     }
 
     /**
