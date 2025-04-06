@@ -1,8 +1,13 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import model.NetUtils;
 import model.Records.*;
+
+import java.util.HashSet;
 import java.util.List;
 import model.ParksModel;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -10,6 +15,27 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class testParksModel {
 
     ObjectMapper objectMapper = new ObjectMapper();
+    Park park1;
+    Park park2;
+    ParksModel model;
+
+    @BeforeEach
+    public void setUP() {
+        model = new ParksModel();
+    }
+
+    @Test
+    public void updateDB() {
+        String response = NetUtils.getParksByState("CA");
+        try {
+            List<Park> parkList = ParksModel.deserializeResponse(response);
+            assertTrue(model.updateDB("CA"));
+            assertEquals(parkList, model.getParkList());
+        } catch (Exception e) {
+            System.out.println("JSON parse exception" + e);
+        } 
+
+    }
 
     @Test
     public void deserializeList() {
@@ -59,7 +85,7 @@ public class testParksModel {
         ,"latLong":"lat:48.21403036, long:-122.6877213"
 
         ,"activities":[{"id":"13A57703-BB1A-41A2-94B8-53B692EB7238","name":"Astronomy"},{"id":"D37A0003-8317-4F04-8FB0-4CF0A272E195","name":"Stargazing"},{"id":"7CE6E935-F839-4FEC-A63E-052B1DEF39D2","name":"Biking"},{"id":"299CB934-88DC-474F-A33D-E43E29A149C2","name":"Mountain Biking"},{"id":"8D778629-F603-4C50-A121-6F4BB2FE2C4B","name":"Road Biking"},{"id":"071BA73C-1D3C-46D4-A53C-00D5602F7F0E","name":"Boating"},{"id":"BB0B8CD0-BF4C-4517-9980-CFE2D149C7B4","name":"Sailing"},{"id":"A59947B7-3376-49B4-AD02-C0423E08C5F7","name":"Camping"},{"id":"9159DF0F-951D-4AAE-9987-CEB3CE2A9ADA","name":"Car or Front Country Camping"},{"id":"7CFF5F03-5ECC-4F5A-8572-75D1F0976C0C","name":"Group Camping"},{"id":"AE42B46C-E4B7-4889-A122-08FE180371AE","name":"Fishing"},{"id":"17411C8D-5769-4D0F-ABD1-52ED03840C18","name":"Saltwater Fishing"},{"id":"1DFACD97-1B9C-4F5A-80F2-05593604799E","name":"Food"},{"id":"E53E1320-9B17-41DC-86A5-37EB7D622572","name":"Dining"},{"id":"C6D3230A-2CEA-4AFE-BFF3-DC1E2C2C4BB4","name":"Picnicking"},{"id":"B33DC9B6-0B7D-4322-BAD7-A13A34C584A3","name":"Guided Tours"},{"id":"A0631906-9672-4583-91DE-113B93DB6B6E","name":"Self-Guided Tours - Walking"},{"id":"C7D5A145-F8EB-4C37-9E92-2F6C6206B196","name":"Self-Guided Tours - Auto"},{"id":"BFF8C027-7C8F-480B-A5F8-CD8CE490BFBA","name":"Hiking"},{"id":"45261C0A-00D8-4C27-A1F8-029F933A0D34","name":"Front-Country Hiking"},{"id":"0307955A-B65C-4CE4-A780-EB36BAAADF0B","name":"Horse Trekking"},{"id":"1886DA47-0AEC-4568-B9C2-8E9BC316AAAC","name":"Horseback Riding"},{"id":"4D224BCA-C127-408B-AC75-A51563C42411","name":"Paddling"},{"id":"21DB3AFC-8AAC-4665-BC1F-7198C0685983","name":"Canoeing"},{"id":"256543C7-4322-48B3-8978-765E89AA9431","name":"Canoe or Kayak Camping"},{"id":"F353A9ED-4A08-456E-8DEC-E61974D0FEB6","name":"Kayaking"},{"id":"B3EF12AF-D951-419E-BD3C-6B36CBCC1E16","name":"Stand Up Paddleboarding"},{"id":"DF4A35E0-7983-4A3E-BC47-F37B872B0F25","name":"Junior Ranger Program"},{"id":"42CF4021-8524-428E-866A-D33097A4A764","name":"SCUBA Diving"},{"id":"0B685688-3405-4E2A-ABBA-E3069492EC50","name":"Wildlife Watching"},{"id":"5A2C91D1-50EC-4B24-8BED-A2E11A1892DF","name":"Birdwatching"},{"id":"C8F98B28-3C10-41AE-AA99-092B3B398C43","name":"Museum Exhibits"},{"id":"24380E3F-AD9D-4E38-BF13-C8EEB21893E7","name":"Shopping"}]
-        ,"topics":[{"id":"69693007-2DF2-4EDE-BB3B-A25EBA72BDF5","name":"Architecture and Building"},{"id":"227D2677-28CA-4CBF-997F-61108975A497","name":"Asian American Heritage"},{"id":"607D41B0-F830-4C07-A557-BCEF880A3929","name":"Burial, Cemetery and Gravesite"},{"id":"7F12224B-217A-4B07-A4A2-636B1CE7F221","name":"Colonization and Settlement"},{"id":"1170EEB6-5070-4760-8E7D-FF1A98272FAD","name":"Commerce"},{"id":"A010EADF-78B8-4526-B0A4-70B0E0B3470E","name":"Trade"},{"id":"12EA2B56-17EC-410A-A10D-BFBA87A0669B","name":"Explorers and Expeditions"},{"id":"1F833C99-A75D-4F9E-9256-B96523485466","name":"Farming and Agriculture"},{"id":"988B4AFC-F478-4673-B66D-E6BDB0CCFF35","name":"Forts"},{"id":"AF4F1CDF-E6C4-4886-BA91-8BC887DC2793","name":"Landscape Design"},{"id":"4C9D4777-A9DA-47D1-A0B9-F4A3C98BC1B3","name":"Maritime"},{"id":"123CE28E-0EFA-4330-8E6E-EEFF3D7BF772","name":"Coastal Defenses"},{"id":"7424754D-EB8B-4608-A69A-50D44992931B","name":"Maritime - Military"},{"id":"263BAC6E-4DEC-47E4-909D-DA8AD351E06E","name":"Lighthouses"},{"id":"69E16062-0E4F-4DE0-91FB-E4EDB2484572","name":"Migrations"},{"id":"3B0D607D-9933-425A-BFA0-21529AC4734C","name":"Military"},{"id":"A1BAF33E-EA84-4608-A888-4CEE9541F027","name":"Native American Heritage"},{"id":"C9C749E3-39C3-45F7-BCC5-9A609E30AA05","name":"Westward Expansion"},{"id":"D1722DD1-E314-4B6D-8116-DED86305C4A4","name":"Homesteading"},{"id":"0D00073E-18C3-46E5-8727-2F87B112DDC6","name":"Animals"},{"id":"957EF2BD-AC6C-4B7B-BD9A-87593ADC6691","name":"Birds"},{"id":"1608649A-E7D7-4529-BD83-074C90F9FB68","name":"Fish"},{"id":"46FC5CBD-9AD5-48F1-B4DA-1357031B1D2E","name":"Coasts, Islands and Atolls"},{"id":"94262026-92F5-48E9-90EF-01CEAEFBA4FF","name":"Grasslands"},{"id":"1AEDC86F-5792-487F-8CDF-9E92CAB97ACE","name":"Prairies"},{"id":"A7359FC4-DAD8-45F5-AF15-7FF62F816ED3","name":"Night Sky"},{"id":"E06F3C94-AC8A-4B1C-A247-8EBA8910D5EE","name":"Astronomy"},{"id":"B5E62BF4-5AE6-4100-8DE1-66652943FAEC","name":"Aurora Borealis"},{"id":"0E6D8503-CB65-467F-BCD6-C6D9E28A4E0B","name":"Oceans"},{"id":"980D1693-65BF-4F29-8182-7BAC9796E605","name":"Whales"},{"id":"78E4F4AC-AF97-435A-8C2C-7FB8D67516ED","name":"Unique Species"},{"id":"996BEDAE-CB23-4003-B008-3A1F46A72263","name":"Rare"}]
+        ,"topics":[{"id":"69693007-2DF2-4EDE-BB3B-A25EBA72BDF5","name":"Architecture and Building"},{"id":"227D2677-28CA-4CBF-997F-61108975A497","name":"Asian American Heritage"},{"id":"607D41B0-F830-4C07-A557-BCEF880A3929","name":"Burial, Cemetery and Gravesite"},{"id":"7F12224B-217A-4B07-A4A2-636B1CE7F221","name":"Colonization and Listtlement"},{"id":"1170EEB6-5070-4760-8E7D-FF1A98272FAD","name":"Commerce"},{"id":"A010EADF-78B8-4526-B0A4-70B0E0B3470E","name":"Trade"},{"id":"12EA2B56-17EC-410A-A10D-BFBA87A0669B","name":"Explorers and Expeditions"},{"id":"1F833C99-A75D-4F9E-9256-B96523485466","name":"Farming and Agriculture"},{"id":"988B4AFC-F478-4673-B66D-E6BDB0CCFF35","name":"Forts"},{"id":"AF4F1CDF-E6C4-4886-BA91-8BC887DC2793","name":"Landscape Design"},{"id":"4C9D4777-A9DA-47D1-A0B9-F4A3C98BC1B3","name":"Maritime"},{"id":"123CE28E-0EFA-4330-8E6E-EEFF3D7BF772","name":"Coastal Defenses"},{"id":"7424754D-EB8B-4608-A69A-50D44992931B","name":"Maritime - Military"},{"id":"263BAC6E-4DEC-47E4-909D-DA8AD351E06E","name":"Lighthouses"},{"id":"69E16062-0E4F-4DE0-91FB-E4EDB2484572","name":"Migrations"},{"id":"3B0D607D-9933-425A-BFA0-21529AC4734C","name":"Military"},{"id":"A1BAF33E-EA84-4608-A888-4CEE9541F027","name":"Native American Heritage"},{"id":"C9C749E3-39C3-45F7-BCC5-9A609E30AA05","name":"Westward Expansion"},{"id":"D1722DD1-E314-4B6D-8116-DED86305C4A4","name":"Homesteading"},{"id":"0D00073E-18C3-46E5-8727-2F87B112DDC6","name":"Animals"},{"id":"957EF2BD-AC6C-4B7B-BD9A-87593ADC6691","name":"Birds"},{"id":"1608649A-E7D7-4529-BD83-074C90F9FB68","name":"Fish"},{"id":"46FC5CBD-9AD5-48F1-B4DA-1357031B1D2E","name":"Coasts, Islands and Atolls"},{"id":"94262026-92F5-48E9-90EF-01CEAEFBA4FF","name":"Grasslands"},{"id":"1AEDC86F-5792-487F-8CDF-9E92CAB97ACE","name":"Prairies"},{"id":"A7359FC4-DAD8-45F5-AF15-7FF62F816ED3","name":"Night Sky"},{"id":"E06F3C94-AC8A-4B1C-A247-8EBA8910D5EE","name":"Astronomy"},{"id":"B5E62BF4-5AE6-4100-8DE1-66652943FAEC","name":"Aurora Borealis"},{"id":"0E6D8503-CB65-467F-BCD6-C6D9E28A4E0B","name":"Oceans"},{"id":"980D1693-65BF-4F29-8182-7BAC9796E605","name":"Whales"},{"id":"78E4F4AC-AF97-435A-8C2C-7FB8D67516ED","name":"Unique Species"},{"id":"996BEDAE-CB23-4003-B008-3A1F46A72263","name":"Rare"}]
         ,"states":"WA"
 
         ,"contacts":{"phoneNumbers":[{"phoneNumber":"3606786084","description":"","extension":"","type":"Voice"}],"emailAddresses":[{"description":"","emailAddress":"clifford_deloreon@nps.gov"}]}
@@ -109,7 +135,7 @@ public class testParksModel {
         ,"latLong":"lat:45.62234841, long:-122.6617043"
 
         ,"activities":[{"id":"09DF0950-D319-4557-A57E-04CD2F63FF42","name":"Arts and Culture"},{"id":"C59E231D-55FC-4B37-BC5B-FF76383951B5","name":"Craft Demonstrations"},{"id":"FAED7F97-3474-4C21-AB42-FB0768A2F826","name":"Cultural Demonstrations"},{"id":"7CE6E935-F839-4FEC-A63E-052B1DEF39D2","name":"Biking"},{"id":"B33DC9B6-0B7D-4322-BAD7-A13A34C584A3","name":"Guided Tours"},{"id":"B204DE60-5A24-43DD-8902-C81625A09A74","name":"Living History"},{"id":"A8650547-1A30-4222-86C3-A7660A829670","name":"Reenactments"},{"id":"237A1662-6018-4115-ABD1-B8CCF827E703","name":"Historic Weapons Demonstration"},{"id":"DF4A35E0-7983-4A3E-BC47-F37B872B0F25","name":"Junior Ranger Program"},{"id":"7779241F-A70B-49BC-86F0-829AE332C708","name":"Playground"},{"id":"0B685688-3405-4E2A-ABBA-E3069492EC50","name":"Wildlife Watching"},{"id":"0C0D142F-06B5-4BE1-8B44-491B90F93DEB","name":"Park Film"},{"id":"C8F98B28-3C10-41AE-AA99-092B3B398C43","name":"Museum Exhibits"},{"id":"24380E3F-AD9D-4E38-BF13-C8EEB21893E7","name":"Shopping"},{"id":"467DC8B8-0B7D-436D-A026-80A22358F615","name":"Bookstore and Park Store"}]
-        ,"topics":[{"id":"69693007-2DF2-4EDE-BB3B-A25EBA72BDF5","name":"Architecture and Building"},{"id":"28AEAE85-9DDA-45B6-981B-1CFCDCC61E14","name":"African American Heritage"},{"id":"7F81A0CB-B91F-4896-B9A5-41BE9A54A27B","name":"Archeology"},{"id":"227D2677-28CA-4CBF-997F-61108975A497","name":"Asian American Heritage"},{"id":"B912363F-771C-4098-BA3A-938DF38A9D7E","name":"Aviation"},{"id":"7F12224B-217A-4B07-A4A2-636B1CE7F221","name":"Colonization and Settlement"},{"id":"1170EEB6-5070-4760-8E7D-FF1A98272FAD","name":"Commerce"},{"id":"A010EADF-78B8-4526-B0A4-70B0E0B3470E","name":"Trade"},{"id":"988B4AFC-F478-4673-B66D-E6BDB0CCFF35","name":"Forts"},{"id":"E0AB480F-3A94-4DC1-8B21-9555F2C59B32","name":"LGB American Heritage"},{"id":"3B0D607D-9933-425A-BFA0-21529AC4734C","name":"Military"},{"id":"97CCB419-196C-4B95-BB3A-621458F78415","name":"US Army"},{"id":"A1BAF33E-EA84-4608-A888-4CEE9541F027","name":"Native American Heritage"},{"id":"272549CF-EAA4-4603-8E20-FBE1AAB391B7","name":"Pacific Islander Heritage"},{"id":"7DA81DAB-5045-4953-9C20-36590AD9FA95","name":"Women's History"},{"id":"0D00073E-18C3-46E5-8727-2F87B112DDC6","name":"Animals"}]
+        ,"topics":[{"id":"69693007-2DF2-4EDE-BB3B-A25EBA72BDF5","name":"Architecture and Building"},{"id":"28AEAE85-9DDA-45B6-981B-1CFCDCC61E14","name":"African American Heritage"},{"id":"7F81A0CB-B91F-4896-B9A5-41BE9A54A27B","name":"Archeology"},{"id":"227D2677-28CA-4CBF-997F-61108975A497","name":"Asian American Heritage"},{"id":"B912363F-771C-4098-BA3A-938DF38A9D7E","name":"Aviation"},{"id":"7F12224B-217A-4B07-A4A2-636B1CE7F221","name":"Colonization and Listtlement"},{"id":"1170EEB6-5070-4760-8E7D-FF1A98272FAD","name":"Commerce"},{"id":"A010EADF-78B8-4526-B0A4-70B0E0B3470E","name":"Trade"},{"id":"988B4AFC-F478-4673-B66D-E6BDB0CCFF35","name":"Forts"},{"id":"E0AB480F-3A94-4DC1-8B21-9555F2C59B32","name":"LGB American Heritage"},{"id":"3B0D607D-9933-425A-BFA0-21529AC4734C","name":"Military"},{"id":"97CCB419-196C-4B95-BB3A-621458F78415","name":"US Army"},{"id":"A1BAF33E-EA84-4608-A888-4CEE9541F027","name":"Native American Heritage"},{"id":"272549CF-EAA4-4603-8E20-FBE1AAB391B7","name":"Pacific Islander Heritage"},{"id":"7DA81DAB-5045-4953-9C20-36590AD9FA95","name":"Women's History"},{"id":"0D00073E-18C3-46E5-8727-2F87B112DDC6","name":"Animals"}]
         ,"states":"OR,WA"
 
         ,"contacts":{"phoneNumbers":[{"phoneNumber":"3608166230","description":"","extension":"","type":"Voice"}],"emailAddresses":[{"description":"","emailAddress":"fova_information@nps.gov"}]}
@@ -249,4 +275,89 @@ public class testParksModel {
             assertEquals(expected, actual.get(1));
 
         }
+    @Test
+    public void testGetFilteredParks() {
+        Park park1 = new Park(
+            "Yellowstone", "WY", "America's first national park", 
+            List.of(new Activity("84902834092", "Hiking"), new Activity("93280409", "Fishing")),
+            List.of(new Address("82190", "Yellowstone National Park", "WY", "1 Park Road")), 
+            List.of(new ParkImage("Old Faithful eruption", "www.yellowstone.org/oldfaithful", "John Smith")), 
+            "YELL");
+
+        Park park2 = new Park("Grand Canyon", "AZ", "One of the seven natural wonders of the world", 
+            List.of(
+                new Activity("123456789", "Rafting"), 
+                new Activity("9083409", "Hiking"), 
+                new Activity("192837465", "Waterfall Viewing"), 
+                new Activity("987654321", "Camping")),
+            List.of(new Address("86023", "Grand Canyon Village", "AZ", "1 Main Park Road")), 
+            List.of(new ParkImage("Canyon sunrise", "www.grandcanyon.com/sunrise", "Mary Johnson")), 
+            "GRCA");
+
+        Park park3 = new Park("Yosemite", "CA", "Famous for its giant sequoias and El Capitan", List.of(
+                new Activity("564738291", "Rock Climbing"), 
+                new Activity("192837465", "Waterfall Viewing"), 
+                new Activity("918273645", "Wildlife Photography")),
+            List.of(new Address("95389", "Yosemite Valley", "CA", "9000 Yosemite Park Drive")), 
+            List.of(new ParkImage("Half Dome at dusk", "www.yosemite.org/halfdome", "Ansel Adams")), 
+            "YOSE");
+
+        Park park4 = new Park("Great Smoky Mountains", "TN", "Most visited national park in the US", 
+            List.of(new Activity("756483920", "Autumn Leaf Viewing"), new Activity("384756291", "Historic Cabin Tours")),
+            List.of(new Address("37738", "Gatlinburg", "TN", "107 Park Headquarters Road")), 
+            List.of(new ParkImage("Misty mountain range", "www.greatsmokymountains.com/misty", "Sarah Wilson")), "GRSM");
+
+        Park park5 = new Park("Zion", "UT", "Known for its red cliffs and narrow canyons", 
+            List.of(
+                new Activity("657483921", "Canyoneering"), 
+                new Activity("192837465", "Waterfall Viewing"), 
+                new Activity("192847563", "Scenic Driving"), 
+                new Activity("564738291", "Stargazing")
+            ),
+            List.of(new Address("84767", "Springdale", "UT", "1 Zion Park Boulevard")), 
+            List.of(new ParkImage("Angels Landing trail", "www.zionpark.org/angelslanding", "Mike Thompson")), "ZION");        
+
+        List<Park> original = List.of(park1, park2, park3, park4, park5);
+        model.setParkList(original);
+
+        List<Park> actual = model.getFilteredParks(List.of("Waterfall Viewing"));
+        List<Park> expected = List.of(park2, park3, park5);
+        assertEquals(expected, actual);
+
+        actual = model.getFilteredParks(List.of("Hiking"));
+        expected = List.of(park1, park2);
+
+        actual = model.getFilteredParks(List.of("Ice Skating"));
+        expected = List.of();
+
+        actual = model.getFilteredParks(List.of("Camping", "Scenic Driving"));
+        expected = List.of(park2, park5);
+        }
+
+    // @Test
+    // public void testGetParksByActivityName() {
+    //     model.updateDB(List.of(park1, park2));
+
+    //     List<Park> hikingParks = model.getParksByActivityName("Hiking");
+    //     assertEquals(2, hikingParks.size());
+    //     assertTrue(hikingParks.contains(park1));
+    //     assertTrue(hikingParks.contains(park2));
+
+    //     List<Park> fishingParks = model.getParksByActivityName("Fishing");
+    //     assertEquals(1, fishingParks.size());
+    //     assertTrue(fishingParks.contains(park1));
+
+    //     List<Park> campingParks = model.getParksByActivityName("Camping");
+    //     assertEquals(1, campingParks.size());
+    //     assertTrue(campingParks.contains(park2));
+    // }
+
+    // @Test
+    // public void testGetParkByParkCode() {
+    //     model.updateDB(List.of(park1, park2));
+
+    //     assertEquals(park1, model.getParkByParkCode("yell"));
+    //     assertEquals(park1, model.getParkByParkCode("YELL"));
+    //     assertEquals(park2, model.getParkByParkCode("gRcA"));
+    // }
 }

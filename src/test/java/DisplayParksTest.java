@@ -12,7 +12,12 @@ public class DisplayParksTest {
     void testFormatParksDisplay_EbeysLanding() {
         // Get actual API response for Washington state
         String apiResponse = NetUtils.getParksByState("WA");
-        List<Park> parks = ParksModel.deserializeResponse(apiResponse);
+        List<Park> parks = null;
+        try {
+            parks = ParksModel.deserializeResponse(apiResponse);
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
         
         // Get first park (Ebey's Landing)
         Park ebeysLanding = parks.get(0);

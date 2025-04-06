@@ -4,7 +4,6 @@ import model.Records.*;
 import model.ParksModel;
 import model.NetUtils;
 import java.util.List;
-import controller.ParkController;
 
 class ParksControllerTest {
     
@@ -14,7 +13,12 @@ class ParksControllerTest {
         String apiResponse = NetUtils.getParksByState("WA");
         
         // Parse JSON into Park records
-        List<Park> parks = ParksModel.deserializeResponse(apiResponse);
+        List<Park> parks = null;
+        try {
+                parks = ParksModel.deserializeResponse(apiResponse);
+        } catch (Exception e) {
+                // TODO: handle exception
+        }
         
         // Get first park (Ebey's Landing)
         Park park = parks.get(0);

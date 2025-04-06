@@ -1,4 +1,5 @@
 package view;
+import java.util.List;
 
 /**
  * Interface representing the main view of the application.
@@ -29,5 +30,12 @@ public interface IView {
      * Gets the saved parks panel component.
      */
     SavedParksPanel getSavedParksPanel();
+
+    /**
+     * Receives a JComponent to add to the frame.
+     * JChooser or JComboBox for example.
+     * @param comp
+     */
+    public List<String> promptActivities(List<String> activityList);
 
 }

@@ -3,24 +3,20 @@ package controller;
 import model.ParksModel;
 import model.Records.Park;
 import view.IView;
-
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import model.DisplayParks;
-import model.NetUtils;
 
 public final class ParkController implements IController {
     private final ParksModel model;
     private final IView view;
-    private List<Park> currentParks; // Stores current search results
     private final Random random;
 
     public ParkController(ParksModel model, IView view) {
         this.model = model;
         this.view = view;
-        this.currentParks = new ArrayList<>();
         this.random = new Random();
     }
 
@@ -36,15 +32,14 @@ public final class ParkController implements IController {
         view.getSearchPanel().addSearchListener(searchListener);
         listeners.add(searchListener);
 
-        // View all parks listener
-        ActionListener viewAllListener = e -> handleViewAll();
-        view.getButtonPanel().addViewAllActionListener(viewAllListener);
-        listeners.add(viewAllListener);
-
         // Random park listener
         ActionListener randomListener = e -> handleRandomPark();
         view.getButtonPanel().addRandomActionListener(randomListener);
         listeners.add(randomListener);
+
+        ActionListener filterListener = e -> handleFilter();;
+        view.getButtonPanel().addFilterActionListener(filterListener);
+        listeners.add(filterListener);
 
         // Save results listener
         ActionListener saveListener = e -> {
@@ -83,42 +78,43 @@ public final class ParkController implements IController {
             return;
         }
 
-        query = query.trim().toUpperCase();
-        String response;
-
-        // Get response from API based on input type
-        if (query.matches("\\d{5}")) {
-            response = NetUtils.getParksByZip(query);
-        } else {
-            response = NetUtils.getParksByState(query);
-        }
-
-        // Parse JSON response into Park records
-        currentParks = ParksModel.deserializeResponse(response);
-        
-        if (currentParks == null || currentParks.isEmpty()) {
+        // Store response in model
+        boolean success = model.updateDB(query);
+        if (!success) {
             view.getTextPanel().updateResults("No parks found for: " + query);
             return;
         }
-
         // Update the text panel with formatted results using DisplayParks
-        view.getTextPanel().updateResults(DisplayParks.formatParksForDisplay(currentParks));
+        view.getTextPanel().updateResults(DisplayParks.formatParksForDisplay(model.getParkList()));
     }
 
     private void handleViewAll() {
-        String response = NetUtils.getParksByState("ALL");
-        currentParks = ParksModel.deserializeResponse(response);
-        view.getTextPanel().updateResults(DisplayParks.formatParksForDisplay(currentParks));
+        boolean success = model.updateDB("ALL");
+        if (!success) {
+            view.getTextPanel().updateResults("No parks found for: ALL") ;
+            return;
+        }
+        view.getTextPanel().updateResults(DisplayParks.formatParksForDisplay(model.getParkList()));
     }
 
     private void handleRandomPark() {
-        if (currentParks.isEmpty()) {
+        if (model.getParkList().isEmpty()) {
             handleViewAll(); // Load all parks first if no parks are loaded
         }
         
-        if (!currentParks.isEmpty()) {
-            Park randomPark = currentParks.get(random.nextInt(currentParks.size()));
+        if (!model.getParkList().isEmpty()) {
+            Park randomPark = model.getParkList().get(random.nextInt(model.getParkList().size()));
             view.getTextPanel().updateResults(DisplayParks.formatParksForDisplay(List.of(randomPark)));
+        }
+    }
+
+    private void handleFilter() {
+        if (model.getParkList().isEmpty()) {
+            view.getTextPanel().updateResults("No parks available to filter. Please perform a search first.");
+            return;
+        } else {
+            List<String> selectedActivities = view.promptActivities(model.getActivityList());
+            view.getTextPanel().updateResults(DisplayParks.formatParksForDisplay(model.getFilteredParks(selectedActivities)));
         }
     }
 
