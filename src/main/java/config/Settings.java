@@ -88,7 +88,7 @@ public class Settings {
     public final String SEARCH_BUTTON_TEXT;
 
     /** Text for the 'View All Parks' button. */
-    public final String VIEW_ALL_BUTTON_TEXT;
+    public final String BACK_BUTTON_TEXT;
     /** Text for the 'Random Park' button. */
     public final String RANDOM_BUTTON_TEXT;
     /** Text for the 'Save Results' button. */
@@ -103,6 +103,9 @@ public class Settings {
     public final String REMOVE_FROM_LIST_BUTTON_TEXT;
     /** Text for the 'filter' button */
     public final String FILTER_BUTTON_TEXT;
+    
+    /** Text for the TextPanel title label */
+    public final String TEXT_PANEL_TITLE_TEXT;
 
     /**
      * Private constructor to prevent external instantiation (Singleton pattern).
@@ -182,7 +185,7 @@ public class Settings {
         // Button panel text
         Element buttonPanel = (Element) root.getElementsByTagName("button_panel").item(0);
         Element buttons = (Element) buttonPanel.getElementsByTagName("buttons").item(0);
-        VIEW_ALL_BUTTON_TEXT = getTextContent(buttons, "view_all");
+        BACK_BUTTON_TEXT = getTextContent(buttons, "back");
         RANDOM_BUTTON_TEXT = getTextContent(buttons, "random");
         SAVE_BUTTON_TEXT = getTextContent(buttons, "save");
         LOAD_BUTTON_TEXT = getTextContent(buttons, "load");
@@ -190,6 +193,10 @@ public class Settings {
         ADD_TO_LIST_BUTTON_TEXT = getTextContent(buttons, "add_to_list");
         REMOVE_FROM_LIST_BUTTON_TEXT = getTextContent(buttons, "remove_from_list");
         FILTER_BUTTON_TEXT = getTextContent(buttons, "filter");
+        
+        // Text panel settings
+        Element textPanel = (Element) root.getElementsByTagName("text_panel").item(0);
+        TEXT_PANEL_TITLE_TEXT = getTextContent(textPanel, "title_text");
     }
 
     /**

@@ -23,3 +23,12 @@
 
 **8. Implement displaying search result in formatted text**
 ![Display List](./Search&DisplayParksByState.png)
+
+**9. Filter button opens up a dialogue to select various filter options**
+![Filter](./GuiFilter.png)
+
+**10. Convert the initial search result display area to JList so items are selectable**
+![JList](./GuiList.png)
+
+**11. Detailed view panel that shows the detailed view of each park with their corresponding images**
+![Detail View](./GuiDetailedView.png)

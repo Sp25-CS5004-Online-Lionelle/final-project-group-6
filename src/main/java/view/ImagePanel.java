@@ -2,6 +2,9 @@ package view;
 import javax.swing.*;
 import java.awt.*;
 import config.Settings;
+import model.Records.Park;
+import model.Records.ParkImage;
+import java.util.List;
 
 /**
  * Panel displaying a gallery of park images.
@@ -50,24 +53,50 @@ public class ImagePanel extends JPanel {
     }
 
     /**
-     * Updates all gallery images with a new image.
-     * Falls back to text if image loading fails.
+     * Updates the gallery with images from a park.
+     * Falls back to placeholder if no images are available.
      * 
-     * @param imageUrl URL of the image to display
+     * @param park The park whose images to display
      */
-    public void updateImages(String imageUrl) {
-        try {
-            ImageIcon placeholderIcon = new ImageIcon(getClass().getResource("/placeholder2.jpg"));
-            Image scaledImage = scaleImage(placeholderIcon.getImage(), 
-                settings.GALLERY_IMAGE_WIDTH, settings.GALLERY_IMAGE_HEIGHT);
-            for (JLabel imageLabel : galleryImages) {
-                imageLabel.setIcon(new ImageIcon(scaledImage));
+    public void updateImages(Park park) {
+        List<ParkImage> images = park.images();
+        if (images == null || images.isEmpty()) {
+            // If no images, show placeholder
+            try {
+                ImageIcon placeholderIcon = new ImageIcon(getClass().getResource("/placeholder.jpg"));
+                Image scaledImage = scaleImage(placeholderIcon.getImage(), 
+                    settings.GALLERY_IMAGE_WIDTH, settings.GALLERY_IMAGE_HEIGHT);
+                for (JLabel imageLabel : galleryImages) {
+                    imageLabel.setIcon(new ImageIcon(scaledImage));
+                    imageLabel.setText("");
+                }
+            } catch (Exception e) {
+                for (JLabel imageLabel : galleryImages) {
+                    imageLabel.setIcon(null);
+                    imageLabel.setText("No images available");
+                }
             }
-        } catch (Exception e) {
-            for (JLabel imageLabel : galleryImages) {
-                imageLabel.setIcon(null);
-                imageLabel.setText("Image: " + imageUrl);
+            return;
+        }
+        int numImages = Math.min(images.size(), galleryImages.length);
+        for (int i = 0; i < numImages; i++) {
+            try {
+                ParkImage parkImage = images.get(i);
+                ImageIcon icon = new ImageIcon(new java.net.URL(parkImage.url()));
+                Image scaledImage = scaleImage(icon.getImage(), 
+                    settings.GALLERY_IMAGE_WIDTH, settings.GALLERY_IMAGE_HEIGHT);
+                galleryImages[i].setIcon(new ImageIcon(scaledImage));
+                galleryImages[i].setText("");
+            } catch (Exception e) {
+                galleryImages[i].setIcon(null);
+                galleryImages[i].setText("Failed to load image");
             }
+        }
+
+        // Clear any remaining slots
+        for (int i = numImages; i < galleryImages.length; i++) {
+            galleryImages[i].setIcon(null);
+            galleryImages[i].setText("");
         }
     }
     

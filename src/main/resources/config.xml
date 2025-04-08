@@ -30,12 +30,17 @@
         <columns>40</columns>
     </text_areas>
 
+    <!-- Text Panel Settings -->
+    <text_panel>
+        <title_text>Search Results / Detailed View</title_text>
+    </text_panel>
+
     <!-- Font Settings -->
     <fonts>
         <title>
             <name>Arial</name>
             <style>BOLD</style>
-            <size>14</size>
+            <size>16</size>
         </title>
         <content>
             <name>Arial</name>
@@ -86,6 +91,7 @@
             <add_to_list>Add Park to List</add_to_list>
             <remove_from_list>Remove Park from List</remove_from_list>
             <filter>Filter Activities</filter>
+            <back>Back</back>
         </buttons>
     </button_panel>
 </config>

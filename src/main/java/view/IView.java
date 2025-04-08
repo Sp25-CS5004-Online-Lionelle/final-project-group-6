@@ -32,6 +32,11 @@ public interface IView {
     SavedParksPanel getSavedParksPanel();
 
     /**
+     * Gets the image panel component.
+     */
+    ImagePanel getImagePanel();
+
+    /**
      * Receives a JComponent to add to the frame.
      * JChooser or JComboBox for example.
      * @param comp
