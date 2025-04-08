@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import model.DisplayParks;
+import javax.swing.JOptionPane;
 
 public final class ParkController implements IController {
     private final ParksModel model;
@@ -37,16 +37,22 @@ public final class ParkController implements IController {
         view.getButtonPanel().addRandomActionListener(randomListener);
         listeners.add(randomListener);
 
-        ActionListener filterListener = e -> handleFilter();;
+        // Filter listener
+        ActionListener filterListener = e -> handleFilter();
         view.getButtonPanel().addFilterActionListener(filterListener);
         listeners.add(filterListener);
+
+        // View details listener
+        ActionListener viewDetailsListener = e -> handleViewDetails();
+        view.getButtonPanel().addViewDetailActionListener(viewDetailsListener);
+        listeners.add(viewDetailsListener);
 
         // Save results listener
         ActionListener saveListener = e -> {
             try {
                 saveParksToFile("file path");
             } catch (UnsupportedOperationException ex) {
-                view.getTextPanel().updateResults("Save operation not yet implemented.");
+                view.getTextPanel().updateResults(List.of());
             }
         };
         view.getButtonPanel().addSaveActionListener(saveListener);
@@ -57,11 +63,16 @@ public final class ParkController implements IController {
             try {
                 loadParksFromFile("file path");
             } catch (UnsupportedOperationException ex) {
-                view.getTextPanel().updateResults("Load operation not yet implemented.");
+                view.getTextPanel().updateResults(List.of());
             }
         };
         view.getButtonPanel().addLoadActionListener(loadListener);
         listeners.add(loadListener);
+
+        // Back button listener
+        ActionListener backListener = e -> handleBack();
+        view.getButtonPanel().addBackActionListener(backListener);
+        listeners.add(backListener);
 
         return listeners;
     }
@@ -74,48 +85,85 @@ public final class ParkController implements IController {
 
     private void handleSearch(String query) {
         if (query == null || query.trim().isEmpty()) {
-            view.getTextPanel().updateResults("Please enter a valid state code or zip code");
+            view.getTextPanel().updateResults(List.of());
+            view.getButtonPanel().enableBackButton(false);
             return;
         }
 
         // Store response in model
         boolean success = model.updateDB(query);
         if (!success) {
-            view.getTextPanel().updateResults("No parks found for: " + query);
+            view.getTextPanel().updateResults(List.of());
+            view.getButtonPanel().enableBackButton(false);
             return;
         }
-        // Update the text panel with formatted results using DisplayParks
-        view.getTextPanel().updateResults(DisplayParks.formatParksForDisplay(model.getParkList()));
+        // Update the text panel with formatted results
+        view.getTextPanel().updateResults(model.getParkList());
+        view.getButtonPanel().enableBackButton(false);
     }
 
     private void handleViewAll() {
         boolean success = model.updateDB("ALL");
         if (!success) {
-            view.getTextPanel().updateResults("No parks found for: ALL") ;
+            view.getTextPanel().updateResults(List.of());
+            view.getButtonPanel().enableBackButton(false);
             return;
         }
-        view.getTextPanel().updateResults(DisplayParks.formatParksForDisplay(model.getParkList()));
+        view.getTextPanel().updateResults(model.getParkList());
+        view.getButtonPanel().enableBackButton(false);
     }
 
     private void handleRandomPark() {
         if (model.getParkList().isEmpty()) {
-            handleViewAll(); // Load all parks first if no parks are loaded
+            boolean success = model.updateDB("ALL");
+            if (!success) {
+                view.getTextPanel().updateResults(List.of());
+                view.getButtonPanel().enableBackButton(false);
+                return;
+            }
         }
         
         if (!model.getParkList().isEmpty()) {
             Park randomPark = model.getParkList().get(random.nextInt(model.getParkList().size()));
-            view.getTextPanel().updateResults(DisplayParks.formatParksForDisplay(List.of(randomPark)));
+            view.getTextPanel().updateResults(List.of(randomPark));
+            view.getButtonPanel().enableBackButton(false);
+        } else {
+            view.getTextPanel().updateResults(List.of());
+            view.getButtonPanel().enableBackButton(false);
         }
     }
 
     private void handleFilter() {
         if (model.getParkList().isEmpty()) {
-            view.getTextPanel().updateResults("No parks available to filter. Please perform a search first.");
+            JOptionPane.showMessageDialog(null, "Please perform a search first to load parks.", 
+                "No Parks Loaded", JOptionPane.INFORMATION_MESSAGE);
+            view.getTextPanel().updateResults(List.of());
+            view.getButtonPanel().enableBackButton(false);
             return;
         } else {
             List<String> selectedActivities = view.promptActivities(model.getActivityList());
-            view.getTextPanel().updateResults(DisplayParks.formatParksForDisplay(model.getFilteredParks(selectedActivities)));
+            if (selectedActivities == null) {
+                return;
+            }
+            view.getTextPanel().updateResults(model.getFilteredParks(selectedActivities));
+            view.getButtonPanel().enableBackButton(false);
         }
+    }
+
+    /**
+     * Handles viewing details of the selected park.
+     * Shows expanded information in the same list area.
+     */
+    private void handleViewDetails() {
+        if (view.getTextPanel().getSelectedPark() == null) {
+            JOptionPane.showMessageDialog(null, "Please select a park first.", 
+                "No Park Selected", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        Park selectedPark = view.getTextPanel().getSelectedPark();
+        view.getTextPanel().showSelectedParkDetails();
+        view.getImagePanel().updateImages(selectedPark);
+        view.getButtonPanel().enableBackButton(true);
     }
 
     /**
@@ -136,5 +184,13 @@ public final class ParkController implements IController {
      */
     private void loadParksFromFile(String filePath) {
         throw new UnsupportedOperationException("Method loadParksFromFile() not yet implemented");
+    }
+
+    /**
+     * Handles returning from the detail view to the summary list.
+     */
+    private void handleBack() {
+        view.getTextPanel().showSummaryListView();
+        view.getButtonPanel().enableBackButton(false);
     }
 }

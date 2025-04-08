@@ -3,7 +3,6 @@ package view;
 import javax.swing.*;
 
 import config.Settings;
-import model.NetUtils;
 import java.util.List;
 
 import java.awt.*;
@@ -218,10 +217,22 @@ public class JFrameView extends JFrame implements IView {
      * 
      * @return The SavedParksPanel instance
      */
+    @Override
     public SavedParksPanel getSavedParksPanel() {
         return savedParksPanel;
     }
 
+    @Override
+    public ImagePanel getImagePanel() {
+        return imageGalleryPanel;
+    }
+
+    /**
+     * Receives a JComponent to add to the frame.
+     * JChooser or JComboBox for example.
+     * @param comp
+     */
+    @Override
     public List<String> promptActivities(List<String> activityList) {
         return ActivitySelector.showSelector(this, "Select Activities", activityList);
     }

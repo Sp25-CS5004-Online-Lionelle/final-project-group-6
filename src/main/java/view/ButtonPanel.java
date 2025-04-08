@@ -29,6 +29,8 @@ public class ButtonPanel extends JPanel {
     private JButton removeParkFromListButton;
     /** Button for filtering */
     private JButton filterButton;
+    /** Button to go back from detail view */
+    private JButton backButton;
     /**
      * Creates a new button panel with centered layout.
      */
@@ -42,7 +44,6 @@ public class ButtonPanel extends JPanel {
      */
     private void initializeComponents() {
         // Initialize all buttons with text from settings
-        // viewAllButton = createButton(settings.VIEW_ALL_BUTTON_TEXT);
         randomButton = createButton(settings.RANDOM_BUTTON_TEXT);
         saveButton = createButton(settings.SAVE_BUTTON_TEXT);
         loadButton = createButton(settings.LOAD_BUTTON_TEXT);
@@ -50,9 +51,10 @@ public class ButtonPanel extends JPanel {
         addParktoListButton = createButton(settings.ADD_TO_LIST_BUTTON_TEXT);
         filterButton = createButton(settings.FILTER_BUTTON_TEXT);
         removeParkFromListButton = createButton(settings.REMOVE_FROM_LIST_BUTTON_TEXT);
+        backButton = createButton(settings.BACK_BUTTON_TEXT);
+        backButton.setEnabled(false); // Initially disabled
 
         // Add all buttons to panel
-        // add(viewAllButton);
         add(randomButton);
         add(saveButton);
         add(loadButton);
@@ -60,6 +62,7 @@ public class ButtonPanel extends JPanel {
         add(addParktoListButton);
         add(filterButton);
         // add(removeParkFromListButton);
+        add(backButton);
     }
 
     /**
@@ -143,5 +146,21 @@ public class ButtonPanel extends JPanel {
      */
     public void addFilterActionListener(ActionListener listener) {
         filterButton.addActionListener(listener);
+    }
+
+    /**
+     * Adds listener for the "Back" button.
+     * @param listener Action listener to add
+     */
+    public void addBackActionListener(ActionListener listener) {
+        backButton.addActionListener(listener);
+    }
+
+    /**
+     * Enables or disables the Back button.
+     * @param enabled true to enable, false to disable
+     */
+    public void enableBackButton(boolean enabled) {
+        backButton.setEnabled(enabled);
     }
 }
