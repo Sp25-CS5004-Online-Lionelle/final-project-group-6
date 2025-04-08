@@ -29,3 +29,6 @@
 
 **10. Convert the initial search result display area to JList so items are selectable**
 ![JList](./GuiList.png)
+
+**11. Detailed view panel that shows the detailed view of each park with their corresponding images**
+![Detail View](./GuiDetailedView.png)
