@@ -2,10 +2,12 @@ package model;
 
 import model.Records.Activity;
 import model.Records.Park;
+import model.Records.ParkImage;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import model.Records.ParkWrapper;
+import javax.swing.ImageIcon;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -144,6 +146,35 @@ public class ParksModel {
         }
     }
 
+    public List<ImageIcon> downloadImages(Park park, int numImages) {
+
+        if (park.images() == null || park.images().isEmpty()) {
+            System.err.println("No images available for park");
+            return new ArrayList<>();
+        }
+
+        List<String> urls = park.images()
+            .stream()
+            .map(img -> img.url())
+            .toList();
+
+        List<ImageIcon> icons = new ArrayList<>();
+
+        for (int i = 0; i < numImages; i++) {
+            if (i >= urls.size()) {
+                break;
+            }
+            try {
+                ImageIcon icon = new ImageIcon(new java.net.URL(urls.get(i)));
+                icons.add(icon);
+            } catch (Exception e) {
+                System.err.println("Failed to load image: " + e.getMessage());
+            }
+        }
+
+        return icons;
+    }
+
     /**
      * Deserialize the response from the API into a Park object
      * @param Json the JSON received from the API
@@ -153,5 +184,16 @@ public class ParksModel {
         ObjectMapper om = new ObjectMapper();
         ParkWrapper wrapper = om.readValue(json, ParkWrapper.class);
         return wrapper.data();
+    }
+
+    /** 
+     * Takes list of parks and converts it into a json string with all the data
+     * NOTE: I chose to write the value as a string for testing purposes, we could alternatively changes this to 'writeValueAsBytes()'
+     * We also could refactor to have this method write directly to the file {@link https://github.com/FasterXML/jackson-databind}
+    */
+    public static String serializeList(List<Park> parks) throws JsonProcessingException{
+        ObjectMapper om = new ObjectMapper();
+        ParkWrapper wrapper = new ParkWrapper(parks);
+        return om.writeValueAsString(wrapper);
     }
 }

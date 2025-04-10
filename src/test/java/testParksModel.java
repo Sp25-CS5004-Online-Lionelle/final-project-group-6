@@ -1,13 +1,10 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import model.NetUtils;
 import model.Records.*;
-
-import java.util.HashSet;
 import java.util.List;
 import model.ParksModel;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -17,11 +14,57 @@ public class testParksModel {
     ObjectMapper objectMapper = new ObjectMapper();
     Park park1;
     Park park2;
+    Park park3;
+    Park park4;
+    Park park5;
     ParksModel model;
+    List<Park> original;
 
     @BeforeEach
     public void setUP() {
         model = new ParksModel();
+
+        Park park1 = new Park(
+            "Yellowstone", "WY", "America's first national park", 
+            List.of(new Activity("84902834092", "Hiking"), new Activity("93280409", "Fishing")),
+            List.of(new Address("82190", "Yellowstone National Park", "WY", "1 Park Road")), 
+            List.of(new ParkImage("Old Faithful eruption", "www.yellowstone.org/oldfaithful", "John Smith")), 
+            "YELL");
+
+        Park park2 = new Park("Grand Canyon", "AZ", "One of the seven natural wonders of the world", 
+            List.of(
+                new Activity("123456789", "Rafting"), 
+                new Activity("9083409", "Hiking"), 
+                new Activity("192837465", "Waterfall Viewing"), 
+                new Activity("987654321", "Camping")),
+            List.of(new Address("86023", "Grand Canyon Village", "AZ", "1 Main Park Road")), 
+            List.of(new ParkImage("Canyon sunrise", "www.grandcanyon.com/sunrise", "Mary Johnson")), 
+            "GRCA");
+
+        Park park3 = new Park("Yosemite", "CA", "Famous for its giant sequoias and El Capitan", List.of(
+                new Activity("564738291", "Rock Climbing"), 
+                new Activity("192837465", "Waterfall Viewing"), 
+                new Activity("918273645", "Wildlife Photography")),
+            List.of(new Address("95389", "Yosemite Valley", "CA", "9000 Yosemite Park Drive")), 
+            List.of(new ParkImage("Half Dome at dusk", "www.yosemite.org/halfdome", "Ansel Adams")), 
+            "YOSE");
+
+        Park park4 = new Park("Great Smoky Mountains", "TN", "Most visited national park in the US", 
+            List.of(new Activity("756483920", "Autumn Leaf Viewing"), new Activity("384756291", "Historic Cabin Tours")),
+            List.of(new Address("37738", "Gatlinburg", "TN", "107 Park Headquarters Road")), 
+            List.of(new ParkImage("Misty mountain range", "www.greatsmokymountains.com/misty", "Sarah Wilson")), "GRSM");
+
+        Park park5 = new Park("Zion", "UT", "Known for its red cliffs and narrow canyons", 
+            List.of(
+                new Activity("657483921", "Canyoneering"), 
+                new Activity("192837465", "Waterfall Viewing"), 
+                new Activity("192847563", "Scenic Driving"), 
+                new Activity("564738291", "Stargazing")
+            ),
+            List.of(new Address("84767", "Springdale", "UT", "1 Zion Park Boulevard")), 
+            List.of(new ParkImage("Angels Landing trail", "www.zionpark.org/angelslanding", "Mike Thompson")), "ZION");        
+
+        original = List.of(park1, park2, park3, park4, park5);
     }
 
     @Test
@@ -277,47 +320,6 @@ public class testParksModel {
         }
     @Test
     public void testGetFilteredParks() {
-        Park park1 = new Park(
-            "Yellowstone", "WY", "America's first national park", 
-            List.of(new Activity("84902834092", "Hiking"), new Activity("93280409", "Fishing")),
-            List.of(new Address("82190", "Yellowstone National Park", "WY", "1 Park Road")), 
-            List.of(new ParkImage("Old Faithful eruption", "www.yellowstone.org/oldfaithful", "John Smith")), 
-            "YELL");
-
-        Park park2 = new Park("Grand Canyon", "AZ", "One of the seven natural wonders of the world", 
-            List.of(
-                new Activity("123456789", "Rafting"), 
-                new Activity("9083409", "Hiking"), 
-                new Activity("192837465", "Waterfall Viewing"), 
-                new Activity("987654321", "Camping")),
-            List.of(new Address("86023", "Grand Canyon Village", "AZ", "1 Main Park Road")), 
-            List.of(new ParkImage("Canyon sunrise", "www.grandcanyon.com/sunrise", "Mary Johnson")), 
-            "GRCA");
-
-        Park park3 = new Park("Yosemite", "CA", "Famous for its giant sequoias and El Capitan", List.of(
-                new Activity("564738291", "Rock Climbing"), 
-                new Activity("192837465", "Waterfall Viewing"), 
-                new Activity("918273645", "Wildlife Photography")),
-            List.of(new Address("95389", "Yosemite Valley", "CA", "9000 Yosemite Park Drive")), 
-            List.of(new ParkImage("Half Dome at dusk", "www.yosemite.org/halfdome", "Ansel Adams")), 
-            "YOSE");
-
-        Park park4 = new Park("Great Smoky Mountains", "TN", "Most visited national park in the US", 
-            List.of(new Activity("756483920", "Autumn Leaf Viewing"), new Activity("384756291", "Historic Cabin Tours")),
-            List.of(new Address("37738", "Gatlinburg", "TN", "107 Park Headquarters Road")), 
-            List.of(new ParkImage("Misty mountain range", "www.greatsmokymountains.com/misty", "Sarah Wilson")), "GRSM");
-
-        Park park5 = new Park("Zion", "UT", "Known for its red cliffs and narrow canyons", 
-            List.of(
-                new Activity("657483921", "Canyoneering"), 
-                new Activity("192837465", "Waterfall Viewing"), 
-                new Activity("192847563", "Scenic Driving"), 
-                new Activity("564738291", "Stargazing")
-            ),
-            List.of(new Address("84767", "Springdale", "UT", "1 Zion Park Boulevard")), 
-            List.of(new ParkImage("Angels Landing trail", "www.zionpark.org/angelslanding", "Mike Thompson")), "ZION");        
-
-        List<Park> original = List.of(park1, park2, park3, park4, park5);
         model.setParkList(original);
 
         List<Park> actual = model.getFilteredParks(List.of("Waterfall Viewing"));
@@ -332,32 +334,29 @@ public class testParksModel {
 
         actual = model.getFilteredParks(List.of("Camping", "Scenic Driving"));
         expected = List.of(park2, park5);
-        }
+    }
 
-    // @Test
-    // public void testGetParksByActivityName() {
-    //     model.updateDB(List.of(park1, park2));
+    @Test
+    public void testSerialize() {
+        try {
+            String json = ParksModel.serializeList(original);
+            List<Park> actual = ParksModel.deserializeResponse(json);
+            assertEquals(original, actual);
+        } catch (Exception e) {}
+    }
 
-    //     List<Park> hikingParks = model.getParksByActivityName("Hiking");
-    //     assertEquals(2, hikingParks.size());
-    //     assertTrue(hikingParks.contains(park1));
-    //     assertTrue(hikingParks.contains(park2));
+    @Test
+    public void testSerializeRealData() {
+        try {
+            String response = NetUtils.getParksByState("ca");
 
-    //     List<Park> fishingParks = model.getParksByActivityName("Fishing");
-    //     assertEquals(1, fishingParks.size());
-    //     assertTrue(fishingParks.contains(park1));
+            List<Park> pl = ParksModel.deserializeResponse(response);
+            String json = ParksModel.serializeList(pl);
+            List<Park> actual = ParksModel.deserializeResponse(json);
 
-    //     List<Park> campingParks = model.getParksByActivityName("Camping");
-    //     assertEquals(1, campingParks.size());
-    //     assertTrue(campingParks.contains(park2));
-    // }
+            assertEquals(pl, actual);
+        } catch (Exception e) {}
+    }
 
-    // @Test
-    // public void testGetParkByParkCode() {
-    //     model.updateDB(List.of(park1, park2));
 
-    //     assertEquals(park1, model.getParkByParkCode("yell"));
-    //     assertEquals(park1, model.getParkByParkCode("YELL"));
-    //     assertEquals(park2, model.getParkByParkCode("gRcA"));
-    // }
 }
