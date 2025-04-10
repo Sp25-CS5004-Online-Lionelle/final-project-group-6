@@ -8,20 +8,30 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import model.Records.ParkWrapper;
 import javax.swing.ImageIcon;
+
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ParksModel {
-    /** List of parks stored */
+    /** Path to the file where user saved parks are stored */
+    private static final String FILE_PATH = "src/main/resources/userSavedParks.json";
+
+    /** List of parks retrieved from the API */
     private List<Park> parkList;
     /** List of activities in String form */
     private List<String> activityList;
+    /** List of parks saved by the user */
+    private List<Park> userSavedParks;
 
-    /** Public constructor for Parks model.
+    /**
+     * Public constructor for Parks model.
      * Initializes the park list and fetches the list of activities from the API.
      */
     public ParksModel() {
         this.parkList = new ArrayList<>();
+        this.userSavedParks = new ArrayList<>();
         try {
             this.activityList = NetUtils.getListOfActivities();
         } catch (Exception e) {
@@ -31,6 +41,7 @@ public class ParksModel {
 
     /**
      * Updates the database with a data to be downloaded from the API
+     * 
      * @param query
      * @return true if the database was updated successfully, false otherwise
      */
@@ -57,6 +68,7 @@ public class ParksModel {
 
     /**
      * Returns the list of parks currently being stored in the model.
+     * 
      * @return a list of parks, or an empty list if none are stored
      */
     public List<Park> getParkList() {
@@ -68,6 +80,7 @@ public class ParksModel {
 
     /**
      * Get the park by its name.
+     * 
      * @return the park with the specified name
      */
     public Park getParkByName(String parkName) {
@@ -81,6 +94,7 @@ public class ParksModel {
 
     /**
      * Get all parks that offer a specific activity.
+     * 
      * @param activityName the name of the activity
      * @return a list of parks that offer the specified activity
      */
@@ -99,6 +113,7 @@ public class ParksModel {
 
     /**
      * Get filtered parks based on a list of selected activities.
+     * 
      * @param selectedActivities
      * @return filtered list of parks that match the selected activities
      */
@@ -112,6 +127,7 @@ public class ParksModel {
 
     /**
      * Get the park by its park code.
+     * 
      * @return the park with the specified park code
      */
     public Park getParkByParkCode(String parkCode) {
@@ -125,7 +141,9 @@ public class ParksModel {
 
     /**
      * Returns the list of activities available in the parks.
-     * @return a list of activity names, or an empty list if no activities are available
+     * 
+     * @return a list of activity names, or an empty list if no activities are
+     *         available
      */
     public List<String> getActivityList() {
         if (this.activityList == null) {
@@ -135,7 +153,9 @@ public class ParksModel {
     }
 
     /**
-     * Sets the park list in the model. This is typically used for testing purposes to set a predefined list of parks.
+     * Sets the park list in the model. This is typically used for testing purposes
+     * to set a predefined list of parks.
+     * 
      * @param parkList the list of parks to set in the model
      */
     public void setParkList(List<Park> parkList) {
@@ -154,9 +174,9 @@ public class ParksModel {
         }
 
         List<String> urls = park.images()
-            .stream()
-            .map(img -> img.url())
-            .toList();
+                .stream()
+                .map(img -> img.url())
+                .toList();
 
         List<ImageIcon> icons = new ArrayList<>();
 
@@ -176,7 +196,25 @@ public class ParksModel {
     }
 
     /**
+     * Loads the user saved park list from a file.
+     * 
+     * @return a list of parks saved by the user
+     */
+    public List<Park> loadUserSavedParksFromFile() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            // Read the JSON file and deserialize it into a list of Park objects
+            ParkWrapper wrapper = objectMapper.readValue(new File(FILE_PATH), ParkWrapper.class);
+            return wrapper.data();
+        } catch (IOException e) {
+            System.err.println("Failed to load user saved park list from file: " + e.getMessage());
+            return new ArrayList<>();
+        }
+    }
+
+    /**
      * Deserialize the response from the API into a Park object
+     * 
      * @param Json the JSON received from the API
      * @return a park object
      */
@@ -186,12 +224,14 @@ public class ParksModel {
         return wrapper.data();
     }
 
-    /** 
+    /**
      * Takes list of parks and converts it into a json string with all the data
-     * NOTE: I chose to write the value as a string for testing purposes, we could alternatively changes this to 'writeValueAsBytes()'
-     * We also could refactor to have this method write directly to the file {@link https://github.com/FasterXML/jackson-databind}
-    */
-    public static String serializeList(List<Park> parks) throws JsonProcessingException{
+     * NOTE: I chose to write the value as a string for testing purposes, we could
+     * alternatively changes this to 'writeValueAsBytes()'
+     * We also could refactor to have this method write directly to the file
+     * {@link https://github.com/FasterXML/jackson-databind}
+     */
+    public static String serializeList(List<Park> parks) throws JsonProcessingException {
         ObjectMapper om = new ObjectMapper();
         ParkWrapper wrapper = new ParkWrapper(parks);
         return om.writeValueAsString(wrapper);
