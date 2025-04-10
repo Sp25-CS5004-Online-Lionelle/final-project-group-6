@@ -162,7 +162,12 @@ public final class ParkController implements IController {
         }
         Park selectedPark = view.getTextPanel().getSelectedPark();
         view.getTextPanel().showSelectedParkDetails();
-        view.getImagePanel().updateImages(selectedPark);
+        view.showLoadingWhileTask(new Runnable() {
+            @Override
+            public void run() {
+                view.getImagePanel().updateImages(model.downloadImages(selectedPark, 3));
+            }
+        });
         view.getButtonPanel().enableBackButton(true);
     }
 

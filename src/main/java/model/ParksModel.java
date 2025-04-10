@@ -2,10 +2,12 @@ package model;
 
 import model.Records.Activity;
 import model.Records.Park;
+import model.Records.ParkImage;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import model.Records.ParkWrapper;
+import javax.swing.ImageIcon;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -142,6 +144,35 @@ public class ParksModel {
         } else {
             this.parkList = parkList;
         }
+    }
+
+    public List<ImageIcon> downloadImages(Park park, int numImages) {
+
+        if (park.images() == null || park.images().isEmpty()) {
+            System.err.println("No images available for park");
+            return new ArrayList<>();
+        }
+
+        List<String> urls = park.images()
+            .stream()
+            .map(img -> img.url())
+            .toList();
+
+        List<ImageIcon> icons = new ArrayList<>();
+
+        for (int i = 0; i < numImages; i++) {
+            if (i >= urls.size()) {
+                break;
+            }
+            try {
+                ImageIcon icon = new ImageIcon(new java.net.URL(urls.get(i)));
+                icons.add(icon);
+            } catch (Exception e) {
+                System.err.println("Failed to load image: " + e.getMessage());
+            }
+        }
+
+        return icons;
     }
 
     /**

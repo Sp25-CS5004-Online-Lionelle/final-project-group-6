@@ -58,8 +58,8 @@ public class ImagePanel extends JPanel {
      * 
      * @param park The park whose images to display
      */
-    public void updateImages(Park park) {
-        List<ParkImage> images = park.images();
+    public void updateImages(List<ImageIcon> images) {
+
         if (images == null || images.isEmpty()) {
             // If no images, show placeholder
             try {
@@ -81,8 +81,7 @@ public class ImagePanel extends JPanel {
         int numImages = Math.min(images.size(), galleryImages.length);
         for (int i = 0; i < numImages; i++) {
             try {
-                ParkImage parkImage = images.get(i);
-                ImageIcon icon = new ImageIcon(new java.net.URL(parkImage.url()));
+                ImageIcon icon = images.get(i);
                 Image scaledImage = scaleImage(icon.getImage(), 
                     settings.GALLERY_IMAGE_WIDTH, settings.GALLERY_IMAGE_HEIGHT);
                 galleryImages[i].setIcon(new ImageIcon(scaledImage));

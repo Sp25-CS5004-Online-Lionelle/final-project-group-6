@@ -236,5 +236,23 @@ public class JFrameView extends JFrame implements IView {
     public List<String> promptActivities(List<String> activityList) {
         return ActivitySelector.showSelector(this, "Select Activities", activityList);
     }
+
+    @Override
+    public void showLoadingWhileTask(Runnable task) {
+        LoadingDialog.show(this, "Loading...");
+        SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
+            @Override
+            protected Void doInBackground() throws Exception {
+                task.run();
+                return null;
+            }
+            @Override
+            protected void done() {
+                LoadingDialog.hide();
+            }
+        };
+        worker.execute();
+    }
+
 }
 

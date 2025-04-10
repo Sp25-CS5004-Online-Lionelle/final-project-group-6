@@ -43,4 +43,5 @@ public interface IView {
      */
     public List<String> promptActivities(List<String> activityList);
 
+    public void showLoadingWhileTask(Runnable task);
 }
