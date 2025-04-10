@@ -154,4 +154,15 @@ public class ParksModel {
         ParkWrapper wrapper = om.readValue(json, ParkWrapper.class);
         return wrapper.data();
     }
+
+    /** 
+     * Takes list of parks and converts it into a json string with all the data
+     * NOTE: I chose to write the value as a string for testing purposes, we could alternatively changes this to 'writeValueAsBytes()'
+     * We also could refactor to have this method write directly to the file {@link https://github.com/FasterXML/jackson-databind}
+    */
+    public static String serializeList(List<Park> parks) throws JsonProcessingException{
+        ObjectMapper om = new ObjectMapper();
+        ParkWrapper wrapper = new ParkWrapper(parks);
+        return om.writeValueAsString(wrapper);
+    }
 }
