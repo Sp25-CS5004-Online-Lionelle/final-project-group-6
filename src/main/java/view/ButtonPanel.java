@@ -12,7 +12,7 @@ import config.Settings;
 public class ButtonPanel extends JPanel {
     /** Application settings */
     private final Settings settings = Settings.getInstance();
-    
+
     /** Button for viewing all parks */
     private JButton viewAllButton;
     /** Button for showing a random park */
@@ -31,6 +31,7 @@ public class ButtonPanel extends JPanel {
     private JButton filterButton;
     /** Button to go back from detail view */
     private JButton backButton;
+
     /**
      * Creates a new button panel with centered layout.
      */
@@ -142,6 +143,7 @@ public class ButtonPanel extends JPanel {
 
     /**
      * Adds listener for the "Filter Activities from List" button.
+     * 
      * @param listener
      */
     public void addFilterActionListener(ActionListener listener) {
@@ -150,6 +152,7 @@ public class ButtonPanel extends JPanel {
 
     /**
      * Adds listener for the "Back" button.
+     * 
      * @param listener Action listener to add
      */
     public void addBackActionListener(ActionListener listener) {
@@ -158,6 +161,7 @@ public class ButtonPanel extends JPanel {
 
     /**
      * Enables or disables the Back button.
+     * 
      * @param enabled true to enable, false to disable
      */
     public void enableBackButton(boolean enabled) {

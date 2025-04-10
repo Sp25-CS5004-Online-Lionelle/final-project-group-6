@@ -1,0 +1,28 @@
+{
+  "data": [
+    {
+      "name": "Yellowstone",
+      "stateCode": "WY",
+      "description": "Yellowstone National Park",
+      "activities": [{ "name": "Hiking" }, { "name": "Fishing" }],
+      "images": [
+        { "url": "https://example.com/image1.jpg" },
+        { "url": "https://example.com/image2.jpg" }
+      ],
+      "parkCode": "yell",
+      "id": "123"
+    },
+    {
+      "name": "Arches",
+      "stateCode": "UT",
+      "description": "Arches National Park",
+      "activities": [{ "name": "Clim ebing" }, { "name": "Camping" }],
+      "images": [
+        { "url": "https://example.com/image3.jpg" },
+        { "url": "https://example.com/image4.jpg" }
+      ],
+      "parkCode": "arch",
+      "id": "456"
+    }
+  ]
+}

@@ -23,7 +23,7 @@ public final class ParkController implements IController {
     @Override
     public List<ActionListener> initActionListeners() {
         List<ActionListener> listeners = new ArrayList<>();
-        
+
         // Search button listener
         ActionListener searchListener = e -> {
             String query = view.getSearchPanel().getSearchQuery();
@@ -59,13 +59,7 @@ public final class ParkController implements IController {
         listeners.add(saveListener);
 
         // Load saved list listener
-        ActionListener loadListener = e -> {
-            try {
-                loadParksFromFile("file path");
-            } catch (UnsupportedOperationException ex) {
-                view.getTextPanel().updateResults(List.of());
-            }
-        };
+        ActionListener loadListener = e -> handleOpenExistingList();
         view.getButtonPanel().addLoadActionListener(loadListener);
         listeners.add(loadListener);
 
@@ -122,7 +116,7 @@ public final class ParkController implements IController {
                 return;
             }
         }
-        
+
         if (!model.getParkList().isEmpty()) {
             Park randomPark = model.getParkList().get(random.nextInt(model.getParkList().size()));
             view.getTextPanel().updateResults(List.of(randomPark));
@@ -135,8 +129,8 @@ public final class ParkController implements IController {
 
     private void handleFilter() {
         if (model.getParkList().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Please perform a search first to load parks.", 
-                "No Parks Loaded", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Please perform a search first to load parks.",
+                    "No Parks Loaded", JOptionPane.INFORMATION_MESSAGE);
             view.getTextPanel().updateResults(List.of());
             view.getButtonPanel().enableBackButton(false);
             return;
@@ -156,8 +150,8 @@ public final class ParkController implements IController {
      */
     private void handleViewDetails() {
         if (view.getTextPanel().getSelectedPark() == null) {
-            JOptionPane.showMessageDialog(null, "Please select a park first.", 
-                "No Park Selected", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Please select a park first.",
+                    "No Park Selected", JOptionPane.WARNING_MESSAGE);
             return;
         }
         Park selectedPark = view.getTextPanel().getSelectedPark();
@@ -182,13 +176,14 @@ public final class ParkController implements IController {
     }
 
     /**
-     * Loads a list of parks from a file.
-     * 
-     * @param filePath Path to load the file from
-     * @throws UnsupportedOperationException if the method is not yet implemented
+     * Loads a list of parks from the local file.
      */
-    private void loadParksFromFile(String filePath) {
-        throw new UnsupportedOperationException("Method loadParksFromFile() not yet implemented");
+    private void handleOpenExistingList() {
+        // Load the user saved park list from database
+        List<Park> userSavedParks = this.model.loadUserSavedParksFromFile();
+        // Display the user saved park list in the text panel
+        view.getTextPanel().updateResults(userSavedParks);
+        view.getButtonPanel().enableBackButton(false);
     }
 
     /**
