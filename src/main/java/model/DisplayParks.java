@@ -107,4 +107,17 @@ public class DisplayParks {
     public static String getParkSeparator() {
         return PARK_SEPARATOR;
     }
+
+    /**
+     * Formats a park name and state for the saved parks list.
+     * 
+     * @param park The park to format
+     * @return Formatted string in the format "Park Name, STATE"
+     */
+    public static String formatSavedParkListItem(Park park) {
+        if (park == null) {
+            return "Invalid park";
+        }
+        return String.format("%s, %s", park.name(), park.states());
+    }
 }

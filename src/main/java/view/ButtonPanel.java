@@ -36,7 +36,7 @@ public class ButtonPanel extends JPanel {
      * Creates a new button panel with centered layout.
      */
     public ButtonPanel() {
-        setLayout(new FlowLayout(FlowLayout.CENTER));
+        setLayout(new GridLayout(2, 4, 5, 5)); // 2 rows, 4 columns, 5px gaps
         initializeComponents();
     }
 
@@ -55,15 +55,17 @@ public class ButtonPanel extends JPanel {
         backButton = createButton(settings.BACK_BUTTON_TEXT);
         backButton.setEnabled(false); // Initially disabled
 
-        // Add all buttons to panel
+        // First row
         add(randomButton);
+        add(viewDetailButton);
+        add(filterButton);
+        add(backButton);
+
+        // Second row
         add(saveButton);
         add(loadButton);
-        add(viewDetailButton);
         add(addParktoListButton);
-        add(filterButton);
-        // add(removeParkFromListButton);
-        add(backButton);
+        add(removeParkFromListButton);
     }
 
     /**
@@ -75,16 +77,11 @@ public class ButtonPanel extends JPanel {
     private JButton createButton(String text) {
         JButton button = new JButton(text);
         button.setFont(settings.CONTENT_FONT);
+        // Make buttons smaller
+        button.setPreferredSize(new Dimension(120, 30));
+        // Reduce margin around text
+        button.setMargin(new Insets(2, 4, 2, 4));
         return button;
-    }
-
-    /**
-     * Adds listener for the "View All Parks" button.
-     *
-     * @param listener Action listener to add
-     */
-    public void addViewAllActionListener(ActionListener listener) {
-        viewAllButton.addActionListener(listener);
     }
 
     /**
@@ -137,7 +134,7 @@ public class ButtonPanel extends JPanel {
      *
      * @param listener Action listener to add
      */
-    public void removeFromListActionListener(ActionListener listener) {
+    public void addRemoveFromListActionListener(ActionListener listener) {
         removeParkFromListButton.addActionListener(listener);
     }
 
