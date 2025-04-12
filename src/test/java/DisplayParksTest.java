@@ -129,4 +129,31 @@ public class DisplayParksTest {
         assertEquals("Test1", parts[0]);
         assertEquals("Test2", parts[1]);
     }
+
+    @Test
+    void testFormatSavedParkListItem_ValidPark() {
+        // Get actual API response for Washington state
+        String apiResponse = NetUtils.getParksByState("WA");
+        List<Park> parks = null;
+        try {
+            parks = ParksModel.deserializeResponse(apiResponse);
+        } catch (Exception e) {
+            System.out.println("There was an error trying to deserialize api response");
+        }
+        
+        // Get first park (Ebey's Landing)
+        Park ebeysLanding = parks.get(0);
+        
+        // Format park for saved list
+        String result = DisplayParks.formatSavedParkListItem(ebeysLanding);
+        
+        // Verify format is "Park Name, STATE"
+        assertEquals("Ebey's Landing, WA", result);
+    }
+
+    @Test
+    void testFormatSavedParkListItem_NullPark() {
+        String result = DisplayParks.formatSavedParkListItem(null);
+        assertEquals("Invalid park", result);
+    }
 }

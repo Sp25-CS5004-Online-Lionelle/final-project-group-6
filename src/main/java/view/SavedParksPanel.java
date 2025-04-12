@@ -2,6 +2,10 @@ package view;
 import javax.swing.*;
 import java.awt.*;
 import config.Settings;
+import model.DisplayParks;
+import model.Records.Park;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Panel for displaying and managing a list of saved parks.
@@ -15,6 +19,8 @@ public class SavedParksPanel extends JPanel {
     private JList<String> savedParksList;
     /** Model for the saved parks list */
     private DefaultListModel<String> parksListModel;
+    /** List of actual Park objects corresponding to the displayed strings */
+    private List<Park> parks;
     /** Scroll container for the list */
     private JScrollPane scrollPane;
     /** Header label showing "Saved Parks" */
@@ -27,6 +33,7 @@ public class SavedParksPanel extends JPanel {
         setLayout(new BorderLayout(0, 0));
         setBorder(BorderFactory.createEmptyBorder(0, 
             settings.SMALL_PADDING, settings.PADDING, settings.SMALL_PADDING));
+        parks = new ArrayList<>();
         initializeComponents();
     }
 
@@ -66,65 +73,69 @@ public class SavedParksPanel extends JPanel {
     }
 
     /**
-     * Updates the entire list of saved parks.
+     * Adds a park to the saved list.
      * 
-     * @param parksList String representation of parks, will be parsed into individual parks
+     * @param park The park to add
+     * @return true if the park was added, false if it was already in the list
      */
-    public void updateSavedParksList(String parksList) {
-        parksListModel.clear();
+    public boolean addPark(Park park) {
+        if (park == null) return false;
         
-        if (parksList != null && !parksList.trim().isEmpty()) {
-            String[] parks = parksList.split("\n");
-            for (String park : parks) {
-                // Remove any bullet points that might exist in the input
-                if (park.startsWith("• ")) {
-                    park = park.substring(2);
-                }
-                if (!park.trim().isEmpty()) {
-                    parksListModel.addElement(park.trim());
-                }
+        // Check if park is already in the list
+        for (Park p : parks) {
+            if (p.parkCode().equals(park.parkCode())) {
+                return false;
             }
         }
+        
+        // Add the park
+        parks.add(park);
+        parksListModel.addElement(DisplayParks.formatSavedParkListItem(park));
+        return true;
     }
 
     /**
-     * Adds a single park to the end of the list.
+     * Removes the currently selected park from the list.
      * 
-     * @param parkName Name of the park to add
+     * @return true if a park was removed, false if no park was selected
      */
-    public void addParkToList(String parkName) {
-        if (parkName != null && !parkName.trim().isEmpty()) {
-            parksListModel.addElement(parkName.trim());
+    public boolean removeSelectedPark() {
+        int selectedIndex = savedParksList.getSelectedIndex();
+        if (selectedIndex >= 0) {
+            parks.remove(selectedIndex);
+            parksListModel.remove(selectedIndex);
+            return true;
         }
+        return false;
+    }
+
+    /**
+     * Gets the currently selected park.
+     * 
+     * @return The selected Park object, or null if nothing is selected
+     */
+    public Park getSelectedPark() {
+        int selectedIndex = savedParksList.getSelectedIndex();
+        if (selectedIndex >= 0 && selectedIndex < parks.size()) {
+            return parks.get(selectedIndex);
+        }
+        return null;
+    }
+
+    /**
+     * Gets all saved parks.
+     * 
+     * @return List of saved Park objects
+     */
+    public List<Park> getSavedParks() {
+        return new ArrayList<>(parks);
     }
 
     /**
      * Clears all parks from the list.
      */
     public void clearList() {
+        parks.clear();
         parksListModel.clear();
-    }
-
-    /**
-     * Gets the current list of saved parks as a string.
-     * 
-     * @return String containing all saved parks
-     */
-    public String getSavedParksList() {
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < parksListModel.getSize(); i++) {
-            String park = parksListModel.getElementAt(i);
-            sb.append(park).append("\n");
-        }
-        return sb.toString();
-    }
-    
-    /**
-     * Gets the selected park from the list.
-     * 
-     * @return The selected park name, or null if nothing selected
-     */
-    public String getSelectedPark() {
-        return savedParksList.getSelectedValue();
     }
 }

@@ -68,6 +68,16 @@ public final class ParkController implements IController {
         view.getButtonPanel().addBackActionListener(backListener);
         listeners.add(backListener);
 
+        // Add park to list listener
+        ActionListener addListener = e -> handleAddPark();
+        view.getButtonPanel().addToListActionListener(addListener);
+        listeners.add(addListener);
+
+        // Remove park from list listener
+        ActionListener removeListener = e -> handleRemovePark();
+        view.getButtonPanel().addRemoveFromListActionListener(removeListener);
+        listeners.add(removeListener);
+
         return listeners;
     }
 
@@ -149,12 +159,20 @@ public final class ParkController implements IController {
      * Shows expanded information in the same list area.
      */
     private void handleViewDetails() {
-        if (view.getTextPanel().getSelectedPark() == null) {
+        // Try to get selected park from main search results first
+        Park mainPark = view.getTextPanel().getSelectedPark();
+        
+        // If no park selected in main results, try saved parks list
+        final Park selectedPark = (mainPark != null) ? mainPark : view.getSavedParksPanel().getSelectedPark();
+        
+        // If still no park selected, show warning
+        if (selectedPark == null) {
             JOptionPane.showMessageDialog(null, "Please select a park first.",
                     "No Park Selected", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        Park selectedPark = view.getTextPanel().getSelectedPark();
+
+        // Show the details and update images
         view.getTextPanel().showSelectedParkDetails();
         view.showLoadingWhileTask(new Runnable() {
             @Override
@@ -192,5 +210,32 @@ public final class ParkController implements IController {
     private void handleBack() {
         view.getTextPanel().showSummaryListView();
         view.getButtonPanel().enableBackButton(false);
+    }
+
+    /**
+     * Handles removing a park from the saved list.
+     */
+    private void handleRemovePark() {
+        if (!view.getSavedParksPanel().removeSelectedPark()) {
+            JOptionPane.showMessageDialog(null, "Please select a park to remove.",
+                    "No Park Selected", JOptionPane.WARNING_MESSAGE);
+        }
+    }
+
+    /**
+     * Handles adding the currently selected park to the saved list.
+     */
+    private void handleAddPark() {
+        Park selectedPark = view.getTextPanel().getSelectedPark();
+        if (selectedPark == null) {
+            JOptionPane.showMessageDialog(null, "Please select a park to add.",
+                    "No Park Selected", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        if (!view.getSavedParksPanel().addPark(selectedPark)) {
+            JOptionPane.showMessageDialog(null, "This park is already in your saved list.",
+                    "Park Already Saved", JOptionPane.INFORMATION_MESSAGE);
+        }
     }
 }
