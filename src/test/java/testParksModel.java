@@ -7,6 +7,7 @@ import model.NetUtils;
 import model.Records.*;
 import java.util.List;
 import model.ParksModel;
+import model.IModel;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class testParksModel {
@@ -71,7 +72,7 @@ public class testParksModel {
     public void updateDB() {
         String response = NetUtils.getParksByState("CA");
         try {
-            List<Park> parkList = ParksModel.deserializeResponse(response);
+            List<Park> parkList = IModel.deserializeResponse(response);
             assertTrue(model.updateDB("CA"));
             assertEquals(parkList, model.getParkList());
         } catch (Exception e) {
@@ -85,7 +86,7 @@ public class testParksModel {
         String json = NetUtils.getParksByState("CA");
 
         try {
-            List<Park> actual = ParksModel.deserializeResponse(json);
+            List<Park> actual = IModel.deserializeResponse(json);
             assertNotNull(actual);
         } catch (Exception e) {
             System.out.println(e);
@@ -257,7 +258,7 @@ public class testParksModel {
         """;
         List<Park> actual = null;
         try {
-            actual = ParksModel.deserializeResponse(json);
+            actual = IModel.deserializeResponse(json);
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -339,8 +340,8 @@ public class testParksModel {
     @Test
     public void testSerialize() {
         try {
-            String json = ParksModel.serializeList(original);
-            List<Park> actual = ParksModel.deserializeResponse(json);
+            String json = IModel.serializeList(original);
+            List<Park> actual = IModel.deserializeResponse(json);
             assertEquals(original, actual);
         } catch (Exception e) {}
     }
@@ -350,9 +351,9 @@ public class testParksModel {
         try {
             String response = NetUtils.getParksByState("ca");
 
-            List<Park> pl = ParksModel.deserializeResponse(response);
-            String json = ParksModel.serializeList(pl);
-            List<Park> actual = ParksModel.deserializeResponse(json);
+            List<Park> pl = IModel.deserializeResponse(response);
+            String json = IModel.serializeList(pl);
+            List<Park> actual = IModel.deserializeResponse(json);
 
             assertEquals(pl, actual);
         } catch (Exception e) {}

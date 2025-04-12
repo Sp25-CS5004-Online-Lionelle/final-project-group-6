@@ -2,7 +2,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import model.DisplayParks;
 import model.Records.*;
-import model.ParksModel;
+import model.IModel;
 import model.NetUtils;
 import java.util.List;
 
@@ -14,7 +14,7 @@ public class DisplayParksTest {
         String apiResponse = NetUtils.getParksByState("WA");
         List<Park> parks = null;
         try {
-            parks = ParksModel.deserializeResponse(apiResponse);
+            parks = IModel.deserializeResponse(apiResponse);
         } catch (Exception e) {
             System.out.println("There was an error trying to desesrialize api response");
         }
@@ -53,7 +53,7 @@ public class DisplayParksTest {
         String apiResponse = NetUtils.getParksByState("WA");
         List<Park> parks = null;
         try {
-            parks = ParksModel.deserializeResponse(apiResponse);
+            parks = IModel.deserializeResponse(apiResponse);
         } catch (Exception e) {
             System.out.println("There was an error trying to desesrialize api response");
         }
@@ -76,7 +76,7 @@ public class DisplayParksTest {
         String apiResponse = NetUtils.getParksByState("WA");
         List<Park> parks = null;
         try {
-            parks = ParksModel.deserializeResponse(apiResponse);
+            parks = IModel.deserializeResponse(apiResponse);
         } catch (Exception e) {
             System.out.println("There was an error trying to deserialize api response");
         }
@@ -136,7 +136,7 @@ public class DisplayParksTest {
         String apiResponse = NetUtils.getParksByState("WA");
         List<Park> parks = null;
         try {
-            parks = ParksModel.deserializeResponse(apiResponse);
+            parks = IModel.deserializeResponse(apiResponse);
         } catch (Exception e) {
             System.out.println("There was an error trying to deserialize api response");
         }

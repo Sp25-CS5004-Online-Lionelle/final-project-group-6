@@ -10,12 +10,18 @@ import model.Records.Park;
  */
 public class DisplayAreaPanel extends JPanel {
 
+    /** The card layout in the display area. */
     private CardLayout cardLayout;
-    private JScrollPane summaryScrollPane; // Scroll pane containing the JList
+
+    /**Scroll pane containing the JList. */
+    private JScrollPane summaryScrollPane;
+
+    /** The detail viewPanel. */
     private DetailViewPanel detailViewPanel;
 
-    // Define card names as constants
+    /** Define card names as constants. */
     private static final String SUMMARY_CARD = "SUMMARY";
+    /** Define card names as constants. */
     private static final String DETAIL_CARD = "DETAIL";
 
     /**

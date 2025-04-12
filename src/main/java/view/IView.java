@@ -13,35 +13,45 @@ public interface IView {
 
     /**
      * Gets the search panel component.
+     * @return the SearchPanel component
      */
     SearchPanel getSearchPanel();
 
     /**
      * Gets the button panel component.
+     * @return the ButtonPanel component
      */
     ButtonPanel getButtonPanel();
 
     /**
      * Gets the text panel component.
+     * @return the TextPanel component
      */
     TextPanel getTextPanel();
 
     /**
      * Gets the saved parks panel component.
+     * @return the SavedParksPanel component
      */
     SavedParksPanel getSavedParksPanel();
 
     /**
      * Gets the image panel component.
+     * @return the ImagePanel component
      */
     ImagePanel getImagePanel();
 
     /**
-     * Receives a JComponent to add to the frame.
+     * Receives a list of activities to prompt for.
      * JChooser or JComboBox for example.
-     * @param comp
+     * @param activityList
+     * @return the selected activities
      */
-    public List<String> promptActivities(List<String> activityList);
+    List<String> promptActivities(List<String> activityList);
 
-    public void showLoadingWhileTask(Runnable task);
+    /**
+     * Shows a loading indicator while a task is running.
+     * @param task
+     */
+    void showLoadingWhileTask(Runnable task);
 }

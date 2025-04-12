@@ -5,19 +5,25 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 public final class Records {
     /**
-     * The fields of a Park object, an immutable record
+     * The fields of a Park object, an immutable record.
      * 
      * @param name        the name of the park
      * @param states      the state code of the park
      * @param description a brief description of the park
      * @param activities  a list of activities available at the park (activity id, name)
      * @param images      a list of imageInfo objects (title, url, credit)
-     * @param address     a list of the addresses of the park (postalCode, city, stateCode, line1)
+     * @param addresses     a list of the addresses of the park (postalCode, city, stateCode, line1)
      * @param parkCode    the park code of the park
      */
     @JsonIgnoreProperties(ignoreUnknown = true)
-    public record Park(String name, String states, String description, List<Activity> activities, List<Address> addresses, List<ParkImage> images, String parkCode) {
-    };
+    public record Park(
+        String name, 
+        String states, 
+        String description, 
+        List<Activity> activities, 
+        List<Address> addresses, 
+        List<ParkImage> images, String parkCode) {
+        };
     /**
      * Record representing an activity available.
      * Activity id is available if needed.
@@ -44,15 +50,21 @@ public final class Records {
                 sb.append(line1);
             }
             if (city != null && !city.isEmpty()) {
-                if (sb.length() > 0) sb.append(" ");
+                if (sb.length() > 0) {
+                    sb.append(" ");
+                }
                 sb.append(city);
             }
             if (stateCode != null && !stateCode.isEmpty()) {
-                if (sb.length() > 0) sb.append(" ");
+                if (sb.length() > 0) {
+                    sb.append(" ");
+                }
                 sb.append(stateCode);
             }
             if (postalCode != null && !postalCode.isEmpty()) {
-                if (sb.length() > 0) sb.append(", ");
+                if (sb.length() > 0) {
+                    sb.append(", ");
+                }
                 sb.append(postalCode);
             }
             return sb.toString();
@@ -69,20 +81,16 @@ public final class Records {
     };
     /**
      * Wrapper class for the list of activities returned by the NPS API.
-     * Used for deserialization of the parks endpoint from the NPS API.
-     * @param data the list of parks returned by the NPS API
+     * @param data the list of parks from API
      */
     @JsonIgnoreProperties(ignoreUnknown = true)
     public record ParkWrapper(List<Park> data) {
     };
     /**
-     * Wrapper class for the list of activities returned by the NPS API
-     * Used for deserialization of the activities endpoint from the NPS API.
+     * Wrapper class for the list of activities returned by the NPS API.
      * @param data the list of activities returned by the NPS API
      */
     @JsonIgnoreProperties(ignoreUnknown = true)
     public record ActivityWrapper(List<Activity> data) {
     };
-
-
 }

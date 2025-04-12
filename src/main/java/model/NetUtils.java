@@ -2,31 +2,29 @@ package model;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.io.File;
 import java.io.IOException;
-import java.io.FileWriter;
 import java.util.List;
 import java.nio.charset.StandardCharsets;
 import io.github.cdimascio.dotenv.Dotenv;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import model.Records.ActivityWrapper;
-import model.Records.Activity;
 
-public class NetUtils {
+public final class NetUtils {
 
     /**
      * Base URL for the NPS API parks endpoint with placeholders for state code and API key.
      * Format: https://developer.nps.gov/api/v1/parks?stateCode={state}&limit=20&api_key={key}
      */
-    private static final String NPS_API_BASE_URL = "https://developer.nps.gov/api/v1/parks?stateCode=%s&limit=20&api_key=%s";
+    private static final String NPS_API_BASE_URL = 
+        "https://developer.nps.gov/api/v1/parks?stateCode=%s&limit=20&api_key=%s";
 
     /**
-     * Dotenv instance to load environment variables from .env file
+     * Dotenv instance to load environment variables from .env file.
      */
     private static final Dotenv dotenv = Dotenv.load();
 
     /**
-     * NPS API key loaded from .env file using the NPS_API_KEY environment variable
+     * NPS API key loaded from .env file using the NPS_API_KEY environment variable.
      */
     private static final String API_KEY = dotenv.get("NPS_API_KEY");
 
@@ -34,11 +32,10 @@ public class NetUtils {
      * Prevent instantiation.
      */
     private NetUtils() {
-        // Prevent instantiation
     }
 
     /**
-     * Gets parks for a specific state code
+     * Gets parks for a specific state code.
      * @param stateCode two-letter state code (e.g., "WA", "CA")
      * @return JSON response as string
      */
@@ -59,7 +56,6 @@ public class NetUtils {
      * @param urlStr the URL to get the contents of
      * @return the contents of the URL as an InputStream, or the null InputStream if the connection
      *         fails
-     *
      */
     private static InputStream getUrlContents(String urlStr) {
         try {
@@ -91,9 +87,9 @@ public class NetUtils {
         String activitiesBaseUrl = "https://developer.nps.gov/api/v1/activities?limit=50&api_key=%s";
         InputStream response = getUrlContents(String.format(activitiesBaseUrl, API_KEY));
         try {
-            String JSON = new String(response.readAllBytes(), StandardCharsets.UTF_8);
+            String json = new String(response.readAllBytes(), StandardCharsets.UTF_8);
             ObjectMapper objectMapper = new ObjectMapper();
-            ActivityWrapper wrapper = objectMapper.readValue(JSON, ActivityWrapper.class);
+            ActivityWrapper wrapper = objectMapper.readValue(json, ActivityWrapper.class);
             return wrapper
                 .data()
                 .stream()
@@ -117,21 +113,5 @@ public class NetUtils {
             return null;
         }
         return getParksByState(stateCode);
-    }
-
-    // public static void main(String[] args) {
-    //     int count = 1;
-    //     List<String> response = getListOfActivities();
-    //     for (String activity : response) {
-    //         System.out.println(count + ": " + activity);
-    //         count++;
-    //     }
-    // }
-
-    public static void main(String[] args) {
-        String response = getParksByState("WA");
-        String responseZip = getParksByZip("98034");
-        System.out.println("Zip code search: " + responseZip);
-        System.out.println("Response: " + response);
     }
 }

@@ -10,11 +10,11 @@ import config.Settings;
  * Allows users to input search queries for parks.
  */
 public class SearchPanel extends JPanel {
-    /** Application settings */
+    /** Application settings. */
     private final Settings settings = Settings.getInstance();
-    /** Text field for search input */
+    /** Text field for search input. */
     private JTextField searchField;
-    /** Button to trigger search */
+    /** Button to trigger search. */
     private JButton searchButton;
 
     /**

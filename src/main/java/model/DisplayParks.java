@@ -7,10 +7,14 @@ import java.util.List;
  * Utility class for formatting park information for display.
  * This class serves as the single source of truth for all text formatting in the application.
  */
-public class DisplayParks {
-    /** Consistent separator to use between parks */
+public final class DisplayParks {
+    /** Consistent separator to use between parks. */
     private static final String PARK_SEPARATOR = "\n\n\n\n\n"; // Five line breaks for more visual separation
     
+    /** Private constructor to prevent instantiation. */
+    private DisplayParks() {
+    }
+
     /**
      * Formats a list of parks for display with separators between each park.
      * 

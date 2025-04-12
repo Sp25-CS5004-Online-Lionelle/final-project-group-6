@@ -12,11 +12,19 @@ import java.awt.*;
  */
 public class DetailViewPanel extends JPanel {
 
+    /** The settings from Settings.java. */
     private final Settings settings = Settings.getInstance();
+
+    /** The detail text area. */
     private JTextArea detailTextArea;
+
+    /** The outer scrollPane container. */
     private JScrollPane scrollPane;
+
+    /** The content panel. */
     private JPanel contentPanel;
 
+    /** Initializes a DetailViewPanel object. */
     public DetailViewPanel() {
         setLayout(new BorderLayout());
         
