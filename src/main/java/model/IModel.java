@@ -7,6 +7,7 @@ import javax.swing.ImageIcon;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 
 /**
  * Interface representing the model to be used
@@ -74,6 +75,7 @@ public interface IModel {
         public static String serializeList(List<Park> parks) throws JsonProcessingException {
                 ObjectMapper om = new ObjectMapper();
                 ParkWrapper wrapper = new ParkWrapper(parks);
+                om.enable(SerializationFeature.INDENT_OUTPUT);
                 return om.writeValueAsString(wrapper);
         }
 
@@ -82,7 +84,14 @@ public interface IModel {
          * 
          * @return a list of parks saved by the user
          */
-        public List<Park> loadUserSavedParksFromFile();
+        public List<Park> loadSavedParks();
+
+        /**
+         * Loads the user saved search results from a file.
+         * 
+         * @return a list of parks saved by the user
+         */
+        public List<Park> loadSavedSearch();
 
         /**
          * Download images from the url field of a park object.
@@ -105,5 +114,16 @@ public interface IModel {
                 return wrapper.data();
         }
 
+        /**
+         * Syncs the saved list in the model with the saved list displayed in the UI.
+         * @param parks
+         */
+        public void updateSavedList(List<Park> parks);
+
+        /**
+         * Saves the user saved parks to a file.
+         * @return true if parks were saved successfully, false otherwise 
+         */
+        public boolean saveSearchToFile();
 
 }

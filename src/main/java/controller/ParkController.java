@@ -4,8 +4,6 @@ import model.Records.Park;
 import view.IView;
 import model.IModel;
 import java.awt.event.ActionListener;
-import java.io.FileWriter;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import javax.swing.JOptionPane;
@@ -31,6 +29,13 @@ public final class ParkController implements IController {
         this.model = model;
         this.view = view;
         this.random = new Random();
+
+        //load preexisting data
+        List<Park> savedParks = model.loadSavedParks();
+        if (savedParks != null) {
+            view.getSavedParksPanel().updateSavedList(savedParks);
+        }
+        model.updateSavedList(view.getSavedParksPanel().getSavedParks());
     }
 
     /**
@@ -64,14 +69,9 @@ public final class ParkController implements IController {
         view.getButtonPanel().addViewDetailActionListener(viewDetailsListener);
 
         // Save results listener
-        ActionListener saveListener = e -> saveParksToFile("src/main/resources/userSavedParks.json");
-        //{
-            //try {
-            //    saveParksToFile("file path");
-            //} catch (UnsupportedOperationException ex) {
-            //    view.getTextPanel().updateResults(List.of());
-            //}
-        //};
+        ActionListener saveListener = e ->
+            handleSaveResults();
+
         view.getButtonPanel().addSaveActionListener(saveListener);
 
         // Load saved list listener
@@ -187,69 +187,31 @@ public final class ParkController implements IController {
         view.getButtonPanel().enableBackButton(true);
     }
 
-    /**
-     * Saves the current list of parks to a file.
-     * 
-     * @param filePath Path to save the file
-     * @throws UnsupportedOperationException if the method is not yet implemented
-     */
-    private void saveParksToFile(String filePath) {
-        // Get the current search results from the model.
-        try {
-            // If the list is empty/null, show message and stop.
-            List<Park> currentResults = model.getParkList();
-            if (currentResults == null || currentResults.isEmpty()) {
-                JOptionPane.showMessageDialog(null, "No search results to save.", "Info", JOptionPane.INFORMATION_MESSAGE );
-                return;
-            }
-            // Load parks that are already saved in the file.
-            List<Park> existingParks = model.loadUserSavedParksFromFile();
-            // If there is nothing loaded/file is empty, starts a new list.
-            if (existingParks == null) {
-                existingParks = new ArrayList<>();
-            }
-            // Checks if the parks already saved in the saved list (based on park code).
-            for (Park park : currentResults) {
-                boolean alreadyExists = false;
-                for (Park existing : existingParks) {
-                    if (existing.parkCode().equalsIgnoreCase(park.parkCode())) {
-                        // If match found it won't add it again to the list.
-                        alreadyExists = true;
-                        break;
-                    }
-                }
-                // If the park wasn't in the list, it will add it to the saved parks.
-                if (!alreadyExists) {
-                    existingParks.add(park);
-                }
-            }
-
-            // Convert the final list to a JSON string.
-            String updatedJson = IModel.serializeList(existingParks);
-            // Write that json string to the file at the given path. 
-            try (FileWriter writer = new FileWriter(filePath)) {
-                // Writes content into file.
-                writer.write(updatedJson);
-            }
-            // Lets user know that the save was successful.
-            JOptionPane.showMessageDialog(null, "Search Results added to userSavedParka.json", "Sucess", JOptionPane.INFORMATION_MESSAGE);
-            
-        } catch (Exception e) {
-            // If something went wrong, error message will appear.
-            JOptionPane.showMessageDialog(null, "Failed to save results:" + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-            // Print full error message for debugging.
-            e.printStackTrace();
-        }
-    }
 
     /**
      * Loads a list of parks from the local file.
      */
     private void handleOpenExistingList() {
-        // Load the user saved park list from database
-        List<Park> userSavedParks = this.model.loadUserSavedParksFromFile();
-        // Display the user saved park list in the text panel
-        view.getTextPanel().updateResults(userSavedParks);
+
+        List<String> selection = view.promptSaveAction("Which list do you want to open?");
+        if (selection == null || selection.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Nothing Saved.",
+                    "No List Selected", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        if (selection.size() > 1) {
+            JOptionPane.showMessageDialog(null, "Please select only one list to open.",
+                    "No List Selected", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        if (selection.contains("Search Results")) { // display saved search results
+            List<Park> savedSearch = model.loadSavedSearch();
+            view.getTextPanel().updateResults(savedSearch);
+        } else { // display saved park list
+            List<Park> savedList = model.loadSavedParks();
+            view.getTextPanel().updateResults(savedList);
+        }
         view.getButtonPanel().enableBackButton(false);
     }
 
@@ -268,6 +230,17 @@ public final class ParkController implements IController {
         if (!view.getSavedParksPanel().removeSelectedPark()) {
             JOptionPane.showMessageDialog(null, "Please select a park to remove.",
                     "No Park Selected", JOptionPane.WARNING_MESSAGE);
+        } else {
+            // sync the model's saved list with the view's saved parks
+            model.updateSavedList(view.getSavedParksPanel().getSavedParks());
+        }
+    }
+
+    private void handleSaveResults() {
+        if (model.saveSearchToFile()) {
+            JOptionPane.showMessageDialog(null, "Search Results added to userSavedParks.json", "Success", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "Failed to save results:", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -285,6 +258,9 @@ public final class ParkController implements IController {
         if (!view.getSavedParksPanel().addPark(selectedPark)) {
             JOptionPane.showMessageDialog(null, "This park is already in your saved list.",
                     "Park Already Saved", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            // sync the model's saved list with the view's saved parks
+            model.updateSavedList(view.getSavedParksPanel().getSavedParks());
         }
     }
 }

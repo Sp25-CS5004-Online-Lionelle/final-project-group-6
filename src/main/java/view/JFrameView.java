@@ -234,7 +234,17 @@ public class JFrameView extends JFrame implements IView {
      */
     @Override
     public List<String> promptActivities(List<String> activityList) {
-        return ActivitySelector.showSelector(this, "Select Activities", activityList);
+        return Selector.showSelector(this, "Select Activities", activityList);
+    }
+
+    /**
+     * Prompts user to choose which save action(s) to take.
+     * 
+     * @return List of selected actions
+     */
+    @Override
+    public List<String> promptSaveAction(String message) {
+        return Selector.showSelector(this, message, List.of("Search Results", "Saved List"));
     }
 
     @Override

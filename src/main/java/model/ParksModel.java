@@ -6,20 +6,23 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import model.Records.ParkWrapper;
 import javax.swing.ImageIcon;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ParksModel implements IModel{
-    /** Path to the file where user saved parks are stored */
-    private static final String FILE_PATH = "src/main/resources/userSavedParks.json";
+    /** Path to the file where user search results are stored */
+    private static final String USER_SEARCH_RESULTS = "src/main/resources/userSearchResults.json";
+
+    /** Path to file where user saved parks are stored*/
+    private static final String USER_SAVED_LIST = "src/main/resources/userSavedParks.json";
 
     /** List of parks retrieved from the API */
     private List<Park> parkList;
+
     /** List of activities in String form */
     private List<String> activityList;
-    /** List of parks saved by the user */
-    private List<Park> userSavedParks;
 
     /**
      * Public constructor for Parks model.
@@ -27,7 +30,6 @@ public class ParksModel implements IModel{
      */
     public ParksModel() {
         this.parkList = new ArrayList<>();
-        this.userSavedParks = new ArrayList<>();
         try {
             this.activityList = NetUtils.getListOfActivities();
         } catch (Exception e) {
@@ -194,8 +196,80 @@ public class ParksModel implements IModel{
                 System.err.println("Failed to load image: " + e.getMessage());
             }
         }
-
         return icons;
+    }
+
+    /**
+     * Saves the current list of parks to a file.
+     *
+     * @return true if the pars were saved, else false 
+     * @param filePath Path to save the file
+     */
+    @Override
+    public boolean saveSearchToFile() {
+
+        List<Park> currentResults = this.getParkList();
+        if (currentResults == null || currentResults.isEmpty()) {
+            return false;
+        }
+
+        List<Park> existingParks = this.loadSavedParks();
+        if (existingParks == null) {
+            existingParks = new ArrayList<>();
+        }
+
+        // Add new parks to the existing list if they are not already present
+        for (Park park : currentResults) {
+            if (!existingParks.contains(park)) {
+                existingParks.add(park);
+            }
+        }
+
+        try { // serialize and write to file
+            FileWriter writer = new FileWriter(USER_SEARCH_RESULTS);
+            String updatedJson = IModel.serializeList(existingParks);
+            writer.write(updatedJson);
+            writer.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Loads the user saved park list from a file.
+     * @return a list of parks saved by the user
+     */
+    @Override
+    public List<Park> loadSavedParks() {
+        return loadFile(USER_SAVED_LIST);
+    }
+
+    /**
+     * Loads the user saved search results from a file.
+     * @return a list of parks (search) saved by the user
+     */
+    @Override
+    public List<Park> loadSavedSearch() {
+        return loadFile(USER_SEARCH_RESULTS);
+    }
+
+    /**
+     * Syncs the saved list stored as json with the saved list displayed in the UI.
+     * @param parks
+     */
+    @Override
+    public void updateSavedList(List<Park> parks) {
+        try {
+            String JSON = IModel.serializeList(parks);
+            FileWriter writer = new FileWriter(USER_SAVED_LIST); // will overwrite here intentionally
+            writer.write(JSON);
+            writer.close();
+        } catch (Exception e) {
+            System.err.println("Failed to update saved list: " + e.getMessage());
+        }
     }
 
     /**
@@ -203,11 +277,11 @@ public class ParksModel implements IModel{
      * 
      * @return a list of parks saved by the user
      */
-    public List<Park> loadUserSavedParksFromFile() {
+    private List<Park> loadFile(String file) {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             // Read the JSON file and deserialize it into a list of Park objects
-            ParkWrapper wrapper = objectMapper.readValue(new File(FILE_PATH), ParkWrapper.class);
+            ParkWrapper wrapper = objectMapper.readValue(new File(file), ParkWrapper.class);
             return wrapper.data();
         } catch (IOException e) {
             System.err.println("Failed to load user saved park list from file: " + e.getMessage());

@@ -50,6 +50,13 @@ public interface IView {
     List<String> promptActivities(List<String> activityList);
 
     /**
+     * Prompts user to choose which save action(s) to take.
+     * 
+     * @return List of selected actions
+     */
+    List<String> promptSaveAction(String message);
+
+    /**
      * Shows a loading indicator while a task is running.
      * @param task
      */

@@ -18,10 +18,10 @@ import javax.swing.JScrollPane;
 /**
  * Custom activity selector, used to set up a dialog with checkboxes for selecting activities to filter by.
  */
-public final class ActivitySelector {
+public final class Selector {
 
     /** Private constructor to prevent instantiation. */
-    private ActivitySelector() {
+    private Selector() {
     }
     /**
      * Display a dialog with checkboxes holding the activities passed in as an argument.
