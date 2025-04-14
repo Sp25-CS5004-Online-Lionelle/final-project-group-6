@@ -23,7 +23,7 @@ public class ParkExplorer {
                 controller.initActionListeners();
                 
                 // Start the application
-                controller.runApp();
+                view.initializeFrame();
                 
             } catch (Exception e) {
                 System.err.println("Error starting application: " + e.getMessage());

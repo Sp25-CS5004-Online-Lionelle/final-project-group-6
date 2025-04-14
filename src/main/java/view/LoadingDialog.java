@@ -2,16 +2,27 @@ package view;
 import javax.swing.*;
 import java.awt.*;
 
-public class LoadingDialog {
+/**
+ * Utility class for displaying a loading dialog.
+ */
+public final class LoadingDialog {
 
+    /** The loading dialog. */
     private static JDialog dialog;
 
+    /** Prevents instantiation. */
+    private LoadingDialog() {
+    }
     /**
      * Displays the loading popup centered over the given parent component.
      * If already visible, does nothing.
+     * @param parent the parent component to center the dialog over
+     * @param message the loading message to display
      */
     public static void show(Component parent, String message) {
-        if (dialog != null && dialog.isShowing()) return;
+        if (dialog != null && dialog.isShowing()) {
+            return;
+        }
 
         Frame owner = JOptionPane.getFrameForComponent(parent);
         dialog = new JDialog(owner, "Loading", true); // modal

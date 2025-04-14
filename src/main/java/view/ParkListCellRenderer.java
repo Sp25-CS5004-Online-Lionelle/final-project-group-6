@@ -14,10 +14,18 @@ import java.awt.*;
  */
 public class ParkListCellRenderer extends JPanel implements ListCellRenderer<Park> {
 
+    /** The settings instance. */
     private final Settings settings = Settings.getInstance();
+
+    /** The text area. */
     private final JTextArea textArea;
+
+    /** The JSeparator to separate by. */
     private final JSeparator separator;
 
+    /** 
+     * Initializes a new ParkListCellRenderer object.
+     */
     public ParkListCellRenderer() {
         setLayout(new BorderLayout(0, 15)); // Add gap between components
         

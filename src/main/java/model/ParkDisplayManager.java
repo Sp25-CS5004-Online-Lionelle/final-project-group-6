@@ -2,7 +2,6 @@ package model;
 
 import java.util.List;
 import model.Records.Park;
-import view.DetailViewPanel;
 import view.DisplayAreaPanel;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
@@ -15,8 +14,11 @@ import javax.swing.JScrollPane;
  * This class is part of the model layer that supports the view,
  * extracting display logic from the view classes to better follow MVC principles.
  */
-public class ParkDisplayManager {
+public final class ParkDisplayManager {
     
+    /**  Private constructor to prevent instantiation. */
+    private ParkDisplayManager() {
+    }
     /**
      * Updates the display when a new list of parks is available.
      * 

@@ -10,26 +10,26 @@ import config.Settings;
  * Provides a clean interface for attaching action listeners.
  */
 public class ButtonPanel extends JPanel {
-    /** Application settings */
+    /** Application settings. */
     private final Settings settings = Settings.getInstance();
 
-    /** Button for viewing all parks */
+    /** Button for viewing all parks. */
     private JButton viewAllButton;
-    /** Button for showing a random park */
+    /** Button for showing a random park. */
     private JButton randomButton;
-    /** Button for saving results */
+    /** Button for saving results. */
     private JButton saveButton;
-    /** Button for loading saved lists */
+    /** Button for loading saved lists. */
     private JButton loadButton;
-    /** Button for viewing park details */
+    /** Button for viewing park details. */
     private JButton viewDetailButton;
-    /** Button for adding a park to saved list */
+    /** Button for adding a park to saved list. */
     private JButton addParktoListButton;
-    /** Button for removing a park from saved list */
+    /** Button for removing a park from saved list. */
     private JButton removeParkFromListButton;
-    /** Button for filtering */
+    /** Button for filtering. */
     private JButton filterButton;
-    /** Button to go back from detail view */
+    /** Button to go back from detail view. */
     private JButton backButton;
 
     /**

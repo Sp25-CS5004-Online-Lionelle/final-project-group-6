@@ -230,7 +230,7 @@ public class JFrameView extends JFrame implements IView {
     /**
      * Receives a JComponent to add to the frame.
      * JChooser or JComboBox for example.
-     * @param comp
+     * @param activityList
      */
     @Override
     public List<String> promptActivities(List<String> activityList) {

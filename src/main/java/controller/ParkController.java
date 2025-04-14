@@ -1,8 +1,8 @@
 package controller;
 
-import model.ParksModel;
 import model.Records.Park;
 import view.IView;
+import model.IModel;
 import java.awt.event.ActionListener;
 import java.io.FileWriter;
 import java.util.ArrayList;
@@ -11,42 +11,57 @@ import java.util.Random;
 import javax.swing.JOptionPane;
 
 public final class ParkController implements IController {
-    private final ParksModel model;
+
+    /** Instance of the parks model used for handling data. */
+    private final IModel model;
+
+    /** Instance of the parks view. */
     private final IView view;
+
+    /** Current random park.  */
     private final Random random;
 
-    public ParkController(ParksModel model, IView view) {
+    /**
+     * Constructor for Park controller.
+     * 
+     * @param model
+     * @param view
+     */
+    public ParkController(IModel model, IView view) {
         this.model = model;
         this.view = view;
         this.random = new Random();
     }
 
+    /**
+     * Initializes action listeners, passes them to the view.
+     */
     @Override
-    public List<ActionListener> initActionListeners() {
-        List<ActionListener> listeners = new ArrayList<>();
+    public void initActionListeners() {
 
         // Search button listener
         ActionListener searchListener = e -> {
             String query = view.getSearchPanel().getSearchQuery();
-            handleSearch(query);
+            view.showLoadingWhileTask(new Runnable() {
+                @Override
+                public void run() {
+                    handleSearch(query);
+                }
+            });
         };
         view.getSearchPanel().addSearchListener(searchListener);
-        listeners.add(searchListener);
 
         // Random park listener
         ActionListener randomListener = e -> handleRandomPark();
         view.getButtonPanel().addRandomActionListener(randomListener);
-        listeners.add(randomListener);
 
         // Filter listener
         ActionListener filterListener = e -> handleFilter();
         view.getButtonPanel().addFilterActionListener(filterListener);
-        listeners.add(filterListener);
 
         // View details listener
         ActionListener viewDetailsListener = e -> handleViewDetails();
         view.getButtonPanel().addViewDetailActionListener(viewDetailsListener);
-        listeners.add(viewDetailsListener);
 
         // Save results listener
         ActionListener saveListener = e -> saveParksToFile("src/main/resources/userSavedParks.json");
@@ -58,37 +73,28 @@ public final class ParkController implements IController {
             //}
         //};
         view.getButtonPanel().addSaveActionListener(saveListener);
-        listeners.add(saveListener);
 
         // Load saved list listener
         ActionListener loadListener = e -> handleOpenExistingList();
         view.getButtonPanel().addLoadActionListener(loadListener);
-        listeners.add(loadListener);
 
         // Back button listener
         ActionListener backListener = e -> handleBack();
         view.getButtonPanel().addBackActionListener(backListener);
-        listeners.add(backListener);
 
         // Add park to list listener
         ActionListener addListener = e -> handleAddPark();
         view.getButtonPanel().addToListActionListener(addListener);
-        listeners.add(addListener);
 
         // Remove park from list listener
         ActionListener removeListener = e -> handleRemovePark();
         view.getButtonPanel().addRemoveFromListActionListener(removeListener);
-        listeners.add(removeListener);
-
-        return listeners;
     }
 
-    @Override
-    public void runApp() {
-        // Initialize the view
-        view.initializeFrame();
-    }
-
+    /**
+     * Handles the event of searching for parks based on the query, user clicked search button.
+     * @param query
+     */
     private void handleSearch(String query) {
         if (query == null || query.trim().isEmpty()) {
             view.getTextPanel().updateResults(List.of());
@@ -108,17 +114,10 @@ public final class ParkController implements IController {
         view.getButtonPanel().enableBackButton(false);
     }
 
-    private void handleViewAll() {
-        boolean success = model.updateDB("ALL");
-        if (!success) {
-            view.getTextPanel().updateResults(List.of());
-            view.getButtonPanel().enableBackButton(false);
-            return;
-        }
-        view.getTextPanel().updateResults(model.getParkList());
-        view.getButtonPanel().enableBackButton(false);
-    }
-
+    /**
+     * Randomly selects a park from the loaded list and displays it.
+     * If no parks are loaded, it fetches all parks and chooses randomly from the results.
+     */
     private void handleRandomPark() {
         if (model.getParkList().isEmpty()) {
             boolean success = model.updateDB("ALL");
@@ -139,9 +138,12 @@ public final class ParkController implements IController {
         }
     }
 
+    /**
+     * Handles filtering parks based on selected activities, user selected filter button.
+     */
     private void handleFilter() {
         if (model.getParkList().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Please perform a search first to load parks.",
+            JOptionPane.showMessageDialog(null, "Please perform a search first to filter parks.",
                     "No Parks Loaded", JOptionPane.INFORMATION_MESSAGE);
             view.getTextPanel().updateResults(List.of());
             view.getButtonPanel().enableBackButton(false);
@@ -285,5 +287,4 @@ public final class ParkController implements IController {
                     "Park Already Saved", JOptionPane.INFORMATION_MESSAGE);
         }
     }
-
 }

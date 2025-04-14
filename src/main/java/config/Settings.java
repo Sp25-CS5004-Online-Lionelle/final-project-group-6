@@ -13,8 +13,11 @@ import java.io.InputStream;
  * Parses the XML configuration file to provide easy access to various settings
  * like frame dimensions, fonts, layout parameters, and component properties.
  */
-public class Settings {
+public final class Settings {
+
+    /** The settings instance. */
     private static Settings instance;
+    /** The configuration document. */
     private Document config;
 
     // --- Fields for Settings ---

@@ -2,19 +2,15 @@ package model;
 
 import model.Records.Activity;
 import model.Records.Park;
-import model.Records.ParkImage;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import model.Records.ParkWrapper;
 import javax.swing.ImageIcon;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ParksModel {
+public class ParksModel implements IModel{
     /** Path to the file where user saved parks are stored */
     private static final String FILE_PATH = "src/main/resources/userSavedParks.json";
 
@@ -58,7 +54,7 @@ public class ParksModel {
 
         // Parse JSON response into Park records
         try {
-            this.parkList = ParksModel.deserializeResponse(response);
+            this.parkList = IModel.deserializeResponse(response);
         } catch (Exception e) {
             System.err.println("error parsing JSON: " + e.getMessage());
             return false;
@@ -166,6 +162,13 @@ public class ParksModel {
         }
     }
 
+    /**
+     * Download images from the url field of a park object.
+     * Uses URL object to download the images.
+     * @param park
+     * @param numImages
+     * @return
+     */
     public List<ImageIcon> downloadImages(Park park, int numImages) {
 
         if (park.images() == null || park.images().isEmpty()) {
@@ -212,28 +215,4 @@ public class ParksModel {
         }
     }
 
-    /**
-     * Deserialize the response from the API into a Park object
-     * 
-     * @param Json the JSON received from the API
-     * @return a park object
-     */
-    public static List<Park> deserializeResponse(String json) throws JsonProcessingException, JsonMappingException {
-        ObjectMapper om = new ObjectMapper();
-        ParkWrapper wrapper = om.readValue(json, ParkWrapper.class);
-        return wrapper.data();
-    }
-
-    /**
-     * Takes list of parks and converts it into a json string with all the data
-     * NOTE: I chose to write the value as a string for testing purposes, we could
-     * alternatively changes this to 'writeValueAsBytes()'
-     * We also could refactor to have this method write directly to the file
-     * {@link https://github.com/FasterXML/jackson-databind}
-     */
-    public static String serializeList(List<Park> parks) throws JsonProcessingException {
-        ObjectMapper om = new ObjectMapper();
-        ParkWrapper wrapper = new ParkWrapper(parks);
-        return om.writeValueAsString(wrapper);
-    }
 }

@@ -1,7 +1,7 @@
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import model.Records.*;
-import model.ParksModel;
+import model.IModel;
 import model.NetUtils;
 import java.util.List;
 
@@ -15,7 +15,7 @@ class ParksControllerTest {
         // Parse JSON into Park records
         List<Park> parks = null;
         try {
-                parks = ParksModel.deserializeResponse(apiResponse);
+                parks = IModel.deserializeResponse(apiResponse);
         } catch (Exception e) {
                 // TODO: handle exception
         }

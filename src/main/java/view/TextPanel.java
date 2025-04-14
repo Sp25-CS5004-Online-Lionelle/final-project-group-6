@@ -11,30 +11,30 @@ import model.ParkDisplayManager;
  * Contains a title header and scrollable list of parks.
  */
 public class TextPanel extends JPanel {
-    /** Settings for fonts, screen sizes, etc */
+    /** Settings for fonts, screen sizes, etc. */
     private final Settings settings = Settings.getInstance();
     
-    /** List for displaying park results */
+    /** List for displaying park results. */
     private JList<Park> resultsList;
     
-    /** Custom cell renderer for park items */
+    /** Custom cell renderer for park items. */
     private ParkListCellRenderer cellRenderer;
     
-    /** Scroll container for the list */
+    /** Scroll container for the list. */
     private JScrollPane scrollPane;
-    /** Panel for displaying single park details */
+    /** Panel for displaying single park details. */
     private DetailViewPanel detailViewPanel;
-    /** Panel using CardLayout to switch between list and detail views */
+    /** Panel using CardLayout to switch between list and detail views. */
     private DisplayAreaPanel displayAreaPanel;
     
-    /** Header label showing "Search Results" */
+    /** Header label showing "Search Results". */
     private JLabel titleLabel;
 
-    /** List of parks from the last successful update */
+    /** List of parks from the last successful update. */
     private List<Park> currentParks;
-    /** Currently selected park (from the summary list) */
+    /** Currently selected park (from the summary list). */
     private Park selectedPark;
-    /** Model containing the list of park summaries */
+    /** Model containing the list of park summaries. */
     private DefaultListModel<Park> summaryListModel;
 
     /**

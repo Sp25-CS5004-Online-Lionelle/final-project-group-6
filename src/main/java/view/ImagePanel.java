@@ -1,9 +1,8 @@
 package view;
+
 import javax.swing.*;
 import java.awt.*;
 import config.Settings;
-import model.Records.Park;
-import model.Records.ParkImage;
 import java.util.List;
 
 /**
@@ -11,9 +10,9 @@ import java.util.List;
  * Shows three images side by side with placeholder support.
  */
 public class ImagePanel extends JPanel {
-    /** Application settings */
+    /** Application settings. */
     private final Settings settings = Settings.getInstance();
-    /** Array of image display labels */
+    /** Array of image display labels. */
     private JLabel[] galleryImages;
 
     /**
@@ -56,7 +55,7 @@ public class ImagePanel extends JPanel {
      * Updates the gallery with images from a park.
      * Falls back to placeholder if no images are available.
      * 
-     * @param park The park whose images to display
+     * @param images The park whose images to display
      */
     public void updateImages(List<ImageIcon> images) {
 

@@ -12,18 +12,18 @@ import java.util.List;
  * Provides a scrollable list with add/remove functionality.
  */
 public class SavedParksPanel extends JPanel {
-    /** Application settings */
+    /** Application settings. */
     private final Settings settings = Settings.getInstance();
     
-    /** List for displaying saved parks */
+    /** List for displaying saved parks. */
     private JList<String> savedParksList;
-    /** Model for the saved parks list */
+    /** Model for the saved parks list. */
     private DefaultListModel<String> parksListModel;
-    /** List of actual Park objects corresponding to the displayed strings */
+    /** List of actual Park objects corresponding to the displayed strings. */
     private List<Park> parks;
-    /** Scroll container for the list */
+    /** Scroll container for the list. */
     private JScrollPane scrollPane;
-    /** Header label showing "Saved Parks" */
+    /** Header label showing "Saved Parks". */
     private JLabel titleLabel;
 
     /**
@@ -79,7 +79,9 @@ public class SavedParksPanel extends JPanel {
      * @return true if the park was added, false if it was already in the list
      */
     public boolean addPark(Park park) {
-        if (park == null) return false;
+        if (park == null) {
+            return false;
+        }
         
         // Check if park is already in the list
         for (Park p : parks) {
