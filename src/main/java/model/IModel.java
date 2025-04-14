@@ -126,4 +126,9 @@ public interface IModel {
          */
         public boolean saveSearchToFile();
 
+        /**
+         * Gets a random park from all national parks.
+         * @return true if a random park was successfully loaded, false otherwise
+         */
+        public boolean getRandomPark();
 }
