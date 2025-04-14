@@ -37,6 +37,7 @@ MVC, presenter, file management, different input validation, testing, documentat
 How do you plan to break up the work?
 - Similar to how we broke up the work for the initial project proposal.
 - Split the work by mapping out the main components and splitting it up by who wants to do what.
+- Usage of GitHub Projects to keep track of who is doing what.
 
 What is your teams timeline and major check-in points?
 | Date     | Milestone                                                                                                   |
