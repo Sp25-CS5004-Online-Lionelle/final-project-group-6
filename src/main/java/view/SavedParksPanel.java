@@ -96,6 +96,16 @@ public class SavedParksPanel extends JPanel {
         return true;
     }
 
+    public void updateSavedList(List<Park> pl) {
+        if (pl == null || pl.isEmpty()) {
+            return;
+        }
+        parks = pl;
+        for (Park park: pl) {
+            parksListModel.addElement(DisplayParks.formatSavedParkListItem(park));
+        }
+    }
+
     /**
      * Removes the currently selected park from the list.
      * 
