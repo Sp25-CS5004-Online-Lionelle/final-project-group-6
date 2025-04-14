@@ -19,6 +19,13 @@ public final class NetUtils {
         "https://developer.nps.gov/api/v1/parks?stateCode=%s&limit=20&api_key=%s";
 
     /**
+     * Base URL for the NPS API parks endpoint to get a specific park by parkCode.
+     * Format: https://developer.nps.gov/api/v1/parks?parkCode={parkCode}&api_key={key}
+     */
+    private static final String NPS_API_PARK_BY_CODE_URL = 
+        "https://developer.nps.gov/api/v1/parks?parkCode=%s&api_key=%s";
+
+    /**
      * Dotenv instance to load environment variables from .env file.
      */
     private static final Dotenv dotenv = Dotenv.load();
@@ -113,5 +120,21 @@ public final class NetUtils {
             return null;
         }
         return getParksByState(stateCode);
+    }
+
+    /**
+     * Gets a specific park by its park code.
+     * @param parkCode the unique code for the park (e.g., "YELL", "GRCA")
+     * @return JSON response as string
+     */
+    public static String getParkByParkCode(String parkCode) {
+        String url = String.format(NPS_API_PARK_BY_CODE_URL, parkCode, API_KEY);
+        try {
+            InputStream response = getUrlContents(url);
+            return new String(response.readAllBytes(), StandardCharsets.UTF_8);
+        } catch (IOException e) {
+            System.err.println("Error reading response: " + e.getMessage());
+            return null;
+        }
     }
 }

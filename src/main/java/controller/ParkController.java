@@ -16,9 +16,6 @@ public final class ParkController implements IController {
     /** Instance of the parks view. */
     private final IView view;
 
-    /** Current random park.  */
-    private final Random random;
-
     /**
      * Constructor for Park controller.
      * 
@@ -28,7 +25,6 @@ public final class ParkController implements IController {
     public ParkController(IModel model, IView view) {
         this.model = model;
         this.view = view;
-        this.random = new Random();
 
         //load preexisting data
         List<Park> savedParks = model.loadSavedParks();
@@ -115,21 +111,19 @@ public final class ParkController implements IController {
     }
 
     /**
-     * Randomly selects a park from the loaded list and displays it.
-     * If no parks are loaded, it fetches all parks and chooses randomly from the results.
+     * Randomly selects a park from all national parks.
      */
     private void handleRandomPark() {
-        if (model.getParkList().isEmpty()) {
-            boolean success = model.updateDB("ALL");
-            if (!success) {
-                view.getTextPanel().updateResults(List.of());
-                view.getButtonPanel().enableBackButton(false);
-                return;
-            }
+        boolean success = model.getRandomPark();
+        if (!success) {
+            view.getTextPanel().updateResults(List.of());
+            view.getButtonPanel().enableBackButton(false);
+            return;
         }
-
+        
         if (!model.getParkList().isEmpty()) {
-            Park randomPark = model.getParkList().get(random.nextInt(model.getParkList().size()));
+            // We should only have one park in the list
+            Park randomPark = model.getParkList().get(0);
             view.getTextPanel().updateResults(List.of(randomPark));
             view.getButtonPanel().enableBackButton(false);
         } else {

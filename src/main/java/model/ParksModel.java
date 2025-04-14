@@ -10,6 +10,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class ParksModel implements IModel{
     /** Path to the file where user search results are stored */
@@ -24,16 +25,46 @@ public class ParksModel implements IModel{
     /** List of activities in String form */
     private List<String> activityList;
 
+    /** Random park selector */
+    private final RandomParkSelector randomSelector;
+
     /**
      * Public constructor for Parks model.
      * Initializes the park list and fetches the list of activities from the API.
      */
     public ParksModel() {
         this.parkList = new ArrayList<>();
+        this.randomSelector = new RandomParkSelector();
         try {
             this.activityList = NetUtils.getListOfActivities();
         } catch (Exception e) {
             System.out.println("Unable to fetch activity list from API " + e);
+        }
+    }
+
+    /**
+     * Gets a random park from all national parks using park codes.
+     * @return true if a random park was successfully loaded, false otherwise
+     */
+    public boolean getRandomPark() {
+        String randomParkCode = randomSelector.getRandomParkCode();
+        if (randomParkCode == null) {
+            return false;
+        }
+        
+        // Get the park data from the API
+        String response = NetUtils.getParkByParkCode(randomParkCode);
+        if (response == null) {
+            return false;
+        }
+
+        // Parse the response and update the park list
+        try {
+            this.parkList = IModel.deserializeResponse(response);
+            return !this.parkList.isEmpty();
+        } catch (Exception e) {
+            System.err.println("Error parsing JSON: " + e.getMessage());
+            return false;
         }
     }
 

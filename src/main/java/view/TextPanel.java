@@ -65,7 +65,7 @@ public class TextPanel extends JPanel {
         resultsList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         resultsList.setVisibleRowCount(settings.TEXT_ROWS);
         
-        // Important: Set fixed cell height to false to allow variable height cells
+        //  Set fixed cell height to false to allow variable height cells
         resultsList.setFixedCellHeight(-1);
         // Set cell width to match the width of the list
         resultsList.setFixedCellWidth(-1);
@@ -82,9 +82,9 @@ public class TextPanel extends JPanel {
             int selectedIndex = resultsList.getSelectedIndex();
             ListModel<?> currentModel = resultsList.getModel(); 
 
-            // Get the selected item directly from the model (which contains Park objects or null)
+            // Get the selected item directly from the model
             if (selectedIndex >= 0 && selectedIndex < currentModel.getSize()) {
-                selectedPark = (Park) currentModel.getElementAt(selectedIndex); // Cast needed
+                selectedPark = (Park) currentModel.getElementAt(selectedIndex);
             } else {
                 selectedPark = null;
             }
@@ -150,7 +150,7 @@ public class TextPanel extends JPanel {
      * Should be called when navigating back from the detail view.
      */
     public void showSummaryListView() {
-        // Ensure the summary model exists (although it should always exist now)
+        // Ensure the summary model exists 
         if (summaryListModel == null) {
             updateResults(null); // Revert to empty state if summary model is missing
             System.err.println("Error: Summary list model was null when returning from detail view.");

@@ -11,7 +11,6 @@ import javax.swing.SwingUtilities;
 public class ParkExplorer {
     
     public static void main(String[] args) {
-        // Ensure GUI is created on Event Dispatch Thread
         SwingUtilities.invokeLater(() -> {
             try {
                 // Create MVC components
