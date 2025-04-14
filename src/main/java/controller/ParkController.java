@@ -225,7 +225,7 @@ public final class ParkController implements IController {
             }
 
             // Convert the final list to a JSON string.
-            String updatedJson = ParksModel.serializeList(existingParks);
+            String updatedJson = IModel.serializeList(existingParks);
             // Write that json string to the file at the given path. 
             try (FileWriter writer = new FileWriter(filePath)) {
                 // Writes content into file.
