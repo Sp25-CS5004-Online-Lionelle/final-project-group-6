@@ -1,4 +1,5 @@
 package model;
+
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -12,18 +13,19 @@ import model.Records.ActivityWrapper;
 public final class NetUtils {
 
     /**
-     * Base URL for the NPS API parks endpoint with placeholders for state code and API key.
-     * Format: https://developer.nps.gov/api/v1/parks?stateCode={state}&limit=20&api_key={key}
+     * Base URL for the NPS API parks endpoint with placeholders for state code and
+     * API key.
+     * Format:
+     * https://developer.nps.gov/api/v1/parks?stateCode={state}&limit=20&api_key={key}
      */
-    private static final String NPS_API_BASE_URL = 
-        "https://developer.nps.gov/api/v1/parks?stateCode=%s&limit=20&api_key=%s";
+    private static final String NPS_API_BASE_URL = "https://developer.nps.gov/api/v1/parks?stateCode=%s&limit=20&api_key=%s";
 
     /**
      * Base URL for the NPS API parks endpoint to get a specific park by parkCode.
-     * Format: https://developer.nps.gov/api/v1/parks?parkCode={parkCode}&api_key={key}
+     * Format:
+     * https://developer.nps.gov/api/v1/parks?parkCode={parkCode}&api_key={key}
      */
-    private static final String NPS_API_PARK_BY_CODE_URL = 
-        "https://developer.nps.gov/api/v1/parks?parkCode=%s&api_key=%s";
+    private static final String NPS_API_PARK_BY_CODE_URL = "https://developer.nps.gov/api/v1/parks?parkCode=%s&api_key=%s";
 
     /**
      * Dotenv instance to load environment variables from .env file.
@@ -43,6 +45,7 @@ public final class NetUtils {
 
     /**
      * Gets parks for a specific state code.
+     * 
      * @param stateCode two-letter state code (e.g., "WA", "CA")
      * @return JSON response as string
      */
@@ -61,7 +64,8 @@ public final class NetUtils {
      * Gets the contents of a URL as an InputStream.
      *
      * @param urlStr the URL to get the contents of
-     * @return the contents of the URL as an InputStream, or the null InputStream if the connection
+     * @return the contents of the URL as an InputStream, or the null InputStream if
+     *         the connection
      *         fails
      */
     private static InputStream getUrlContents(String urlStr) {
@@ -72,7 +76,7 @@ public final class NetUtils {
             con.setConnectTimeout(5000);
             con.setReadTimeout(5000);
             con.setRequestProperty("accept", "application/json");
-            
+
             int status = con.getResponseCode();
             if (status == 200) {
                 return con.getInputStream();
@@ -86,8 +90,10 @@ public final class NetUtils {
     }
 
     /**
-     * Get a deserialized list of activities from the API, there are currently 40 total.
+     * Get a deserialized list of activities from the API, there are currently 40
+     * total.
      * Can be used later for filtering, and/or a dropdown in the UI.
+     * 
      * @return a String list of activities
      */
     public static List<String> getListOfActivities() {
@@ -98,10 +104,10 @@ public final class NetUtils {
             ObjectMapper objectMapper = new ObjectMapper();
             ActivityWrapper wrapper = objectMapper.readValue(json, ActivityWrapper.class);
             return wrapper
-                .data()
-                .stream()
-                .map(activity -> activity.name())
-                .toList(); 
+                    .data()
+                    .stream()
+                    .map(activity -> activity.name())
+                    .toList();
 
         } catch (Exception e) {
             System.out.println(e);
@@ -111,6 +117,7 @@ public final class NetUtils {
 
     /**
      * Format a request to the API from a Zip code.
+     * 
      * @param zip to search api
      * @return returns the formatted url
      */
@@ -124,6 +131,7 @@ public final class NetUtils {
 
     /**
      * Gets a specific park by its park code.
+     * 
      * @param parkCode the unique code for the park (e.g., "YELL", "GRCA")
      * @return JSON response as string
      */
@@ -134,6 +142,26 @@ public final class NetUtils {
             return new String(response.readAllBytes(), StandardCharsets.UTF_8);
         } catch (IOException e) {
             System.err.println("Error reading response: " + e.getMessage());
+            return null;
+        }
+    }
+
+    /**
+     * Gets parks by their name.
+     * 
+     * @param parkName the name of the park to search for
+     * @return JSON response as a string
+     */
+    public static String getParksByName(String parkName) {
+        // Base URL for searching parks by name
+        String parksByNameUrl = "https://developer.nps.gov/api/v1/parks?q=%s&limit=20&api_key=%s";
+        String url = String.format(parksByNameUrl, parkName.replace(" ", "%20"), API_KEY);
+
+        try {
+            InputStream response = getUrlContents(url);
+            return new String(response.readAllBytes(), StandardCharsets.UTF_8);
+        } catch (IOException e) {
+            System.err.println("Error reading response for park name: " + e.getMessage());
             return null;
         }
     }
