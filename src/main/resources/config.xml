@@ -76,7 +76,7 @@
     <!-- Search Panel Settings -->
     <search_panel>
         <field_columns>20</field_columns>
-        <label_text>Search by State/Zip:</label_text>
+        <label_text>Search by State / Zip / Park Name:</label_text>
         <button_text>Search</button_text>
     </search_panel>
 
