@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.nio.charset.StandardCharsets;
 import javax.swing.ImageIcon;
 import io.github.cdimascio.dotenv.Dotenv;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import model.Records.ActivityWrapper;
 import model.Records.Park;
@@ -99,23 +101,21 @@ public final class NetUtils {
      * 
      * @return a String list of activities
      */
-    public static List<String> getListOfActivities() {
-        String activitiesBaseUrl = "https://developer.nps.gov/api/v1/activities?limit=50&api_key=%s";
-        InputStream response = getUrlContents(String.format(activitiesBaseUrl, API_KEY));
-        try {
-            String json = new String(response.readAllBytes(), StandardCharsets.UTF_8);
-            ObjectMapper objectMapper = new ObjectMapper();
-            ActivityWrapper wrapper = objectMapper.readValue(json, ActivityWrapper.class);
-            return wrapper
-                    .data()
-                    .stream()
-                    .map(activity -> activity.name())
-                    .toList();
+    public static List<String> getListOfActivities() throws JsonProcessingException, IOException {
 
-        } catch (Exception e) {
-            System.out.println(e);
-            return null;
-        }
+        String activitiesBaseUrl = "https://developer.nps.gov/api/v1/activities?limit=50&api_key=%s";
+
+        InputStream response = getUrlContents(String.format(activitiesBaseUrl, API_KEY));
+        String json = new String(response.readAllBytes(), StandardCharsets.UTF_8);
+        ObjectMapper objectMapper = new ObjectMapper();
+        ActivityWrapper wrapper = objectMapper.readValue(json, ActivityWrapper.class);
+
+        return wrapper
+                .data()
+                .stream()
+                .map(activity -> activity.name())
+                .toList();
+
     }
 
     /**

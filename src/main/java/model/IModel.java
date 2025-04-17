@@ -21,6 +21,12 @@ public interface IModel {
         public boolean updateDB(String query);
 
         /**
+         * Update the database with a sub-list.
+         * @param pl
+         */
+        public boolean updateDB(List<Park> pl);
+
+        /**
          * Returns the list of parks currently being stored in the model.
          * 
          * @return a list of parks, or an empty list if none are stored
@@ -73,25 +79,14 @@ public interface IModel {
          * {@link https://github.com/FasterXML/jackson-databind}
          */
         public static String serializeList(List<Park> parks) throws JsonProcessingException {
+                if (parks == null) {
+                        return "";
+                }
                 ObjectMapper om = new ObjectMapper();
                 ParkWrapper wrapper = new ParkWrapper(parks);
                 om.enable(SerializationFeature.INDENT_OUTPUT);
                 return om.writeValueAsString(wrapper);
         }
-
-        /**
-         * Loads the user saved park list from a file.
-         * 
-         * @return a list of parks saved by the user
-         */
-        public List<Park> loadSavedParks();
-
-        /**
-         * Loads the user saved search results from a file.
-         * 
-         * @return a list of parks saved by the user
-         */
-        public List<Park> loadSavedSearch();
 
         /**
          * Deserialize the response from the API into a Park object
@@ -104,18 +99,6 @@ public interface IModel {
                 ParkWrapper wrapper = om.readValue(json, ParkWrapper.class);
                 return wrapper.data();
         }
-
-        /**
-         * Syncs the saved list in the model with the saved list displayed in the UI.
-         * @param parks
-         */
-        public void updateSavedList(List<Park> parks);
-
-        /**
-         * Saves the user saved parks to a file.
-         * @return true if parks were saved successfully, false otherwise 
-         */
-        public boolean saveSearchToFile();
 
         /**
          * Gets a random park from all national parks.

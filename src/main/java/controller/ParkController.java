@@ -1,6 +1,7 @@
 package controller;
 
 import model.Records.Park;
+import model.FileManager;
 import view.IView;
 import model.IModel;
 import java.awt.event.ActionListener;
@@ -27,11 +28,11 @@ public final class ParkController implements IController {
         this.view = view;
 
         //load preexisting data
-        List<Park> savedParks = model.loadSavedParks();
+        List<Park> savedParks = FileManager.loadSavedParks();
         if (savedParks != null) {
             view.getSavedParksPanel().updateSavedList(savedParks);
         }
-        model.updateSavedList(view.getSavedParksPanel().getSavedParks());
+        FileManager.updateSavedList(view.getSavedParksPanel().getSavedParks());
     }
 
     /**
@@ -92,22 +93,18 @@ public final class ParkController implements IController {
      * @param query
      */
     private void handleSearch(String query) {
+        view.getButtonPanel().enableBackButton(false);
         if (query == null || query.trim().isEmpty()) {
             view.getTextPanel().updateResults(List.of());
-            view.getButtonPanel().enableBackButton(false);
             return;
         }
-
-        // Store response in model
-        boolean success = model.updateDB(query);
-        if (!success) {
+        // Store response in model, update UI
+        if (!model.updateDB(query)) {
             view.getTextPanel().updateResults(List.of());
-            view.getButtonPanel().enableBackButton(false);
             return;
         }
         // Update the text panel with formatted results
         view.getTextPanel().updateResults(model.getParkList());
-        view.getButtonPanel().enableBackButton(false);
     }
 
     /**
@@ -144,11 +141,10 @@ public final class ParkController implements IController {
             return;
         } else {
             List<String> selectedActivities = view.promptActivities(model.getActivityList());
-            if (selectedActivities == null) {
-                return;
+            if (selectedActivities == null || selectedActivities.isEmpty()) {
+                return; // Do nothing if nothing was selected
             }
             view.getTextPanel().updateResults(model.getFilteredParks(selectedActivities));
-            view.getButtonPanel().enableBackButton(false);
         }
     }
 
@@ -200,11 +196,13 @@ public final class ParkController implements IController {
         }
 
         if (selection.contains("Search Results")) { // display saved search results
-            List<Park> savedSearch = model.loadSavedSearch();
+            List<Park> savedSearch = FileManager.loadSavedSearch();
             view.getTextPanel().updateResults(savedSearch);
+            model.updateDB(savedSearch);
         } else { // display saved park list
-            List<Park> savedList = model.loadSavedParks();
+            List<Park> savedList = FileManager.loadSavedParks();
             view.getTextPanel().updateResults(savedList);
+            model.updateDB(savedList);
         }
         view.getButtonPanel().enableBackButton(false);
     }
@@ -226,12 +224,12 @@ public final class ParkController implements IController {
                     "No Park Selected", JOptionPane.WARNING_MESSAGE);
         } else {
             // sync the model's saved list with the view's saved parks
-            model.updateSavedList(view.getSavedParksPanel().getSavedParks());
+            FileManager.updateSavedList(view.getSavedParksPanel().getSavedParks());
         }
     }
 
     private void handleSaveResults() {
-        if (model.saveSearchToFile()) {
+        if (FileManager.saveSearchToFile(model.getParkList())) {
             JOptionPane.showMessageDialog(null, "Search Results added to userSavedParks.json", "Success", JOptionPane.INFORMATION_MESSAGE);
         } else {
             JOptionPane.showMessageDialog(null, "Failed to save results:", "Error", JOptionPane.ERROR_MESSAGE);
@@ -253,8 +251,7 @@ public final class ParkController implements IController {
             JOptionPane.showMessageDialog(null, "This park is already in your saved list.",
                     "Park Already Saved", JOptionPane.INFORMATION_MESSAGE);
         } else {
-            // sync the model's saved list with the view's saved parks
-            model.updateSavedList(view.getSavedParksPanel().getSavedParks());
+            FileManager.updateSavedList(view.getSavedParksPanel().getSavedParks());
         }
     }
 }

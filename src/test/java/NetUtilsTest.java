@@ -86,14 +86,20 @@ public class NetUtilsTest {
 
     @Test
     void testGetListOfActivities() {
-        var activities = NetUtils.getListOfActivities();
-        assertNotNull(activities);
-        assertFalse(activities.isEmpty());
-        
-        // Test for common activities that should be present
-        assertTrue(activities.contains("Hiking"));
-        assertTrue(activities.contains("Camping"));
-        assertTrue(activities.contains("Wildlife Watching"));
+        try {
+            var activities = NetUtils.getListOfActivities();
+            assertNotNull(activities);
+            assertFalse(activities.isEmpty());
+            
+            // Test for common activities that should be present
+            assertTrue(activities.contains("Hiking"));
+            assertTrue(activities.contains("Camping"));
+            assertTrue(activities.contains("Wildlife Watching"));
+
+        } catch (Exception e) {
+            assertTrue(false); // failed the test
+            e.printStackTrace();
+        }
     
     }
 

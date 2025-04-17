@@ -2,23 +2,14 @@ package model;
 
 import model.Records.Activity;
 import model.Records.Park;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import model.Records.ParkWrapper;
-import javax.swing.ImageIcon;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Random;
+import java.util.Set;
 
 public class ParksModel implements IModel {
-    /** Path to the file where user search results are stored */
-    private static final String USER_SEARCH_RESULTS = "src/main/resources/userSearchResults.json";
-
-    /** Path to file where user saved parks are stored */
-    private static final String USER_SAVED_LIST = "src/main/resources/userSavedParks.json";
-
     /** List of parks retrieved from the API */
     private List<Park> parkList;
 
@@ -38,7 +29,9 @@ public class ParksModel implements IModel {
         try {
             this.activityList = NetUtils.getListOfActivities();
         } catch (Exception e) {
-            System.out.println("Unable to fetch activity list from API " + e);
+            System.err.println("Unable to fetch activity list from API " + e);
+            //set activity list to empty list in case of api failure
+            this.activityList = new ArrayList<>();
         }
     }
 
@@ -83,8 +76,14 @@ public class ParksModel implements IModel {
 
         // Get response from API based on input type
         if (query.matches("\\d{5}")) {
+            if (!strValid("data/ValidZips.txt", query.substring(0, 5))) { // Returning false if invalid state code is passed
+                return false;
+            }
             response = NetUtils.getParksByZip(query);
         } else if (query.matches("^[A-Z]{2}$")) { // Matches a 2-letter state code (e.g., MA, WA)
+            if (!strValid("data/StateCodes.txt", query.substring(0, 2))) { // Returning false if invalid state code is passed
+                return false;
+            }
             response = NetUtils.getParksByState(query);
         } else { // Default to searching by park name
             response = NetUtils.getParksByName(query);
@@ -109,6 +108,21 @@ public class ParksModel implements IModel {
             return false;
         }
         return true;
+    }
+
+    /**
+     * Update the database with a List rather than search query.
+     * Important for keeping model and view in sync.
+     * 
+     * @param pl the list of parks to update the model with
+     * @return true if the db was updated, else false
+     */
+    public boolean updateDB(List<Park> pl) {
+        if (pl != null && !pl.isEmpty()) {
+            this.parkList = pl;
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -212,96 +226,25 @@ public class ParksModel implements IModel {
     }
 
     /**
-     * Saves the current list of parks to a file.
-     *
-     * @return true if the pars were saved, else false
-     * @param filePath Path to save the file
+     * Helper method to validate that a state code or zip is valid.
+     * @param filePath
+     * @param str
+     * @return true if code/zip is valid, else false
      */
-    @Override
-    public boolean saveSearchToFile() {
+    private boolean strValid(String filePath, String str) {
+        Set<String> set = new HashSet<>();
 
-        List<Park> currentResults = this.getParkList();
-        if (currentResults == null || currentResults.isEmpty()) {
-            return false;
-        }
-
-        List<Park> existingParks = this.loadSavedParks();
-        if (existingParks == null) {
-            existingParks = new ArrayList<>();
-        }
-
-        // Add new parks to the existing list if they are not already present
-        for (Park park : currentResults) {
-            if (!existingParks.contains(park)) {
-                existingParks.add(park);
+        try {
+            String line;
+            BufferedReader reader = new BufferedReader(new FileReader(filePath));
+            while ((line = reader.readLine()) != null) {
+                set.add(line);
             }
-        }
-
-        try { // serialize and write to file
-            FileWriter writer = new FileWriter(USER_SEARCH_RESULTS);
-            String updatedJson = IModel.serializeList(existingParks);
-            writer.write(updatedJson);
-            writer.close();
+            reader.close();
         } catch (Exception e) {
             e.printStackTrace();
-            return false;
         }
-
-        return true;
+ 
+        return set.contains(str);
     }
-
-    /**
-     * Loads the user saved park list from a file.
-     * 
-     * @return a list of parks saved by the user
-     */
-    @Override
-    public List<Park> loadSavedParks() {
-        return loadFile(USER_SAVED_LIST);
-    }
-
-    /**
-     * Loads the user saved search results from a file.
-     * 
-     * @return a list of parks (search) saved by the user
-     */
-    @Override
-    public List<Park> loadSavedSearch() {
-        return loadFile(USER_SEARCH_RESULTS);
-    }
-
-    /**
-     * Syncs the saved list stored as json with the saved list displayed in the UI.
-     * 
-     * @param parks
-     */
-    @Override
-    public void updateSavedList(List<Park> parks) {
-        try {
-            String JSON = IModel.serializeList(parks);
-            FileWriter writer = new FileWriter(USER_SAVED_LIST); // will overwrite here intentionally
-            writer.write(JSON);
-            writer.close();
-        } catch (Exception e) {
-            System.err.println("Failed to update saved list: " + e.getMessage());
-        }
-    }
-
-    /**
-     * Loads the user saved park list from a file.
-     * 
-     * @return a list of parks saved by the user
-     */
-    private List<Park> loadFile(String file) {
-        ObjectMapper objectMapper = new ObjectMapper();
-        try {
-            // Read the JSON file and deserialize it into a list of Park objects
-            ParkWrapper wrapper = objectMapper.readValue(new File(file), ParkWrapper.class);
-            return wrapper.data();
-        } catch (IOException e) {
-            System.err.println("Failed to load user saved park list from file: " + e.getMessage());
-            return new ArrayList<>();
-        }
-    }
-
 }
