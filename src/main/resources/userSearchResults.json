@@ -1,120 +1,5 @@
 {
   "data" : [ {
-    "name" : "Klondike Gold Rush - Seattle Unit",
-    "states" : "WA",
-    "description" : "Seattle flourished during and after the Klondike Gold Rush. Merchants supplied people from around the world passing through this port city on their way to a remarkable adventure in the Yukon Territory of Canada. Today, the park is your gateway to learn about the Klondike Gold Rush, explore the area's public lands, and engage with the local community.",
-    "activities" : [ {
-      "id" : "B33DC9B6-0B7D-4322-BAD7-A13A34C584A3",
-      "name" : "Guided Tours"
-    }, {
-      "id" : "A0631906-9672-4583-91DE-113B93DB6B6E",
-      "name" : "Self-Guided Tours - Walking"
-    }, {
-      "id" : "B204DE60-5A24-43DD-8902-C81625A09A74",
-      "name" : "Living History"
-    }, {
-      "id" : "0C0D142F-06B5-4BE1-8B44-491B90F93DEB",
-      "name" : "Park Film"
-    }, {
-      "id" : "C8F98B28-3C10-41AE-AA99-092B3B398C43",
-      "name" : "Museum Exhibits"
-    } ],
-    "addresses" : [ {
-      "postalCode" : "98104",
-      "city" : "Seattle",
-      "stateCode" : "WA",
-      "line1" : "319 Second Ave S."
-    }, {
-      "postalCode" : "98104",
-      "city" : "Seattle",
-      "stateCode" : "WA",
-      "line1" : "319 Second Ave S."
-    } ],
-    "images" : [ {
-      "title" : "Cadillac Hotel",
-      "url" : "https://www.nps.gov/common/uploads/structured_data/39704550-FCDA-D336-B4FBEE35BD2793C2.jpg",
-      "credit" : "NPS"
-    }, {
-      "title" : "Interactive exhibits",
-      "url" : "https://www.nps.gov/common/uploads/structured_data/3C796968-1DD8-B71B-0B0104B6AE13AEC3.jpg",
-      "credit" : "NPS photo"
-    }, {
-      "title" : "Ton of gold",
-      "url" : "https://www.nps.gov/common/uploads/structured_data/3C796C95-1DD8-B71B-0BEB54A28F5DA68C.jpg",
-      "credit" : "NPS Photo"
-    }, {
-      "title" : "Front door",
-      "url" : "https://www.nps.gov/common/uploads/structured_data/3C796A5B-1DD8-B71B-0B3643628CC54556.jpg",
-      "credit" : "NPS Photo"
-    }, {
-      "title" : "Miners cabin",
-      "url" : "https://www.nps.gov/common/uploads/structured_data/3C796D9B-1DD8-B71B-0BB068BB66AFE4A5.jpg",
-      "credit" : "NPS Photo"
-    }, {
-      "title" : "Big Wheel of Fortune",
-      "url" : "https://www.nps.gov/common/uploads/structured_data/3C796B8C-1DD8-B71B-0BA402D548F12919.jpg",
-      "credit" : "NPS Photo"
-    } ],
-    "parkCode" : "klse"
-  }, {
-    "name" : "Manhattan Project",
-    "states" : "NM,WA,TN",
-    "description" : "The Manhattan Project is one of the most transformative events of the 20th century. It ushered in the nuclear age with the development of the world’s first atomic bombs. Most of this development took place in three secret communities located in Hanford, WA, Los Alamos, NM and Oak Ridge, TN. Today, you can visit these three sites that make up Manhattan Project National Historical Site.",
-    "activities" : [ {
-      "id" : "B33DC9B6-0B7D-4322-BAD7-A13A34C584A3",
-      "name" : "Guided Tours"
-    }, {
-      "id" : "DF4A35E0-7983-4A3E-BC47-F37B872B0F25",
-      "name" : "Junior Ranger Program"
-    }, {
-      "id" : "0C0D142F-06B5-4BE1-8B44-491B90F93DEB",
-      "name" : "Park Film"
-    }, {
-      "id" : "C8F98B28-3C10-41AE-AA99-092B3B398C43",
-      "name" : "Museum Exhibits"
-    } ],
-    "addresses" : [ {
-      "postalCode" : "80225-0287",
-      "city" : "Denver",
-      "stateCode" : "CO",
-      "line1" : "National Park Service, Manhattan Project National Historical Park"
-    }, {
-      "postalCode" : "80225-0287",
-      "city" : "Denver",
-      "stateCode" : "CO",
-      "line1" : "National Park Service, Manhattan Project National Historical Park"
-    } ],
-    "images" : [ {
-      "title" : "Oppenheimer and Groves at Trinity Test Site",
-      "url" : "https://www.nps.gov/common/uploads/structured_data/E310F561-EC32-2AE8-9AE265815F917C5C.jpg",
-      "credit" : "Los Alamos National Laboratory"
-    }, {
-      "title" : "Hanford B Reactor",
-      "url" : "https://www.nps.gov/common/uploads/structured_data/87DC8664-0A66-3B76-6B9BF543D9581735.jpg",
-      "credit" : "NPS"
-    }, {
-      "title" : "Hanford Hike Through Time",
-      "url" : "https://www.nps.gov/common/uploads/structured_data/88034665-FD02-40D7-B8CBF850271EC139.jpg",
-      "credit" : "NPS"
-    }, {
-      "title" : "Los Alamos Slotin Building",
-      "url" : "https://www.nps.gov/common/uploads/structured_data/880E8585-ECDE-EB3C-34AF9A04F3EAD72E.png",
-      "credit" : "NPS"
-    }, {
-      "title" : "Los Alamos Ashley Pond Walk",
-      "url" : "https://www.nps.gov/common/uploads/structured_data/883C144E-C84E-C110-BBCD64BD1F4F0656.jpg",
-      "credit" : "NPS"
-    }, {
-      "title" : "Oak Ridge X-10 Control Panel",
-      "url" : "https://www.nps.gov/common/uploads/structured_data/884A2FA9-FC95-36D1-FB9C52521E3FED66.jpg",
-      "credit" : "NPS"
-    }, {
-      "title" : "Oak Ridge Family Fun",
-      "url" : "https://www.nps.gov/common/uploads/structured_data/885549FD-FC4D-74F5-D3CB06DF1C3B41CD.jpg",
-      "credit" : "NPS"
-    } ],
-    "parkCode" : "mapr"
-  }, {
     "name" : "Ebey's Landing",
     "states" : "WA",
     "description" : "This stunning landscape on the Salish Sea, with its rich farmland and promising seaport, lured the earliest American pioneers north of the Columbia River to Ebey’s Landing. Today Ebey’s Landing National Historical Reserve preserves the historical, agricultural and cultural traditions of both Native and Euro-American – while offering spectacular opportunities for recreation.",
@@ -252,9 +137,61 @@
     } ],
     "parkCode" : "ebla"
   }, {
-    "name" : "Capitol Reef",
-    "states" : "UT",
-    "description" : "Located in south-central Utah in the heart of red rock country, Capitol Reef National Park is a hidden treasure filled with cliffs, canyons, domes, and bridges in the Waterpocket Fold, a geologic monocline (a wrinkle on the earth) extending almost 100 miles.",
+    "name" : "Wing Luke Museum",
+    "states" : "WA",
+    "description" : "More than a museum, the Wing is an experience. A chance to truly understand what it was - and is - to be Asian American in the Pacific Northwest. Take a guided tour of a historic hotel and learn the inside story about what makes the local Chinatown-International District unique. Visitors explore thought-provoking exhibitions of real stories, including actor and martial arts master Bruce Lee.",
+    "activities" : [ {
+      "id" : "B33DC9B6-0B7D-4322-BAD7-A13A34C584A3",
+      "name" : "Guided Tours"
+    }, {
+      "id" : "A0631906-9672-4583-91DE-113B93DB6B6E",
+      "name" : "Self-Guided Tours - Walking"
+    }, {
+      "id" : "C8F98B28-3C10-41AE-AA99-092B3B398C43",
+      "name" : "Museum Exhibits"
+    }, {
+      "id" : "24380E3F-AD9D-4E38-BF13-C8EEB21893E7",
+      "name" : "Shopping"
+    }, {
+      "id" : "467DC8B8-0B7D-436D-A026-80A22358F615",
+      "name" : "Bookstore and Park Store"
+    }, {
+      "id" : "43800AD1-D439-40F3-AAB3-9FB651FE45BB",
+      "name" : "Gift Shop and Souvenirs"
+    } ],
+    "addresses" : [ {
+      "postalCode" : "98104",
+      "city" : "Seattle",
+      "stateCode" : "WA",
+      "line1" : "719 South King Street"
+    }, {
+      "postalCode" : "98104",
+      "city" : "Seattle",
+      "stateCode" : "WA",
+      "line1" : "719 South King Street"
+    } ],
+    "images" : [ {
+      "title" : "Nippon Kan Theatre curtain",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/3C81D25A-1DD8-B71B-0B9DAC16CFECEC36.jpg",
+      "credit" : "Lindsay Kennedy"
+    }, {
+      "title" : "Nippon Kan Theatre curtain detail",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/3C81CE2A-1DD8-B71B-0B1714B6C4C5AF73.jpg",
+      "credit" : "Lindsay Kennedy"
+    }, {
+      "title" : "\"Letter Cloud\"",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/3C81CB2F-1DD8-B71B-0B90378FD5C9894B.jpg",
+      "credit" : "Dean Wong"
+    }, {
+      "title" : "\"Letter Cloud\"",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/3C81CC78-1DD8-B71B-0B5AD50A668E5314.jpg",
+      "credit" : "Lindsay Kennedy"
+    } ],
+    "parkCode" : "wing"
+  }, {
+    "name" : "Whitman Mission",
+    "states" : "WA",
+    "description" : "One moment can change the fate of many nations. After thousands of years of habitation by the Cayuse Nation, life in the Columbia River Plateau begins to change rapidly with the influx of missionaries, newcomers from the Oregon Trail, and diseases. A single violent act of desperation to protect a community ignites a series of events that will reshape the United States forever.",
     "activities" : [ {
       "id" : "09DF0950-D319-4557-A57E-04CD2F63FF42",
       "name" : "Arts and Culture"
@@ -262,29 +199,302 @@
       "id" : "FAED7F97-3474-4C21-AB42-FB0768A2F826",
       "name" : "Cultural Demonstrations"
     }, {
+      "id" : "1DFACD97-1B9C-4F5A-80F2-05593604799E",
+      "name" : "Food"
+    }, {
+      "id" : "C6D3230A-2CEA-4AFE-BFF3-DC1E2C2C4BB4",
+      "name" : "Picnicking"
+    }, {
+      "id" : "B33DC9B6-0B7D-4322-BAD7-A13A34C584A3",
+      "name" : "Guided Tours"
+    }, {
+      "id" : "A0631906-9672-4583-91DE-113B93DB6B6E",
+      "name" : "Self-Guided Tours - Walking"
+    }, {
+      "id" : "BFF8C027-7C8F-480B-A5F8-CD8CE490BFBA",
+      "name" : "Hiking"
+    }, {
+      "id" : "45261C0A-00D8-4C27-A1F8-029F933A0D34",
+      "name" : "Front-Country Hiking"
+    }, {
+      "id" : "DF4A35E0-7983-4A3E-BC47-F37B872B0F25",
+      "name" : "Junior Ranger Program"
+    }, {
+      "id" : "0B685688-3405-4E2A-ABBA-E3069492EC50",
+      "name" : "Wildlife Watching"
+    }, {
+      "id" : "5A2C91D1-50EC-4B24-8BED-A2E11A1892DF",
+      "name" : "Birdwatching"
+    }, {
+      "id" : "0C0D142F-06B5-4BE1-8B44-491B90F93DEB",
+      "name" : "Park Film"
+    }, {
+      "id" : "C8F98B28-3C10-41AE-AA99-092B3B398C43",
+      "name" : "Museum Exhibits"
+    }, {
+      "id" : "24380E3F-AD9D-4E38-BF13-C8EEB21893E7",
+      "name" : "Shopping"
+    }, {
+      "id" : "467DC8B8-0B7D-436D-A026-80A22358F615",
+      "name" : "Bookstore and Park Store"
+    } ],
+    "addresses" : [ {
+      "postalCode" : "99362",
+      "city" : "Walla Walla",
+      "stateCode" : "WA",
+      "line1" : "328 Whitman Mission Road"
+    }, {
+      "postalCode" : "99362",
+      "city" : "Walla Walla",
+      "stateCode" : "WA",
+      "line1" : "328 Whitman Mission Road"
+    } ],
+    "images" : [ {
+      "title" : "Tipi",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/0BF0A3D7-D2A9-5705-180B4FED2BAA38FC.jpg",
+      "credit" : "NPS Photo"
+    }, {
+      "title" : "The Mission Site from the Hill",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/0AF1AE74-A0E1-852F-F2EFD048EC1E9293.jpg",
+      "credit" : "NPS Photo"
+    }, {
+      "title" : "Cultural Items",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/0B7BE07D-9F8A-331C-0D0A3871D9AEA840.jpg",
+      "credit" : "NPS Photo"
+    }, {
+      "title" : "Fall at Whitman Mission",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/0B13A1DD-BF02-226C-337347C747A00B36.jpg",
+      "credit" : "NPS Photo"
+    }, {
+      "title" : "Cayuse Woven Cornhusk Bag",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/3C85D42F-1DD8-B71B-0BD929E73E0E28E2.jpg",
+      "credit" : "NPS Photo"
+    } ],
+    "parkCode" : "whmi"
+  }, {
+    "name" : "Fort Vancouver",
+    "states" : "OR,WA",
+    "description" : "Located on the north bank of the Columbia River, in sight of snowy mountain peaks and a vibrant urban landscape, this park has a rich cultural past. From a frontier fur trading post, to a powerful military legacy, the magic of flight, and the origin of the American Pacific Northwest, history is shared at four unique sites. Discover stories of transition, settlement, conflict, and community.",
+    "activities" : [ {
+      "id" : "09DF0950-D319-4557-A57E-04CD2F63FF42",
+      "name" : "Arts and Culture"
+    }, {
+      "id" : "C59E231D-55FC-4B37-BC5B-FF76383951B5",
+      "name" : "Craft Demonstrations"
+    }, {
+      "id" : "FAED7F97-3474-4C21-AB42-FB0768A2F826",
+      "name" : "Cultural Demonstrations"
+    }, {
+      "id" : "7CE6E935-F839-4FEC-A63E-052B1DEF39D2",
+      "name" : "Biking"
+    }, {
+      "id" : "B33DC9B6-0B7D-4322-BAD7-A13A34C584A3",
+      "name" : "Guided Tours"
+    }, {
+      "id" : "B204DE60-5A24-43DD-8902-C81625A09A74",
+      "name" : "Living History"
+    }, {
+      "id" : "A8650547-1A30-4222-86C3-A7660A829670",
+      "name" : "Reenactments"
+    }, {
+      "id" : "237A1662-6018-4115-ABD1-B8CCF827E703",
+      "name" : "Historic Weapons Demonstration"
+    }, {
+      "id" : "DF4A35E0-7983-4A3E-BC47-F37B872B0F25",
+      "name" : "Junior Ranger Program"
+    }, {
+      "id" : "7779241F-A70B-49BC-86F0-829AE332C708",
+      "name" : "Playground"
+    }, {
+      "id" : "0B685688-3405-4E2A-ABBA-E3069492EC50",
+      "name" : "Wildlife Watching"
+    }, {
+      "id" : "0C0D142F-06B5-4BE1-8B44-491B90F93DEB",
+      "name" : "Park Film"
+    }, {
+      "id" : "C8F98B28-3C10-41AE-AA99-092B3B398C43",
+      "name" : "Museum Exhibits"
+    }, {
+      "id" : "24380E3F-AD9D-4E38-BF13-C8EEB21893E7",
+      "name" : "Shopping"
+    }, {
+      "id" : "467DC8B8-0B7D-436D-A026-80A22358F615",
+      "name" : "Bookstore and Park Store"
+    } ],
+    "addresses" : [ {
+      "postalCode" : "98661",
+      "city" : "Vancouver",
+      "stateCode" : "WA",
+      "line1" : "1501 E Evergreen Blvd."
+    }, {
+      "postalCode" : "98661",
+      "city" : "Vancouver",
+      "stateCode" : "WA",
+      "line1" : "800 Hatheway Road, Bldg 722"
+    } ],
+    "images" : [ {
+      "title" : "Fort Vancouver Garden",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/3C7E8577-1DD8-B71B-0B5ABB3F175DDD81.jpg",
+      "credit" : "NPS Photo / Troy Wayrynen"
+    }, {
+      "title" : "Black Powder Demonstrations at Fort Vancouver NHS",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/3C7E86BF-1DD8-B71B-0B384E77223186E6.jpg",
+      "credit" : "NPS Photo / Troy Wayrynen"
+    }, {
+      "title" : "Fort Vancouver",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/3C7E881D-1DD8-B71B-0B98C9CFAE864249.jpg",
+      "credit" : "NPS Photo / Troy Wayrynen"
+    }, {
+      "title" : "McLoughlin House",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/3C7E89A7-1DD8-B71B-0BCC6874B5F69230.jpg",
+      "credit" : "NPS Photo / Troy Wayrynen"
+    }, {
+      "title" : "Pearson Air Museum",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/3C7E8B4B-1DD8-B71B-0BE1CD3DD023CFEC.jpg",
+      "credit" : "NPS Photo / Troy Wayrynen"
+    } ],
+    "parkCode" : "fova"
+  }, {
+    "name" : "Ice Age Floods",
+    "states" : "WA,OR,ID,MT",
+    "description" : "At the end of the last Ice Age, 18,000 to 15,000 years ago, an ice dam in northern Idaho created Glacial Lake Missoula stretching 3,000 square miles around Missoula, Montana. The dam burst and released flood waters across Washington, down the Columbia River into Oregon before reaching the Pacific Ocean. The Ice Age Floods forever changed the lives and landscape of the Pacific Northwest.",
+    "activities" : [ {
+      "id" : "B33DC9B6-0B7D-4322-BAD7-A13A34C584A3",
+      "name" : "Guided Tours"
+    }, {
+      "id" : "A0631906-9672-4583-91DE-113B93DB6B6E",
+      "name" : "Self-Guided Tours - Walking"
+    }, {
+      "id" : "C7D5A145-F8EB-4C37-9E92-2F6C6206B196",
+      "name" : "Self-Guided Tours - Auto"
+    }, {
+      "id" : "DF4A35E0-7983-4A3E-BC47-F37B872B0F25",
+      "name" : "Junior Ranger Program"
+    } ],
+    "addresses" : [ {
+      "postalCode" : "99116",
+      "city" : "Coulee Dam",
+      "stateCode" : "WA",
+      "line1" : "Program Manager"
+    }, {
+      "postalCode" : "99116",
+      "city" : "Coulee Dam",
+      "stateCode" : "WA",
+      "line1" : "Program Manager"
+    } ],
+    "images" : [ {
+      "title" : "Green Monarch Ridge",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/A003C5CE-E0EB-2AC6-FC8EDC134B1DFD19.jpg",
+      "credit" : "NPS Photo"
+    }, {
+      "title" : "Steamboat Rock",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/0E7BEDF2-952B-D9E0-038D808912A45A65.jpeg",
+      "credit" : "NPS"
+    }, {
+      "title" : "Banks Lake",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/D4C33AFB-B84F-E87C-E19705F8380417D1.jpeg",
+      "credit" : "NPS"
+    }, {
+      "title" : "Dry Lakes",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/693AFB1E-1DD8-B71B-0B7DAE958A82C347.jpg",
+      "credit" : "NPS Photo"
+    }, {
+      "title" : "Dry Falls",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/0BDAB952-1DD8-B71B-0B509D5898489BD4.jpg",
+      "credit" : "NPS/Cline"
+    } ],
+    "parkCode" : "iafl"
+  }, {
+    "name" : "Klondike Gold Rush - Seattle Unit",
+    "states" : "WA",
+    "description" : "Seattle flourished during and after the Klondike Gold Rush. Merchants supplied people from around the world passing through this port city on their way to a remarkable adventure in the Yukon Territory of Canada. Today, the park is your gateway to learn about the Klondike Gold Rush, explore the area's public lands, and engage with the local community.",
+    "activities" : [ {
+      "id" : "B33DC9B6-0B7D-4322-BAD7-A13A34C584A3",
+      "name" : "Guided Tours"
+    }, {
+      "id" : "A0631906-9672-4583-91DE-113B93DB6B6E",
+      "name" : "Self-Guided Tours - Walking"
+    }, {
+      "id" : "B204DE60-5A24-43DD-8902-C81625A09A74",
+      "name" : "Living History"
+    }, {
+      "id" : "0C0D142F-06B5-4BE1-8B44-491B90F93DEB",
+      "name" : "Park Film"
+    }, {
+      "id" : "C8F98B28-3C10-41AE-AA99-092B3B398C43",
+      "name" : "Museum Exhibits"
+    } ],
+    "addresses" : [ {
+      "postalCode" : "98104",
+      "city" : "Seattle",
+      "stateCode" : "WA",
+      "line1" : "319 Second Ave S."
+    }, {
+      "postalCode" : "98104",
+      "city" : "Seattle",
+      "stateCode" : "WA",
+      "line1" : "319 Second Ave S."
+    } ],
+    "images" : [ {
+      "title" : "Cadillac Hotel",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/39704550-FCDA-D336-B4FBEE35BD2793C2.jpg",
+      "credit" : "NPS"
+    }, {
+      "title" : "Interactive exhibits",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/3C796968-1DD8-B71B-0B0104B6AE13AEC3.jpg",
+      "credit" : "NPS photo"
+    }, {
+      "title" : "Ton of gold",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/3C796C95-1DD8-B71B-0BEB54A28F5DA68C.jpg",
+      "credit" : "NPS Photo"
+    }, {
+      "title" : "Front door",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/3C796A5B-1DD8-B71B-0B3643628CC54556.jpg",
+      "credit" : "NPS Photo"
+    }, {
+      "title" : "Miners cabin",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/3C796D9B-1DD8-B71B-0BB068BB66AFE4A5.jpg",
+      "credit" : "NPS Photo"
+    }, {
+      "title" : "Big Wheel of Fortune",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/3C796B8C-1DD8-B71B-0BA402D548F12919.jpg",
+      "credit" : "NPS Photo"
+    } ],
+    "parkCode" : "klse"
+  }, {
+    "name" : "Lake Roosevelt",
+    "states" : "WA",
+    "description" : "The ancient geologic landscape of the upper Columbia River cradles Lake Roosevelt in walls of stone carved by massive ice age floods. Come explore the shorelines and learn the stories of American Indians, traders and trappers, settlers and dam builders who called this place home. Swim, boat, hike, camp, and fish at this hidden gem in Northeast Washington, created by the Grand Coulee Dam.",
+    "activities" : [ {
+      "id" : "5F723BAD-7359-48FC-98FA-631592256E35",
+      "name" : "Auto and ATV"
+    }, {
+      "id" : "0B4A5320-216D-451A-9990-626E1D5ACE28",
+      "name" : "Scenic Driving"
+    }, {
       "id" : "13A57703-BB1A-41A2-94B8-53B692EB7238",
       "name" : "Astronomy"
     }, {
       "id" : "D37A0003-8317-4F04-8FB0-4CF0A272E195",
       "name" : "Stargazing"
     }, {
-      "id" : "7CE6E935-F839-4FEC-A63E-052B1DEF39D2",
-      "name" : "Biking"
+      "id" : "071BA73C-1D3C-46D4-A53C-00D5602F7F0E",
+      "name" : "Boating"
     }, {
-      "id" : "8D778629-F603-4C50-A121-6F4BB2FE2C4B",
-      "name" : "Road Biking"
+      "id" : "E0E4CE55-3119-46DE-86EB-6817CD8D5F30",
+      "name" : "Motorized Boating"
+    }, {
+      "id" : "BB0B8CD0-BF4C-4517-9980-CFE2D149C7B4",
+      "name" : "Sailing"
     }, {
       "id" : "A59947B7-3376-49B4-AD02-C0423E08C5F7",
       "name" : "Camping"
     }, {
-      "id" : "4A58AF13-E8FB-4530-B41A-97DF0B0C77B7",
-      "name" : "Backcountry Camping"
+      "id" : "907E8125-15E4-483C-8EAD-B9FA1E85C6F8",
+      "name" : "Canoe or Kayak Camping"
     }, {
       "id" : "9159DF0F-951D-4AAE-9987-CEB3CE2A9ADA",
       "name" : "Car or Front Country Camping"
-    }, {
-      "id" : "80229F2D-972E-40A8-8860-232551CC30D6",
-      "name" : "Horse Camping (see also Horse/Stock Use)"
     }, {
       "id" : "7CFF5F03-5ECC-4F5A-8572-75D1F0976C0C",
       "name" : "Group Camping"
@@ -292,15 +502,180 @@
       "id" : "C5C5971C-E325-4CEB-8C81-EE49A881DF17",
       "name" : "RV Camping"
     }, {
-      "id" : "07CBCA6A-46B8-413F-8B6C-ABEDEBF9853E",
-      "name" : "Canyoneering"
+      "id" : "AE42B46C-E4B7-4889-A122-08FE180371AE",
+      "name" : "Fishing"
     }, {
-      "id" : "B12FAAB9-713F-4B38-83E4-A273F5A43C77",
-      "name" : "Climbing"
+      "id" : "25FB188F-5AAD-459A-9092-28A9801709FF",
+      "name" : "Freshwater Fishing"
     }, {
-      "id" : "87D3B1CD-3903-4561-ABB1-2DD870C43F2F",
-      "name" : "Rock Climbing"
+      "id" : "1DFACD97-1B9C-4F5A-80F2-05593604799E",
+      "name" : "Food"
     }, {
+      "id" : "C6D3230A-2CEA-4AFE-BFF3-DC1E2C2C4BB4",
+      "name" : "Picnicking"
+    }, {
+      "id" : "42FD78B9-2B90-4AA9-BC43-F10E9FEA8B5A",
+      "name" : "Hands-On"
+    }, {
+      "id" : "31F88DA6-696F-441F-89CF-D7B1415C4CB9",
+      "name" : "Citizen Science"
+    }, {
+      "id" : "9456A40A-AF75-4AD3-8BE1-79C4A7DBEDFC",
+      "name" : "Volunteer Vacation"
+    }, {
+      "id" : "BFF8C027-7C8F-480B-A5F8-CD8CE490BFBA",
+      "name" : "Hiking"
+    }, {
+      "id" : "45261C0A-00D8-4C27-A1F8-029F933A0D34",
+      "name" : "Front-Country Hiking"
+    }, {
+      "id" : "8386EEAF-985F-4DE8-9037-CCF91975AC94",
+      "name" : "Hunting and Gathering"
+    }, {
+      "id" : "25559F45-F162-4B8B-BEC2-B341034A2AF4",
+      "name" : "Hunting"
+    }, {
+      "id" : "4D224BCA-C127-408B-AC75-A51563C42411",
+      "name" : "Paddling"
+    }, {
+      "id" : "21DB3AFC-8AAC-4665-BC1F-7198C0685983",
+      "name" : "Canoeing"
+    }, {
+      "id" : "256543C7-4322-48B3-8978-765E89AA9431",
+      "name" : "Canoe or Kayak Camping"
+    }, {
+      "id" : "F353A9ED-4A08-456E-8DEC-E61974D0FEB6",
+      "name" : "Kayaking"
+    }, {
+      "id" : "DF4A35E0-7983-4A3E-BC47-F37B872B0F25",
+      "name" : "Junior Ranger Program"
+    }, {
+      "id" : "587BB2D3-EC35-41B2-B3F7-A39E2B088AEE",
+      "name" : "Swimming"
+    }, {
+      "id" : "82C3230F-6F87-452C-A01B-F8458867B26A",
+      "name" : "Freshwater Swimming"
+    }, {
+      "id" : "0C0D142F-06B5-4BE1-8B44-491B90F93DEB",
+      "name" : "Park Film"
+    }, {
+      "id" : "C8F98B28-3C10-41AE-AA99-092B3B398C43",
+      "name" : "Museum Exhibits"
+    } ],
+    "addresses" : [ {
+      "postalCode" : "99116",
+      "city" : "Coulee Dam",
+      "stateCode" : "WA",
+      "line1" : "Lake Roosevelt National Recreation Area"
+    }, {
+      "postalCode" : "99116",
+      "city" : "Coulee Dam",
+      "stateCode" : "WA",
+      "line1" : "Lake Roosevelt National Recreation Area"
+    } ],
+    "images" : [ {
+      "title" : "Lake Roosevelt 1",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/3C878C15-1DD8-B71B-0B3F6762ED559E9B.jpg",
+      "credit" : "NPS Photo"
+    }, {
+      "title" : "Lake Roosevelt 2",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/3C878DAA-1DD8-B71B-0B4CF81C1F46022F.jpg",
+      "credit" : "NPS Photo"
+    }, {
+      "title" : "Lake Roosevelt 3",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/3C878F09-1DD8-B71B-0B86DE98B7C35AF9.jpg",
+      "credit" : "NPS/Bausch"
+    }, {
+      "title" : "Lake Roosevelt 4",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/3C8791E4-1DD8-B71B-0B5B84AE35F46BB8.jpg",
+      "credit" : "NPS/Cadwell"
+    } ],
+    "parkCode" : "laro"
+  }, {
+    "name" : "Lewis & Clark",
+    "states" : "IA,ID,IL,IN,KS,KY,MO,MT,NE,ND,OH,OR,PA,SD,WA,WV",
+    "description" : "The Lewis and Clark National Historic Trail winds nearly 4,900 miles through the homelands of more than 60 Tribal nations. It follows the historic outbound and inbound routes of the Lewis and Clark Expedition of 1803-1806 from Pittsburgh, Pennsylvania to the Pacific Ocean. Follow the trail to find the people, places, and stories that make up the complex legacy of the expedition.",
+    "activities" : [ {
+      "id" : "5F723BAD-7359-48FC-98FA-631592256E35",
+      "name" : "Auto and ATV"
+    }, {
+      "id" : "0B4A5320-216D-451A-9990-626E1D5ACE28",
+      "name" : "Scenic Driving"
+    }, {
+      "id" : "7CE6E935-F839-4FEC-A63E-052B1DEF39D2",
+      "name" : "Biking"
+    }, {
+      "id" : "071BA73C-1D3C-46D4-A53C-00D5602F7F0E",
+      "name" : "Boating"
+    }, {
+      "id" : "AE42B46C-E4B7-4889-A122-08FE180371AE",
+      "name" : "Fishing"
+    }, {
+      "id" : "B33DC9B6-0B7D-4322-BAD7-A13A34C584A3",
+      "name" : "Guided Tours"
+    }, {
+      "id" : "BFF8C027-7C8F-480B-A5F8-CD8CE490BFBA",
+      "name" : "Hiking"
+    }, {
+      "id" : "B204DE60-5A24-43DD-8902-C81625A09A74",
+      "name" : "Living History"
+    }, {
+      "id" : "DF4A35E0-7983-4A3E-BC47-F37B872B0F25",
+      "name" : "Junior Ranger Program"
+    }, {
+      "id" : "01D717BC-18BB-4FE4-95BA-6B13AD702038",
+      "name" : "Snowshoeing"
+    }, {
+      "id" : "0B685688-3405-4E2A-ABBA-E3069492EC50",
+      "name" : "Wildlife Watching"
+    }, {
+      "id" : "C8F98B28-3C10-41AE-AA99-092B3B398C43",
+      "name" : "Museum Exhibits"
+    }, {
+      "id" : "24380E3F-AD9D-4E38-BF13-C8EEB21893E7",
+      "name" : "Shopping"
+    }, {
+      "id" : "467DC8B8-0B7D-436D-A026-80A22358F615",
+      "name" : "Bookstore and Park Store"
+    } ],
+    "addresses" : [ {
+      "postalCode" : "68102",
+      "city" : "Omaha",
+      "stateCode" : "NE",
+      "line1" : "601 Riverfront Dr."
+    }, {
+      "postalCode" : "68102",
+      "city" : "Omaha",
+      "stateCode" : "NE",
+      "line1" : "601 Riverfront Dr."
+    } ],
+    "images" : [ {
+      "title" : "Giant Springs",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/FA29AF56-DF2B-8692-40F8422E38FB9093.jpg",
+      "credit" : "NPS Photo / Alex Wiles"
+    }, {
+      "title" : "Sunset at Missouri Headwaters State Park, Montana",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/F1C7153C-B6EF-4136-AA61C1984938D01A.jpg",
+      "credit" : "NPS Photo / Alex Wiles"
+    }, {
+      "title" : "Biking the Lewis and Clark National Historic Trail",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/F1E53C07-CAC7-1E47-F3002F9102E59BA6.jpg",
+      "credit" : "NPS Photo / Alex Wiles"
+    }, {
+      "title" : "Beacon Rock",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/F21788EE-E877-C00C-257B0EB8AD8F49DB.jpg",
+      "credit" : "NPS Photo"
+    }, {
+      "title" : "Park overlooking Ohio River in Wheeling, West Virginia",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/F24E8939-E10B-C0DE-12D5E248708871EA.jpg",
+      "credit" : "NPS Photo"
+    } ],
+    "parkCode" : "lecl"
+  }, {
+    "name" : "Lewis and Clark",
+    "states" : "OR,WA",
+    "description" : "Explore the timeless rainforests and majestic coastal vistas. Discover the rich heritage of the native people. Unfold the dramatic stories of America's most famous explorers. The park encompasses sites along the Columbia River and the Pacific Coast. Follow in the footsteps of the explorers and have an adventure in history.",
+    "activities" : [ {
       "id" : "AE42B46C-E4B7-4889-A122-08FE180371AE",
       "name" : "Fishing"
     }, {
@@ -316,47 +691,29 @@
       "id" : "A0631906-9672-4583-91DE-113B93DB6B6E",
       "name" : "Self-Guided Tours - Walking"
     }, {
-      "id" : "C7D5A145-F8EB-4C37-9E92-2F6C6206B196",
-      "name" : "Self-Guided Tours - Auto"
-    }, {
-      "id" : "42FD78B9-2B90-4AA9-BC43-F10E9FEA8B5A",
-      "name" : "Hands-On"
-    }, {
-      "id" : "31F88DA6-696F-441F-89CF-D7B1415C4CB9",
-      "name" : "Citizen Science"
-    }, {
-      "id" : "19A59EFB-DF4B-4049-9EE1-A784CAC9C70C",
-      "name" : "Arts and Crafts"
-    }, {
-      "id" : "9456A40A-AF75-4AD3-8BE1-79C4A7DBEDFC",
-      "name" : "Volunteer Vacation"
-    }, {
       "id" : "BFF8C027-7C8F-480B-A5F8-CD8CE490BFBA",
       "name" : "Hiking"
-    }, {
-      "id" : "7C37B79B-D02D-49EB-9020-3DB8299B748A",
-      "name" : "Backcountry Hiking"
     }, {
       "id" : "45261C0A-00D8-4C27-A1F8-029F933A0D34",
       "name" : "Front-Country Hiking"
     }, {
-      "id" : "EADFAEEB-4D57-49DB-9C58-BF8DC241C24F",
-      "name" : "Off-Trail Permitted Hiking"
+      "id" : "8386EEAF-985F-4DE8-9037-CCF91975AC94",
+      "name" : "Hunting and Gathering"
     }, {
-      "id" : "0307955A-B65C-4CE4-A780-EB36BAAADF0B",
-      "name" : "Horse Trekking"
-    }, {
-      "id" : "788C7572-5425-49EF-A0BF-5A0DF93F7542",
-      "name" : "Horse Camping (see also camping)"
-    }, {
-      "id" : "1886DA47-0AEC-4568-B9C2-8E9BC316AAAC",
-      "name" : "Horseback Riding"
+      "id" : "8286295F-0932-4491-9350-280C9848E6AB",
+      "name" : "Gathering and Foraging"
     }, {
       "id" : "B204DE60-5A24-43DD-8902-C81625A09A74",
       "name" : "Living History"
     }, {
-      "id" : "28880A5B-3D29-41AC-BD8B-24743E7A070F",
-      "name" : "First Person Interpretation"
+      "id" : "237A1662-6018-4115-ABD1-B8CCF827E703",
+      "name" : "Historic Weapons Demonstration"
+    }, {
+      "id" : "4D224BCA-C127-408B-AC75-A51563C42411",
+      "name" : "Paddling"
+    }, {
+      "id" : "F353A9ED-4A08-456E-8DEC-E61974D0FEB6",
+      "name" : "Kayaking"
     }, {
       "id" : "DF4A35E0-7983-4A3E-BC47-F37B872B0F25",
       "name" : "Junior Ranger Program"
@@ -383,37 +740,910 @@
       "name" : "Gift Shop and Souvenirs"
     } ],
     "addresses" : [ {
-      "postalCode" : "84775",
-      "city" : "Torrey",
-      "stateCode" : "UT",
-      "line1" : "52 West Headquarters Drive"
+      "postalCode" : "97103",
+      "city" : "Astoria",
+      "stateCode" : "OR",
+      "line1" : "Lewis and Clark National Historical Park"
     }, {
-      "postalCode" : "84775",
-      "city" : "Torrey",
-      "stateCode" : "UT",
-      "line1" : "HC 70, Box 15"
+      "postalCode" : "97103",
+      "city" : "Astoria",
+      "stateCode" : "OR",
+      "line1" : "Lewis and Clark National Historical Park"
     } ],
     "images" : [ {
-      "title" : "Gifford House and Pendleton Barn",
-      "url" : "https://www.nps.gov/common/uploads/structured_data/3C82E3C7-1DD8-B71B-0B4181834EE46AED.jpg",
+      "title" : "Fort Clatsop",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/54612AA3-0734-3D97-137865DFB9918D11.jpg",
       "credit" : "NPS Photo"
     }, {
-      "title" : "Hickman Bridge",
-      "url" : "https://www.nps.gov/common/uploads/structured_data/3C82E4FB-1DD8-B71B-0B8614194A6D08FA.jpg",
+      "title" : "Fort Clatsop Visitor Center and Sign",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/577C80DE-B699-CB42-DF941F25F226A9B7.jpg",
       "credit" : "NPS Photo"
     }, {
-      "title" : "Strike Valley",
-      "url" : "https://www.nps.gov/common/uploads/structured_data/3C82E601-1DD8-B71B-0BCB6A40DE28B1CB.jpg",
+      "title" : "Fort Clatsop Main Entrance Sign",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/576ABE68-A03E-AAE6-D195912438D64556.jpg",
       "credit" : "NPS Photo"
     }, {
-      "title" : "Capitol Reef Visitor Center with \"The Castle\"",
-      "url" : "https://www.nps.gov/common/uploads/structured_data/3C82E740-1DD8-B71B-0B6FC6B644FB96D0.jpg",
+      "title" : "Netul River Trail Bridge",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/562BF04B-90F9-16EA-90218C826AE639C9.jpg",
+      "credit" : "NPS Photo / B. Kasper"
+    }, {
+      "title" : "Canoe Bow on the Netul River",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/57362028-C232-556B-6335D32C2A3C2B29.jpg",
       "credit" : "NPS Photo"
     }, {
-      "title" : "Capitol Reef Peach Orchard",
-      "url" : "https://www.nps.gov/common/uploads/structured_data/3C82E9BB-1DD8-B71B-0B30AEA8D8052350.jpg",
+      "title" : "Kayaks from Otter Point",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/D0EFF241-D9EA-F81E-CD6F5E6EDE2B7C48.jpg",
+      "credit" : "NPS Photo / Jim Wilson"
+    } ],
+    "parkCode" : "lewi"
+  }, {
+    "name" : "Manhattan Project",
+    "states" : "NM,WA,TN",
+    "description" : "The Manhattan Project is one of the most transformative events of the 20th century. It ushered in the nuclear age with the development of the world’s first atomic bombs. Most of this development took place in three secret communities located in Hanford, WA, Los Alamos, NM and Oak Ridge, TN. Today, you can visit these three sites that make up Manhattan Project National Historical Site.",
+    "activities" : [ {
+      "id" : "B33DC9B6-0B7D-4322-BAD7-A13A34C584A3",
+      "name" : "Guided Tours"
+    }, {
+      "id" : "DF4A35E0-7983-4A3E-BC47-F37B872B0F25",
+      "name" : "Junior Ranger Program"
+    }, {
+      "id" : "0C0D142F-06B5-4BE1-8B44-491B90F93DEB",
+      "name" : "Park Film"
+    }, {
+      "id" : "C8F98B28-3C10-41AE-AA99-092B3B398C43",
+      "name" : "Museum Exhibits"
+    } ],
+    "addresses" : [ {
+      "postalCode" : "80225-0287",
+      "city" : "Denver",
+      "stateCode" : "CO",
+      "line1" : "National Park Service, Manhattan Project National Historical Park"
+    }, {
+      "postalCode" : "80225-0287",
+      "city" : "Denver",
+      "stateCode" : "CO",
+      "line1" : "National Park Service, Manhattan Project National Historical Park"
+    } ],
+    "images" : [ {
+      "title" : "Oppenheimer and Groves at Trinity Test Site",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/E310F561-EC32-2AE8-9AE265815F917C5C.jpg",
+      "credit" : "Los Alamos National Laboratory"
+    }, {
+      "title" : "Hanford B Reactor",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/87DC8664-0A66-3B76-6B9BF543D9581735.jpg",
+      "credit" : "NPS"
+    }, {
+      "title" : "Hanford Hike Through Time",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/88034665-FD02-40D7-B8CBF850271EC139.jpg",
+      "credit" : "NPS"
+    }, {
+      "title" : "Los Alamos Slotin Building",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/880E8585-ECDE-EB3C-34AF9A04F3EAD72E.png",
+      "credit" : "NPS"
+    }, {
+      "title" : "Los Alamos Ashley Pond Walk",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/883C144E-C84E-C110-BBCD64BD1F4F0656.jpg",
+      "credit" : "NPS"
+    }, {
+      "title" : "Oak Ridge X-10 Control Panel",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/884A2FA9-FC95-36D1-FB9C52521E3FED66.jpg",
+      "credit" : "NPS"
+    }, {
+      "title" : "Oak Ridge Family Fun",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/885549FD-FC4D-74F5-D3CB06DF1C3B41CD.jpg",
+      "credit" : "NPS"
+    } ],
+    "parkCode" : "mapr"
+  }, {
+    "name" : "Minidoka",
+    "states" : "ID,WA",
+    "description" : "During World War II, over 120,000 people of Japanese ancestry were forcibly removed from their homes and incarcerated without due process of law. Although little remains of the barbed-wire fences and tar-papered barracks, the Minidoka concentration camp once held over 13,000 Japanese Americans in the Idaho desert. Minidoka preserves their legacy and teaches the importance of civil liberties.",
+    "activities" : [ {
+      "id" : "B33DC9B6-0B7D-4322-BAD7-A13A34C584A3",
+      "name" : "Guided Tours"
+    }, {
+      "id" : "A0631906-9672-4583-91DE-113B93DB6B6E",
+      "name" : "Self-Guided Tours - Walking"
+    }, {
+      "id" : "DF4A35E0-7983-4A3E-BC47-F37B872B0F25",
+      "name" : "Junior Ranger Program"
+    }, {
+      "id" : "C8F98B28-3C10-41AE-AA99-092B3B398C43",
+      "name" : "Museum Exhibits"
+    } ],
+    "addresses" : [ {
+      "postalCode" : "83338",
+      "city" : "Jerome",
+      "stateCode" : "ID",
+      "line1" : "1428 Hunt Road"
+    }, {
+      "postalCode" : "83338",
+      "city" : "Jerome",
+      "stateCode" : "ID",
+      "line1" : "1428 Hunt Road"
+    } ],
+    "images" : [ {
+      "title" : "Origami Go Around",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/3C874621-1DD8-B71B-0B29C1E739E9977F.jpg",
+      "credit" : "NPS Photo"
+    }, {
+      "title" : "The Replicated Minidoka Honor Roll",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/3C87F4CF-1DD8-B71B-0BEC68909801B45D.jpg",
+      "credit" : "NPS Photo"
+    }, {
+      "title" : "View Across the Barbed Wire",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/3C87FD67-1DD8-B71B-0BD40ECD281047FC.jpg",
+      "credit" : "NPS Photo"
+    }, {
+      "title" : "Looking at the northside Canal",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/3C87FF9B-1DD8-B71B-0B8BF59A9E00F279.jpg",
+      "credit" : "NPS Photo"
+    }, {
+      "title" : "An Original Barrack Returns to the Site",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/3C8801A7-1DD8-B71B-0B72513C885927BE.jpg",
       "credit" : "NPS Photo"
     } ],
-    "parkCode" : "care"
+    "parkCode" : "miin"
+  }, {
+    "name" : "Mount Rainier",
+    "states" : "WA",
+    "description" : "Ascending to 14,410 feet above sea level, Mount Rainier stands as an icon in the Washington landscape. An active volcano, Mount Rainier is the most glaciated peak in the contiguous U.S.A., spawning five major rivers. Subalpine wildflower meadows ring the icy volcano while ancient forest cloaks Mount Rainier’s lower slopes. Wildlife abounds in the park’s ecosystems. A lifetime of discovery awaits.",
+    "activities" : [ {
+      "id" : "5F723BAD-7359-48FC-98FA-631592256E35",
+      "name" : "Auto and ATV"
+    }, {
+      "id" : "0B4A5320-216D-451A-9990-626E1D5ACE28",
+      "name" : "Scenic Driving"
+    }, {
+      "id" : "13A57703-BB1A-41A2-94B8-53B692EB7238",
+      "name" : "Astronomy"
+    }, {
+      "id" : "D37A0003-8317-4F04-8FB0-4CF0A272E195",
+      "name" : "Stargazing"
+    }, {
+      "id" : "7CE6E935-F839-4FEC-A63E-052B1DEF39D2",
+      "name" : "Biking"
+    }, {
+      "id" : "A59947B7-3376-49B4-AD02-C0423E08C5F7",
+      "name" : "Camping"
+    }, {
+      "id" : "4A58AF13-E8FB-4530-B41A-97DF0B0C77B7",
+      "name" : "Backcountry Camping"
+    }, {
+      "id" : "9159DF0F-951D-4AAE-9987-CEB3CE2A9ADA",
+      "name" : "Car or Front Country Camping"
+    }, {
+      "id" : "7CFF5F03-5ECC-4F5A-8572-75D1F0976C0C",
+      "name" : "Group Camping"
+    }, {
+      "id" : "B12FAAB9-713F-4B38-83E4-A273F5A43C77",
+      "name" : "Climbing"
+    }, {
+      "id" : "977B3209-68A2-4BCE-97A9-EA0CAC320664",
+      "name" : "Mountain Climbing"
+    }, {
+      "id" : "AE42B46C-E4B7-4889-A122-08FE180371AE",
+      "name" : "Fishing"
+    }, {
+      "id" : "25FB188F-5AAD-459A-9092-28A9801709FF",
+      "name" : "Freshwater Fishing"
+    }, {
+      "id" : "1DFACD97-1B9C-4F5A-80F2-05593604799E",
+      "name" : "Food"
+    }, {
+      "id" : "E53E1320-9B17-41DC-86A5-37EB7D622572",
+      "name" : "Dining"
+    }, {
+      "id" : "C6D3230A-2CEA-4AFE-BFF3-DC1E2C2C4BB4",
+      "name" : "Picnicking"
+    }, {
+      "id" : "B33DC9B6-0B7D-4322-BAD7-A13A34C584A3",
+      "name" : "Guided Tours"
+    }, {
+      "id" : "A0631906-9672-4583-91DE-113B93DB6B6E",
+      "name" : "Self-Guided Tours - Walking"
+    }, {
+      "id" : "C7D5A145-F8EB-4C37-9E92-2F6C6206B196",
+      "name" : "Self-Guided Tours - Auto"
+    }, {
+      "id" : "42FD78B9-2B90-4AA9-BC43-F10E9FEA8B5A",
+      "name" : "Hands-On"
+    }, {
+      "id" : "31F88DA6-696F-441F-89CF-D7B1415C4CB9",
+      "name" : "Citizen Science"
+    }, {
+      "id" : "BFF8C027-7C8F-480B-A5F8-CD8CE490BFBA",
+      "name" : "Hiking"
+    }, {
+      "id" : "7C37B79B-D02D-49EB-9020-3DB8299B748A",
+      "name" : "Backcountry Hiking"
+    }, {
+      "id" : "45261C0A-00D8-4C27-A1F8-029F933A0D34",
+      "name" : "Front-Country Hiking"
+    }, {
+      "id" : "B204DE60-5A24-43DD-8902-C81625A09A74",
+      "name" : "Living History"
+    }, {
+      "id" : "DF4A35E0-7983-4A3E-BC47-F37B872B0F25",
+      "name" : "Junior Ranger Program"
+    }, {
+      "id" : "F9B1D433-6B86-4804-AED7-B50A519A3B7C",
+      "name" : "Skiing"
+    }, {
+      "id" : "C38B3C62-1BBF-4EA1-A1A2-35DE21B74C17",
+      "name" : "Snow Play"
+    }, {
+      "id" : "7C912B83-1B1B-4807-9B66-97C12211E48E",
+      "name" : "Snowmobiling"
+    }, {
+      "id" : "01D717BC-18BB-4FE4-95BA-6B13AD702038",
+      "name" : "Snowshoeing"
+    }, {
+      "id" : "0B685688-3405-4E2A-ABBA-E3069492EC50",
+      "name" : "Wildlife Watching"
+    }, {
+      "id" : "5A2C91D1-50EC-4B24-8BED-A2E11A1892DF",
+      "name" : "Birdwatching"
+    }, {
+      "id" : "0C0D142F-06B5-4BE1-8B44-491B90F93DEB",
+      "name" : "Park Film"
+    }, {
+      "id" : "C8F98B28-3C10-41AE-AA99-092B3B398C43",
+      "name" : "Museum Exhibits"
+    }, {
+      "id" : "24380E3F-AD9D-4E38-BF13-C8EEB21893E7",
+      "name" : "Shopping"
+    }, {
+      "id" : "467DC8B8-0B7D-436D-A026-80A22358F615",
+      "name" : "Bookstore and Park Store"
+    } ],
+    "addresses" : [ {
+      "postalCode" : "98304",
+      "city" : "Ashford",
+      "stateCode" : "WA",
+      "line1" : "55210 238th Avenue East"
+    }, {
+      "postalCode" : "98304",
+      "city" : "Ashford",
+      "stateCode" : "WA",
+      "line1" : "55210 238th Avenue East"
+    } ],
+    "images" : [ {
+      "title" : "Silver Forest Sunset",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/49F34094-B893-7DD6-5AE0F0220724B0EF.jpg",
+      "credit" : "JD Hascup Photo"
+    }, {
+      "title" : "Climbing Mount Rainier",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/3C7CEEF2-1DD8-B71B-0B9F3B666327E5D1.jpg",
+      "credit" : "NPS Photo"
+    }, {
+      "title" : "Giants of the Old-Growth Forest",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/3C7C6C47-1DD8-B71B-0BFF9108D08A7FD3.jpg",
+      "credit" : "NPS Photo / Emily Brouwer"
+    }, {
+      "title" : "Marmot in Morning Dew",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/3C7C6D8C-1DD8-B71B-0BA69E7F583E25A5.jpg",
+      "credit" : "NPS Photo"
+    }, {
+      "title" : "Kids Hiking Through Wildflower Meadow",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/3C7CECB5-1DD8-B71B-0B54548D95910CF4.jpg",
+      "credit" : "NPS Photo / Steve Redman"
+    }, {
+      "title" : "Mount Rainier at sunset",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/3C7C68E6-1DD8-B71B-0B42E9A3C7ECA52D.jpg",
+      "credit" : "NPS Photo / Emily Brouwer"
+    }, {
+      "title" : "National Park Inn in Winter",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/3C7C6EE9-1DD8-B71B-0B62C52C6844CC70.jpg",
+      "credit" : "NPS Photo"
+    }, {
+      "title" : "Wildflower Meadow Along the Wonderland Trail",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/3C7C6A93-1DD8-B71B-0BA75B16C5FA3690.jpeg",
+      "credit" : "NPS Photo/ K. Loving"
+    }, {
+      "title" : "Mount Rainier from Aurora Lake",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/1FD67031-C1A8-4462-6B815FF24500A576.jpeg",
+      "credit" : "NPS Photo"
+    } ],
+    "parkCode" : "mora"
+  }, {
+    "name" : "Nez Perce",
+    "states" : "ID,MT,OR,WA",
+    "description" : "Since time immemorial, the valleys, prairies, mountains, and plateaus of the inland northwest have been home to the nimíipuu (Nez Perce) people. Extremely resilient, they survived the settling of the United States and adapted to a changed world. Nez Perce National Historical Park consists of 38 places important to the history and culture of the nimíipuu. Explore these places. Learn their stories.",
+    "activities" : [ {
+      "id" : "09DF0950-D319-4557-A57E-04CD2F63FF42",
+      "name" : "Arts and Culture"
+    }, {
+      "id" : "C59E231D-55FC-4B37-BC5B-FF76383951B5",
+      "name" : "Craft Demonstrations"
+    }, {
+      "id" : "FAED7F97-3474-4C21-AB42-FB0768A2F826",
+      "name" : "Cultural Demonstrations"
+    }, {
+      "id" : "1DFACD97-1B9C-4F5A-80F2-05593604799E",
+      "name" : "Food"
+    }, {
+      "id" : "C6D3230A-2CEA-4AFE-BFF3-DC1E2C2C4BB4",
+      "name" : "Picnicking"
+    }, {
+      "id" : "B33DC9B6-0B7D-4322-BAD7-A13A34C584A3",
+      "name" : "Guided Tours"
+    }, {
+      "id" : "A0631906-9672-4583-91DE-113B93DB6B6E",
+      "name" : "Self-Guided Tours - Walking"
+    }, {
+      "id" : "C7D5A145-F8EB-4C37-9E92-2F6C6206B196",
+      "name" : "Self-Guided Tours - Auto"
+    }, {
+      "id" : "BFF8C027-7C8F-480B-A5F8-CD8CE490BFBA",
+      "name" : "Hiking"
+    }, {
+      "id" : "0307955A-B65C-4CE4-A780-EB36BAAADF0B",
+      "name" : "Horse Trekking"
+    }, {
+      "id" : "DF4A35E0-7983-4A3E-BC47-F37B872B0F25",
+      "name" : "Junior Ranger Program"
+    }, {
+      "id" : "0B685688-3405-4E2A-ABBA-E3069492EC50",
+      "name" : "Wildlife Watching"
+    }, {
+      "id" : "5A2C91D1-50EC-4B24-8BED-A2E11A1892DF",
+      "name" : "Birdwatching"
+    }, {
+      "id" : "0C0D142F-06B5-4BE1-8B44-491B90F93DEB",
+      "name" : "Park Film"
+    }, {
+      "id" : "C8F98B28-3C10-41AE-AA99-092B3B398C43",
+      "name" : "Museum Exhibits"
+    }, {
+      "id" : "24380E3F-AD9D-4E38-BF13-C8EEB21893E7",
+      "name" : "Shopping"
+    }, {
+      "id" : "467DC8B8-0B7D-436D-A026-80A22358F615",
+      "name" : "Bookstore and Park Store"
+    }, {
+      "id" : "43800AD1-D439-40F3-AAB3-9FB651FE45BB",
+      "name" : "Gift Shop and Souvenirs"
+    } ],
+    "addresses" : [ {
+      "postalCode" : "83540-9715",
+      "city" : "Lapwai",
+      "stateCode" : "ID",
+      "line1" : "Nez Perce National Historical Park"
+    }, {
+      "postalCode" : "83540-9715",
+      "city" : "Lapwai",
+      "stateCode" : "ID",
+      "line1" : "Nez Perce National Historical Park"
+    } ],
+    "images" : [ {
+      "title" : "Painted Tipi",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/3C87B14F-1DD8-B71B-0B562F4DFC141863.jpg",
+      "credit" : "NPS Photo"
+    }, {
+      "title" : "Buffalo Eddy",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/3C87AFBC-1DD8-B71B-0BE33C27113E993C.jpg",
+      "credit" : "NPS Photo"
+    }, {
+      "title" : "Take Flight",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/3C879308-1DD8-B71B-0B32D10FCFA3C59F.jpg",
+      "credit" : "NPS Photo"
+    }, {
+      "title" : "Buffalo Hide Tipi",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/3C87B26A-1DD8-B71B-0B8572F892412699.jpg",
+      "credit" : "NPS Photo"
+    }, {
+      "title" : "Appaloosa Horse Parade",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/3C87B38F-1DD8-B71B-0B01C01A2154CABB.jpg",
+      "credit" : "NPS Photo"
+    }, {
+      "title" : "Weippe Camas",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/3C87B657-1DD8-B71B-0B0970B12C65A5F7.jpg",
+      "credit" : "NPS Photo"
+    } ],
+    "parkCode" : "nepe"
+  }, {
+    "name" : "North Cascades",
+    "states" : "WA",
+    "description" : "Less than three hours from Seattle, an alpine landscape beckons. Discover communities of life adapted to moisture in the west and recurring fire in the east. Explore jagged peaks crowned by more than 300 glaciers. Listen to cascading waters in forested valleys. Witness a landscape sensitive to the Earth's changing climate. Help steward the ecological heart of the Cascades.",
+    "activities" : [ {
+      "id" : "5F723BAD-7359-48FC-98FA-631592256E35",
+      "name" : "Auto and ATV"
+    }, {
+      "id" : "0B4A5320-216D-451A-9990-626E1D5ACE28",
+      "name" : "Scenic Driving"
+    }, {
+      "id" : "7CE6E935-F839-4FEC-A63E-052B1DEF39D2",
+      "name" : "Biking"
+    }, {
+      "id" : "8D778629-F603-4C50-A121-6F4BB2FE2C4B",
+      "name" : "Road Biking"
+    }, {
+      "id" : "071BA73C-1D3C-46D4-A53C-00D5602F7F0E",
+      "name" : "Boating"
+    }, {
+      "id" : "E0E4CE55-3119-46DE-86EB-6817CD8D5F30",
+      "name" : "Motorized Boating"
+    }, {
+      "id" : "A510F02B-8938-4679-A4F9-76580BCAE9C7",
+      "name" : "Boat Tour"
+    }, {
+      "id" : "A59947B7-3376-49B4-AD02-C0423E08C5F7",
+      "name" : "Camping"
+    }, {
+      "id" : "4A58AF13-E8FB-4530-B41A-97DF0B0C77B7",
+      "name" : "Backcountry Camping"
+    }, {
+      "id" : "907E8125-15E4-483C-8EAD-B9FA1E85C6F8",
+      "name" : "Canoe or Kayak Camping"
+    }, {
+      "id" : "9159DF0F-951D-4AAE-9987-CEB3CE2A9ADA",
+      "name" : "Car or Front Country Camping"
+    }, {
+      "id" : "80229F2D-972E-40A8-8860-232551CC30D6",
+      "name" : "Horse Camping (see also Horse/Stock Use)"
+    }, {
+      "id" : "7CFF5F03-5ECC-4F5A-8572-75D1F0976C0C",
+      "name" : "Group Camping"
+    }, {
+      "id" : "C5C5971C-E325-4CEB-8C81-EE49A881DF17",
+      "name" : "RV Camping"
+    }, {
+      "id" : "B12FAAB9-713F-4B38-83E4-A273F5A43C77",
+      "name" : "Climbing"
+    }, {
+      "id" : "87D3B1CD-3903-4561-ABB1-2DD870C43F2F",
+      "name" : "Rock Climbing"
+    }, {
+      "id" : "AE42B46C-E4B7-4889-A122-08FE180371AE",
+      "name" : "Fishing"
+    }, {
+      "id" : "B33DC9B6-0B7D-4322-BAD7-A13A34C584A3",
+      "name" : "Guided Tours"
+    }, {
+      "id" : "3DE599E2-22ED-40BF-B383-EDA073563C1E",
+      "name" : "Bus/Shuttle Guided Tour"
+    }, {
+      "id" : "42FD78B9-2B90-4AA9-BC43-F10E9FEA8B5A",
+      "name" : "Hands-On"
+    }, {
+      "id" : "31F88DA6-696F-441F-89CF-D7B1415C4CB9",
+      "name" : "Citizen Science"
+    }, {
+      "id" : "BFF8C027-7C8F-480B-A5F8-CD8CE490BFBA",
+      "name" : "Hiking"
+    }, {
+      "id" : "45261C0A-00D8-4C27-A1F8-029F933A0D34",
+      "name" : "Front-Country Hiking"
+    }, {
+      "id" : "0307955A-B65C-4CE4-A780-EB36BAAADF0B",
+      "name" : "Horse Trekking"
+    }, {
+      "id" : "1886DA47-0AEC-4568-B9C2-8E9BC316AAAC",
+      "name" : "Horseback Riding"
+    }, {
+      "id" : "4D224BCA-C127-408B-AC75-A51563C42411",
+      "name" : "Paddling"
+    }, {
+      "id" : "256543C7-4322-48B3-8978-765E89AA9431",
+      "name" : "Canoe or Kayak Camping"
+    }, {
+      "id" : "DF4A35E0-7983-4A3E-BC47-F37B872B0F25",
+      "name" : "Junior Ranger Program"
+    }, {
+      "id" : "24380E3F-AD9D-4E38-BF13-C8EEB21893E7",
+      "name" : "Shopping"
+    }, {
+      "id" : "467DC8B8-0B7D-436D-A026-80A22358F615",
+      "name" : "Bookstore and Park Store"
+    } ],
+    "addresses" : [ {
+      "postalCode" : "98284",
+      "city" : "Sedro-Woolley",
+      "stateCode" : "WA",
+      "line1" : "810 State Route 20"
+    }, {
+      "postalCode" : "98284",
+      "city" : "Sedro-Woolley",
+      "stateCode" : "WA",
+      "line1" : "810 State Route 20"
+    } ],
+    "images" : [ {
+      "title" : "Stehekin - Looking down Lake Chelan",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/3C7A599D-1DD8-B71B-0BBDC12BEC5107B5.jpg",
+      "credit" : "NPS Photo/D.Dixon"
+    }, {
+      "title" : "Camping on Ross Lake",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/3C7A5B0D-1DD8-B71B-0B1104A95B7A2026.jpg",
+      "credit" : "NPS Photo/D. Dixon"
+    }, {
+      "title" : "Pelton Basin from Cascade Pass",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/3C7A5CC2-1DD8-B71B-0BC0F615561921EE.jpg",
+      "credit" : "NPS Photo/D. Dixon"
+    }, {
+      "title" : "Backpack the North Cascades",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/3C7A5E46-1DD8-B71B-0B63BF950D3D6FB2.jpg",
+      "credit" : "NPS Photo/D. Dixon"
+    }, {
+      "title" : "Jagged Mountain Peaks",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/3C7A5FF6-1DD8-B71B-0BAAFB88D0A3DC08.jpg",
+      "credit" : "NPS Photo/T. Baldwin"
+    } ],
+    "parkCode" : "noca"
+  }, {
+    "name" : "Olympic",
+    "states" : "WA",
+    "description" : "With its incredible range of precipitation and elevation, diversity is the hallmark of Olympic National Park. Encompassing nearly a million acres, the park protects a vast wilderness, thousands of years of human history, and several distinctly different ecosystems, including glacier-capped mountains, old-growth temperate rain forests, and over 70 miles of wild coastline. Come explore!",
+    "activities" : [ {
+      "id" : "13A57703-BB1A-41A2-94B8-53B692EB7238",
+      "name" : "Astronomy"
+    }, {
+      "id" : "D37A0003-8317-4F04-8FB0-4CF0A272E195",
+      "name" : "Stargazing"
+    }, {
+      "id" : "7CE6E935-F839-4FEC-A63E-052B1DEF39D2",
+      "name" : "Biking"
+    }, {
+      "id" : "8D778629-F603-4C50-A121-6F4BB2FE2C4B",
+      "name" : "Road Biking"
+    }, {
+      "id" : "071BA73C-1D3C-46D4-A53C-00D5602F7F0E",
+      "name" : "Boating"
+    }, {
+      "id" : "A59947B7-3376-49B4-AD02-C0423E08C5F7",
+      "name" : "Camping"
+    }, {
+      "id" : "4A58AF13-E8FB-4530-B41A-97DF0B0C77B7",
+      "name" : "Backcountry Camping"
+    }, {
+      "id" : "9159DF0F-951D-4AAE-9987-CEB3CE2A9ADA",
+      "name" : "Car or Front Country Camping"
+    }, {
+      "id" : "80229F2D-972E-40A8-8860-232551CC30D6",
+      "name" : "Horse Camping (see also Horse/Stock Use)"
+    }, {
+      "id" : "7CFF5F03-5ECC-4F5A-8572-75D1F0976C0C",
+      "name" : "Group Camping"
+    }, {
+      "id" : "C5C5971C-E325-4CEB-8C81-EE49A881DF17",
+      "name" : "RV Camping"
+    }, {
+      "id" : "B12FAAB9-713F-4B38-83E4-A273F5A43C77",
+      "name" : "Climbing"
+    }, {
+      "id" : "977B3209-68A2-4BCE-97A9-EA0CAC320664",
+      "name" : "Mountain Climbing"
+    }, {
+      "id" : "AE42B46C-E4B7-4889-A122-08FE180371AE",
+      "name" : "Fishing"
+    }, {
+      "id" : "25FB188F-5AAD-459A-9092-28A9801709FF",
+      "name" : "Freshwater Fishing"
+    }, {
+      "id" : "9BC03FAF-28F1-4609-BF6F-643F58071AED",
+      "name" : "Fly Fishing"
+    }, {
+      "id" : "17411C8D-5769-4D0F-ABD1-52ED03840C18",
+      "name" : "Saltwater Fishing"
+    }, {
+      "id" : "1DFACD97-1B9C-4F5A-80F2-05593604799E",
+      "name" : "Food"
+    }, {
+      "id" : "E53E1320-9B17-41DC-86A5-37EB7D622572",
+      "name" : "Dining"
+    }, {
+      "id" : "C6D3230A-2CEA-4AFE-BFF3-DC1E2C2C4BB4",
+      "name" : "Picnicking"
+    }, {
+      "id" : "B33DC9B6-0B7D-4322-BAD7-A13A34C584A3",
+      "name" : "Guided Tours"
+    }, {
+      "id" : "C7D5A145-F8EB-4C37-9E92-2F6C6206B196",
+      "name" : "Self-Guided Tours - Auto"
+    }, {
+      "id" : "42FD78B9-2B90-4AA9-BC43-F10E9FEA8B5A",
+      "name" : "Hands-On"
+    }, {
+      "id" : "31F88DA6-696F-441F-89CF-D7B1415C4CB9",
+      "name" : "Citizen Science"
+    }, {
+      "id" : "19A59EFB-DF4B-4049-9EE1-A784CAC9C70C",
+      "name" : "Arts and Crafts"
+    }, {
+      "id" : "9456A40A-AF75-4AD3-8BE1-79C4A7DBEDFC",
+      "name" : "Volunteer Vacation"
+    }, {
+      "id" : "BFF8C027-7C8F-480B-A5F8-CD8CE490BFBA",
+      "name" : "Hiking"
+    }, {
+      "id" : "7C37B79B-D02D-49EB-9020-3DB8299B748A",
+      "name" : "Backcountry Hiking"
+    }, {
+      "id" : "45261C0A-00D8-4C27-A1F8-029F933A0D34",
+      "name" : "Front-Country Hiking"
+    }, {
+      "id" : "0307955A-B65C-4CE4-A780-EB36BAAADF0B",
+      "name" : "Horse Trekking"
+    }, {
+      "id" : "788C7572-5425-49EF-A0BF-5A0DF93F7542",
+      "name" : "Horse Camping (see also camping)"
+    }, {
+      "id" : "4D224BCA-C127-408B-AC75-A51563C42411",
+      "name" : "Paddling"
+    }, {
+      "id" : "21DB3AFC-8AAC-4665-BC1F-7198C0685983",
+      "name" : "Canoeing"
+    }, {
+      "id" : "F353A9ED-4A08-456E-8DEC-E61974D0FEB6",
+      "name" : "Kayaking"
+    }, {
+      "id" : "DF4A35E0-7983-4A3E-BC47-F37B872B0F25",
+      "name" : "Junior Ranger Program"
+    }, {
+      "id" : "4D06CEED-90C6-4B69-B264-32CC90B69BA6",
+      "name" : "Tubing"
+    }, {
+      "id" : "67FDB577-518E-4A3E-B608-E78941116223",
+      "name" : "Snow Tubing"
+    }, {
+      "id" : "F9B1D433-6B86-4804-AED7-B50A519A3B7C",
+      "name" : "Skiing"
+    }, {
+      "id" : "EAB1EBDE-5B72-493F-8F8F-0EE5B1724436",
+      "name" : "Cross-Country Skiing"
+    }, {
+      "id" : "D99BCDA3-4363-438B-B3A8-06E6EA204C83",
+      "name" : "Downhill Skiing"
+    }, {
+      "id" : "C38B3C62-1BBF-4EA1-A1A2-35DE21B74C17",
+      "name" : "Snow Play"
+    }, {
+      "id" : "01D717BC-18BB-4FE4-95BA-6B13AD702038",
+      "name" : "Snowshoeing"
+    }, {
+      "id" : "AE3C95F5-E05B-4A28-81DD-1C5FD4BE88E2",
+      "name" : "Surfing"
+    }, {
+      "id" : "587BB2D3-EC35-41B2-B3F7-A39E2B088AEE",
+      "name" : "Swimming"
+    }, {
+      "id" : "586B4949-8D1B-4F03-8F6D-D1FCFE01AEF4",
+      "name" : "Pool Swimming"
+    }, {
+      "id" : "82C3230F-6F87-452C-A01B-F8458867B26A",
+      "name" : "Freshwater Swimming"
+    }, {
+      "id" : "C2801992-F34D-4974-A0F2-80FF04309EE4",
+      "name" : "Saltwater Swimming"
+    }, {
+      "id" : "0B685688-3405-4E2A-ABBA-E3069492EC50",
+      "name" : "Wildlife Watching"
+    }, {
+      "id" : "5A2C91D1-50EC-4B24-8BED-A2E11A1892DF",
+      "name" : "Birdwatching"
+    }, {
+      "id" : "0C0D142F-06B5-4BE1-8B44-491B90F93DEB",
+      "name" : "Park Film"
+    }, {
+      "id" : "C8F98B28-3C10-41AE-AA99-092B3B398C43",
+      "name" : "Museum Exhibits"
+    }, {
+      "id" : "24380E3F-AD9D-4E38-BF13-C8EEB21893E7",
+      "name" : "Shopping"
+    }, {
+      "id" : "467DC8B8-0B7D-436D-A026-80A22358F615",
+      "name" : "Bookstore and Park Store"
+    }, {
+      "id" : "43800AD1-D439-40F3-AAB3-9FB651FE45BB",
+      "name" : "Gift Shop and Souvenirs"
+    } ],
+    "addresses" : [ {
+      "postalCode" : "98362",
+      "city" : "Port Angeles",
+      "stateCode" : "WA",
+      "line1" : "Olympic National Park Visitor Center"
+    }, {
+      "postalCode" : "98362",
+      "city" : "Port Angeles",
+      "stateCode" : "WA",
+      "line1" : "600 E. Park Avenue"
+    } ],
+    "images" : [ {
+      "title" : "Roosevelt Elk",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/3C7B1DB4-1DD8-B71B-0B9DFEFDD398DB71.jpg",
+      "credit" : "NPS Photo/Jon Preston"
+    }, {
+      "title" : "Tide Pools of the Olympic Coast",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/3C7B20CD-1DD8-B71B-0B9ACC145EFE6B99.jpg",
+      "credit" : "NPS Photo/Bill Baccus"
+    }, {
+      "title" : "Mountain Sunset",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/3C7B1C43-1DD8-B71B-0B40240896925A49.jpg",
+      "credit" : "NPS Photo"
+    }, {
+      "title" : "Hurricane Ridge",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/3C7B1F36-1DD8-B71B-0B367264CE3B4EE8.jpg",
+      "credit" : "NPS Photo/Dave Turner"
+    }, {
+      "title" : "Olympic Forest",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/3C7B1A8C-1DD8-B71B-0B15D930BD8214F5.jpg",
+      "credit" : "NPS Photo"
+    } ],
+    "parkCode" : "olym"
+  }, {
+    "name" : "Oregon",
+    "states" : "ID,KS,MO,NE,OR,WA,WY",
+    "description" : "Imagine yourself an emigrant headed for Oregon: would promises of lush farmlands and a new beginning lure you to leave home and walk for weeks? More than 2,000 miles of trail ruts and traces can still be seen along the Oregon National Historic Trail in six states and serve as reminders of the sacrifices, struggles, and triumphs of early American settlers.",
+    "activities" : [ {
+      "id" : "5F723BAD-7359-48FC-98FA-631592256E35",
+      "name" : "Auto and ATV"
+    }, {
+      "id" : "0B4A5320-216D-451A-9990-626E1D5ACE28",
+      "name" : "Scenic Driving"
+    }, {
+      "id" : "B33DC9B6-0B7D-4322-BAD7-A13A34C584A3",
+      "name" : "Guided Tours"
+    }, {
+      "id" : "C7D5A145-F8EB-4C37-9E92-2F6C6206B196",
+      "name" : "Self-Guided Tours - Auto"
+    }, {
+      "id" : "BFF8C027-7C8F-480B-A5F8-CD8CE490BFBA",
+      "name" : "Hiking"
+    }, {
+      "id" : "0307955A-B65C-4CE4-A780-EB36BAAADF0B",
+      "name" : "Horse Trekking"
+    }, {
+      "id" : "1886DA47-0AEC-4568-B9C2-8E9BC316AAAC",
+      "name" : "Horseback Riding"
+    }, {
+      "id" : "DF4A35E0-7983-4A3E-BC47-F37B872B0F25",
+      "name" : "Junior Ranger Program"
+    }, {
+      "id" : "C8F98B28-3C10-41AE-AA99-092B3B398C43",
+      "name" : "Museum Exhibits"
+    } ],
+    "addresses" : [ {
+      "postalCode" : "87505",
+      "city" : "Santa Fe",
+      "stateCode" : "NM",
+      "line1" : "National Trails Office - Regions 6, 7, 8"
+    }, {
+      "postalCode" : "87505",
+      "city" : "Santa Fe",
+      "stateCode" : "NM",
+      "line1" : "National Trails Office - Regions 6, 7, 8"
+    } ],
+    "images" : [ {
+      "title" : "Guernsey Ruts, Wyoming",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/3C7D9108-1DD8-B71B-0BE55F68DE91648F.jpg",
+      "credit" : "NPS photo"
+    }, {
+      "title" : "Devil's Gate, Wyoming",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/3C7D8DD1-1DD8-B71B-0B83B71E8F57AF65.jpg",
+      "credit" : "NPS Photo"
+    }, {
+      "title" : "Alcove Spring Park Wayside",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/3C7D8F7A-1DD8-B71B-0BCF2B8441626FBC.jpg",
+      "credit" : "NPS Photo"
+    }, {
+      "title" : "Split Rock, Wyoming",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/3C7D92A8-1DD8-B71B-0B6F5E62ED26FE43.jpg",
+      "credit" : "NPS Photo"
+    }, {
+      "title" : "Fort Laramie, Wyoming",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/3C7D944E-1DD8-B71B-0B87D62C66101102.jpg",
+      "credit" : "NPS photo"
+    } ],
+    "parkCode" : "oreg"
+  }, {
+    "name" : "San Juan Island",
+    "states" : "WA",
+    "description" : "San Juan Island is well known for its splendid vistas, saltwater shores, quiet woodlands, orca whales and one of the last remaining native prairies in the Puget Sound/Northern Straits region. But it was also here in 1859 that the United States and Great Britain nearly went to war over possession of the island, the crisis ignited by the death of a pig.",
+    "activities" : [ {
+      "id" : "09DF0950-D319-4557-A57E-04CD2F63FF42",
+      "name" : "Arts and Culture"
+    }, {
+      "id" : "FAED7F97-3474-4C21-AB42-FB0768A2F826",
+      "name" : "Cultural Demonstrations"
+    }, {
+      "id" : "7CE6E935-F839-4FEC-A63E-052B1DEF39D2",
+      "name" : "Biking"
+    }, {
+      "id" : "1DFACD97-1B9C-4F5A-80F2-05593604799E",
+      "name" : "Food"
+    }, {
+      "id" : "C6D3230A-2CEA-4AFE-BFF3-DC1E2C2C4BB4",
+      "name" : "Picnicking"
+    }, {
+      "id" : "B33DC9B6-0B7D-4322-BAD7-A13A34C584A3",
+      "name" : "Guided Tours"
+    }, {
+      "id" : "A0631906-9672-4583-91DE-113B93DB6B6E",
+      "name" : "Self-Guided Tours - Walking"
+    }, {
+      "id" : "BFF8C027-7C8F-480B-A5F8-CD8CE490BFBA",
+      "name" : "Hiking"
+    }, {
+      "id" : "8386EEAF-985F-4DE8-9037-CCF91975AC94",
+      "name" : "Hunting and Gathering"
+    }, {
+      "id" : "8286295F-0932-4491-9350-280C9848E6AB",
+      "name" : "Gathering and Foraging"
+    }, {
+      "id" : "B204DE60-5A24-43DD-8902-C81625A09A74",
+      "name" : "Living History"
+    }, {
+      "id" : "A8650547-1A30-4222-86C3-A7660A829670",
+      "name" : "Reenactments"
+    }, {
+      "id" : "237A1662-6018-4115-ABD1-B8CCF827E703",
+      "name" : "Historic Weapons Demonstration"
+    }, {
+      "id" : "28880A5B-3D29-41AC-BD8B-24743E7A070F",
+      "name" : "First Person Interpretation"
+    }, {
+      "id" : "4D224BCA-C127-408B-AC75-A51563C42411",
+      "name" : "Paddling"
+    }, {
+      "id" : "F353A9ED-4A08-456E-8DEC-E61974D0FEB6",
+      "name" : "Kayaking"
+    }, {
+      "id" : "DF4A35E0-7983-4A3E-BC47-F37B872B0F25",
+      "name" : "Junior Ranger Program"
+    }, {
+      "id" : "587BB2D3-EC35-41B2-B3F7-A39E2B088AEE",
+      "name" : "Swimming"
+    }, {
+      "id" : "C2801992-F34D-4974-A0F2-80FF04309EE4",
+      "name" : "Saltwater Swimming"
+    }, {
+      "id" : "0B685688-3405-4E2A-ABBA-E3069492EC50",
+      "name" : "Wildlife Watching"
+    }, {
+      "id" : "5A2C91D1-50EC-4B24-8BED-A2E11A1892DF",
+      "name" : "Birdwatching"
+    }, {
+      "id" : "24380E3F-AD9D-4E38-BF13-C8EEB21893E7",
+      "name" : "Shopping"
+    }, {
+      "id" : "467DC8B8-0B7D-436D-A026-80A22358F615",
+      "name" : "Bookstore and Park Store"
+    }, {
+      "id" : "43800AD1-D439-40F3-AAB3-9FB651FE45BB",
+      "name" : "Gift Shop and Souvenirs"
+    } ],
+    "addresses" : [ {
+      "postalCode" : "98250",
+      "city" : "Friday Harbor",
+      "stateCode" : "WA",
+      "line1" : "4668 Cattle Point Rd."
+    }, {
+      "postalCode" : "98250",
+      "city" : "Friday Harbor",
+      "stateCode" : "WA",
+      "line1" : "P.O. Box 429"
+    } ],
+    "images" : [ {
+      "title" : "Sunset at American Camp",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/3C81CFC5-1DD8-B71B-0B16B28795ED1CA0.jpg",
+      "credit" : "NPS Photo/Gary Tarleton"
+    }, {
+      "title" : "English Camp Barracks",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/3C81D12D-1DD8-B71B-0B79CFAC380A3D5C.jpg",
+      "credit" : "NPS Photo/Gary Tarleton"
+    }, {
+      "title" : "Encampment",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/3C81D396-1DD8-B71B-0B7FF74CD67473C3.jpg",
+      "credit" : "NPS Photo/Gary Tarleton"
+    }, {
+      "title" : "English Camp Formal Garden",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/3C81D512-1DD8-B71B-0BB9DE02CB2C84A4.jpg",
+      "credit" : "NPS Photo/Gary Tarleton"
+    }, {
+      "title" : "Grandma's Cove",
+      "url" : "https://www.nps.gov/common/uploads/structured_data/3C81D6F9-1DD8-B71B-0B458C357549D644.jpg",
+      "credit" : "NPS Photo/Gary Tarleton"
+    } ],
+    "parkCode" : "sajh"
   } ]
 }

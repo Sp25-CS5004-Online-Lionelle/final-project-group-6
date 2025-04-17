@@ -1,11 +1,14 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import model.NetUtils;
+import static org.junit.jupiter.api.Assertions.*;
 import model.Records.*;
+import org.junit.jupiter.api.BeforeEach;
 import java.util.List;
+import model.NetUtils;
+import java.util.ArrayList;
 import model.ParksModel;
 import model.IModel;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -18,21 +21,23 @@ public class testParksModel {
     Park park3;
     Park park4;
     Park park5;
+    Park p1;
+    Park p2;
     ParksModel model;
     List<Park> original;
 
     @BeforeEach
-    public void setUP() {
+    public void setUp() {
+        System.out.println("Before each running");
         model = new ParksModel();
-
-        Park park1 = new Park(
+        park1 = new Park(
             "Yellowstone", "WY", "America's first national park", 
             List.of(new Activity("84902834092", "Hiking"), new Activity("93280409", "Fishing")),
             List.of(new Address("82190", "Yellowstone National Park", "WY", "1 Park Road")), 
             List.of(new ParkImage("Old Faithful eruption", "www.yellowstone.org/oldfaithful", "John Smith")), 
             "YELL");
 
-        Park park2 = new Park("Grand Canyon", "AZ", "One of the seven natural wonders of the world", 
+        park2 = new Park("Grand Canyon", "AZ", "One of the seven natural wonders of the world", 
             List.of(
                 new Activity("123456789", "Rafting"), 
                 new Activity("9083409", "Hiking"), 
@@ -42,7 +47,7 @@ public class testParksModel {
             List.of(new ParkImage("Canyon sunrise", "www.grandcanyon.com/sunrise", "Mary Johnson")), 
             "GRCA");
 
-        Park park3 = new Park("Yosemite", "CA", "Famous for its giant sequoias and El Capitan", List.of(
+        park3 = new Park("Yosemite", "CA", "Famous for its giant sequoias and El Capitan", List.of(
                 new Activity("564738291", "Rock Climbing"), 
                 new Activity("192837465", "Waterfall Viewing"), 
                 new Activity("918273645", "Wildlife Photography")),
@@ -50,12 +55,12 @@ public class testParksModel {
             List.of(new ParkImage("Half Dome at dusk", "www.yosemite.org/halfdome", "Ansel Adams")), 
             "YOSE");
 
-        Park park4 = new Park("Great Smoky Mountains", "TN", "Most visited national park in the US", 
+        park4 = new Park("Great Smoky Mountains", "TN", "Most visited national park in the US", 
             List.of(new Activity("756483920", "Autumn Leaf Viewing"), new Activity("384756291", "Historic Cabin Tours")),
             List.of(new Address("37738", "Gatlinburg", "TN", "107 Park Headquarters Road")), 
             List.of(new ParkImage("Misty mountain range", "www.greatsmokymountains.com/misty", "Sarah Wilson")), "GRSM");
 
-        Park park5 = new Park("Zion", "UT", "Known for its red cliffs and narrow canyons", 
+        park5 = new Park("Zion", "UT", "Known for its red cliffs and narrow canyons", 
             List.of(
                 new Activity("657483921", "Canyoneering"), 
                 new Activity("192837465", "Waterfall Viewing"), 
@@ -65,20 +70,60 @@ public class testParksModel {
             List.of(new Address("84767", "Springdale", "UT", "1 Zion Park Boulevard")), 
             List.of(new ParkImage("Angels Landing trail", "www.zionpark.org/angelslanding", "Mike Thompson")), "ZION");        
 
+        p1 = new Park("Yellowstone", "WY", "America's first national park", 
+            List.of(new Activity("84902834092", "Hiking"), new Activity("93280409", "Fishing")),
+            List.of(new Address("91209", "Yellowstone City", "WY", "1234 yellow street")), 
+            List.of(new ParkImage("buffalo in field", "www.urltoimage.com", "Bob Guy")), 
+            "YELL");
+        p2 = new Park("Grand Canyon", "AZ", "One of the seven natural wonders of the world", 
+            List.of(new Activity("123456789", "Rafting"), new Activity("9083409", "Hiking"), new Activity("987654321", "Camping")),
+            List.of(new Address("86023", "Grand Canyon Village", "AZ", "567 Canyon Road")), 
+            List.of(new ParkImage("Sunset over canyon", "www.grandcanyonimage.com", "Jane Doe")), 
+            "GRCA");
+
         original = List.of(park1, park2, park3, park4, park5);
     }
 
     @Test
-    public void updateDB() {
+    public void testUpdateDBString() {
         String response = NetUtils.getParksByState("CA");
         try {
             List<Park> parkList = IModel.deserializeResponse(response);
-            assertTrue(model.updateDB("CA"));
-            assertEquals(parkList, model.getParkList());
+            assertTrue(model.updateDB("CA")); // model should successfully update
+            assertEquals(parkList, model.getParkList()); // parkList stored in model should be the same as the deserialized api response
         } catch (Exception e) {
             System.out.println("JSON parse exception" + e);
         } 
+    }
 
+    @Test
+    public void testUpdateDB2() {
+        assertFalse(model.updateDB("BE")); // fits regex of State, is not a state code
+        assertFalse(model.updateDB("ds"));
+
+        assertTrue(model.updateDB("CA")); // valid zip codes
+        assertTrue(model.updateDB("VT"));
+
+
+        assertFalse(model.updateDB("00000")); // fits zip regex, Not a valid zip code
+        assertFalse(model.updateDB("99298"));
+
+        assertTrue(model.updateDB("92845")); // valid zip codes
+        assertTrue(model.updateDB("75006"));
+    }
+
+    @Test
+    public void testUpdateDBList() {
+        List<Park> parkList = original;
+
+        assertTrue(model.updateDB(parkList));
+
+        assertEquals(model.getParkList(), original); // list is stored with no alteration
+
+        assertFalse(model.updateDB((List<Park>) null)); // Null should return false
+        
+        assertFalse(model.updateDB(new ArrayList<Park>())); // Empty list should return false
+        
     }
 
     @Test
@@ -319,30 +364,18 @@ public class testParksModel {
             assertEquals(expected, actual.get(1));
 
         }
-    @Test
-    public void testGetFilteredParks() {
-        model.setParkList(original);
-
-        List<Park> actual = model.getFilteredParks(List.of("Waterfall Viewing"));
-        List<Park> expected = List.of(park2, park3, park5);
-        assertEquals(expected, actual);
-
-        actual = model.getFilteredParks(List.of("Hiking"));
-        expected = List.of(park1, park2);
-
-        actual = model.getFilteredParks(List.of("Ice Skating"));
-        expected = List.of();
-
-        actual = model.getFilteredParks(List.of("Camping", "Scenic Driving"));
-        expected = List.of(park2, park5);
-    }
 
     @Test
     public void testSerialize() {
         try {
             String json = IModel.serializeList(original);
             List<Park> actual = IModel.deserializeResponse(json);
-            assertEquals(original, actual);
+            assertEquals(original, actual); // ensure no data is lost in serialization/deserialization process
+
+            assertEquals("", IModel.serializeList(null));
+
+            assertEquals("", IModel.serializeList(List.of(null, null, null, null)));
+
         } catch (Exception e) {}
     }
 
@@ -359,5 +392,62 @@ public class testParksModel {
         } catch (Exception e) {}
     }
 
+    @Test
+    public void testGetFilteredParks() {
+        model.setParkList(original);
+
+        List<Park> actual = model.getFilteredParks(List.of("Waterfall Viewing"));
+        
+        List<Park> expected = List.of(park2, park3, park5);
+
+        assertEquals(expected, actual);
+
+        actual = model.getFilteredParks(List.of("Hiking"));
+        expected = List.of(park1, park2);
+
+        actual = model.getFilteredParks(List.of("Ice Skating"));
+        expected = List.of();
+
+        actual = model.getFilteredParks(List.of("Camping", "Scenic Driving"));
+        expected = List.of(park2, park5);
+    }
+
+    @Test
+    public void getRandom() {
+        assertTrue(model.getRandomPark()); //should return true
+    }
+
+    @Test
+    public void testGetParkByName() {
+        model.updateDB(List.of(park1, park2));
+        assertEquals(p1, model.getParkByName("YELLOWstone"));
+        assertEquals(p2, model.getParkByName("Grand Canyon"));
+        assertNull(model.getParkByName("yosemite"));
+    }
+
+    @Test
+    public void testGetParksByActivityName() {
+        model.updateDB(List.of(p1, p2));
+
+        List<Park> hikingParks = model.getParksByActivityName("Hiking");
+        assertEquals(2, hikingParks.size());
+        assertTrue(hikingParks.contains(p2));
+
+        List<Park> fishingParks = model.getParksByActivityName("Fishing");
+        assertEquals(1, fishingParks.size());
+        assertTrue(fishingParks.contains(p1));
+
+        List<Park> campingParks = model.getParksByActivityName("Camping");
+        assertEquals(1, campingParks.size());
+        assertTrue(campingParks.contains(p2));
+    }
+
+    @Test
+    public void testGetParkByParkCode() {
+        model.updateDB(List.of(park1, park2));
+        assertEquals(p1, model.getParkByParkCode("yell"));
+        assertEquals(p1, model.getParkByParkCode("YELL"));
+        assertEquals(p2, model.getParkByParkCode("gRcA"));
+    }
 
 }
