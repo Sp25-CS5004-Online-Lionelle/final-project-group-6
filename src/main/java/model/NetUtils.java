@@ -5,10 +5,13 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.io.IOException;
 import java.util.List;
+import java.util.ArrayList;
 import java.nio.charset.StandardCharsets;
+import javax.swing.ImageIcon;
 import io.github.cdimascio.dotenv.Dotenv;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import model.Records.ActivityWrapper;
+import model.Records.Park;
 
 public final class NetUtils {
 
@@ -164,5 +167,40 @@ public final class NetUtils {
             System.err.println("Error reading response for park name: " + e.getMessage());
             return null;
         }
+    }
+
+    /**
+     * Download images from the url field of a park object.
+     * Uses URL object to download the images.
+     * 
+     * @param park Park object containing image URLs
+     * @param numImages Maximum number of images to download
+     * @return List of ImageIcon objects
+     */
+    public static List<ImageIcon> downloadImages(Park park, int numImages) {
+        if (park == null || park.images() == null || park.images().isEmpty()) {
+            System.err.println("No images available for park");
+            return new ArrayList<>();
+        }
+
+        List<String> urls = park.images()
+                .stream()
+                .map(img -> img.url())
+                .toList();
+
+        List<ImageIcon> icons = new ArrayList<>();
+
+        for (int i = 0; i < numImages; i++) {
+            if (i >= urls.size()) {
+                break;
+            }
+            try {
+                ImageIcon icon = new ImageIcon(new java.net.URL(urls.get(i)));
+                icons.add(icon);
+            } catch (Exception e) {
+                System.err.println("Failed to load image: " + e.getMessage());
+            }
+        }
+        return icons;
     }
 }

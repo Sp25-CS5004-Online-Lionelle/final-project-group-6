@@ -3,7 +3,7 @@ package model;
 import model.Records.Park;
 import model.Records.ParkWrapper;
 import java.util.List;
-import javax.swing.ImageIcon;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -92,15 +92,6 @@ public interface IModel {
          * @return a list of parks saved by the user
          */
         public List<Park> loadSavedSearch();
-
-        /**
-         * Download images from the url field of a park object.
-         * Uses URL object to download the images.
-         * @param park
-         * @param numImages
-         * @return
-         */
-        public List<ImageIcon> downloadImages(Park park, int numImages);
 
         /**
          * Deserialize the response from the API into a Park object
