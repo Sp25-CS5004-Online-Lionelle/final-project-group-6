@@ -212,42 +212,6 @@ public class ParksModel implements IModel {
     }
 
     /**
-     * Download images from the url field of a park object.
-     * Uses URL object to download the images.
-     * 
-     * @param park
-     * @param numImages
-     * @return
-     */
-    public List<ImageIcon> downloadImages(Park park, int numImages) {
-
-        if (park.images() == null || park.images().isEmpty()) {
-            System.err.println("No images available for park");
-            return new ArrayList<>();
-        }
-
-        List<String> urls = park.images()
-                .stream()
-                .map(img -> img.url())
-                .toList();
-
-        List<ImageIcon> icons = new ArrayList<>();
-
-        for (int i = 0; i < numImages; i++) {
-            if (i >= urls.size()) {
-                break;
-            }
-            try {
-                ImageIcon icon = new ImageIcon(new java.net.URL(urls.get(i)));
-                icons.add(icon);
-            } catch (Exception e) {
-                System.err.println("Failed to load image: " + e.getMessage());
-            }
-        }
-        return icons;
-    }
-
-    /**
      * Saves the current list of parks to a file.
      *
      * @return true if the pars were saved, else false

@@ -5,8 +5,8 @@ import view.IView;
 import model.IModel;
 import java.awt.event.ActionListener;
 import java.util.List;
-import java.util.Random;
 import javax.swing.JOptionPane;
+import model.NetUtils;
 
 public final class ParkController implements IController {
 
@@ -175,7 +175,7 @@ public final class ParkController implements IController {
         view.showLoadingWhileTask(new Runnable() {
             @Override
             public void run() {
-                view.getImagePanel().updateImages(model.downloadImages(selectedPark, 3));
+                view.getImagePanel().updateImages(NetUtils.downloadImages(selectedPark, 3));
             }
         });
         view.getButtonPanel().enableBackButton(true);
