@@ -3,6 +3,7 @@
 This readme should contain the following information:
 
 ## Members
+- The group member's names and link to their personal githubs
 
 George Lin - https://github.com/lingeorge88
 
@@ -12,9 +13,21 @@ Tamiyoo Desir - https://github.com/TamiyooD
 
 Hsuan Lee - https://github.com/hsuanlee213
 
-- The group member's names and link to their personal githubs
+## Application Name and Description
 - The application name and a brief description of the application
+
+Our Application name is National Park Search. 
+Utilizing a national park API our group was able to construct a program that allows the user to search for national parks based on various factors such as Zipcode, Name, State. Using these searches the user is then able to manipulate the results by using the various buttons to either add and remove parks from a list, save all the search results, generate a random park, view the details of said park, filter activities, etc.
+
+## Design Documents and Manual
 - Links to design documents and manuals
+
+Design Document - https://github.com/Sp25-CS5004-Online-Lionelle/final-project-group-6/tree/main/DesignDocuments
+Manual - https://github.com/Sp25-CS5004-Online-Lionelle/final-project-group-6/blob/main/Manual/README.md
+
+## Run Instructions
 - Instructions on how to run the application
+
+
 
 Ask yourself, if you started here in the readme, would you have what you need to work on this project and/or use the application?
