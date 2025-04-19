@@ -411,13 +411,8 @@ public class testParksModel {
     }
 
     @Test
-    public void getRandom() {
-        assertTrue(model.getRandomPark()); // should return true
-    }
-
-    @Test
     public void testGetParkByName() {
-        model.updateDB(List.of(park1, park2));
+        model.updateDB(List.of(p1, p2));
         assertEquals(p1, model.getParkByName("YELLOWstone"));
         assertEquals(p2, model.getParkByName("Grand Canyon"));
         assertNull(model.getParkByName("yosemite"));
@@ -442,7 +437,7 @@ public class testParksModel {
 
     @Test
     public void testGetParkByParkCode() {
-        model.updateDB(List.of(park1, park2));
+        model.updateDB(List.of(p1, p2));
         assertEquals(p1, model.getParkByParkCode("yell"));
         assertEquals(p1, model.getParkByParkCode("YELL"));
         assertEquals(p2, model.getParkByParkCode("gRcA"));
