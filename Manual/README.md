@@ -19,8 +19,9 @@ National Parks Explorer is an application designed to help you discover and lear
 <img src="../GUITesting/mainWindow.png" alt="Application Overview" width="550px" />
 
 ## Getting Started
+To get started please refer to the SetUp.md so that the application is able to run properly.
 
-
+https://github.com/Sp25-CS5004-Online-Lionelle/final-project-group-6/blob/main/Manual/SetUp/SetUp.md
 ## Basic Features
 
 ### Searching for Parks
@@ -61,28 +62,29 @@ Only parks that offer the selected activities will be displayed in the results.
 
 ### Saving and Managing Parks
 
-You can create a personalized list of your favorite parks...
+You can create a personalized list of your favorite parks by using the following features:
 
 1. **Adding Parks to Your List**:
+From the Search Results display box, you can click on the park that you want to add before then clicking the "Add Park to List" button. This will save the park and display all the saved parks within the "Saved Parks" display box.
 
    <img src="../GUITesting/addPark.png" alt="Add to List" width="550px" />
 
 2. **Removing Parks from Your List**:
+Similarly you can also remove any parks from the list by clicking on the park you want to remove in the "Saved Parks" display box and clicking the "Remove Park from List" box.
 
    <img src="../GUITesting/removeParkFromList.png" alt="Remove from List" width="550px" />
 
 3. **Saving Search Results**:
+If you want to save many results at once, you can click on "Save Results" which will save any results in the "Search Results/Detailed View" display box to a json file. If that park is already in the json file, it will not save.
 
    <img src="../GUITesting/saveSearchResults.png" alt="Save Results" width="550px" />
 
 ### Opening Saved Lists
-
-
+To open up and view the saved list you can press on "Open Exisiting List" where it will prompt the user about which list they would like to open. Once that is selected and the "confirm" button is pressed, the user is able to view the list of parks they curated.
 <img src="../GUITesting/OpenExistingList.png" alt="Open List" width="550px" />
 
 ### Random Park Discovery
-
-
+Pressing "Random Park" will generate show a random park in th "Search Results/Detailed View" display box.
 <img src="../GUITesting/randomPark.png" alt="Random Park" width="550px" />
 
 ---
