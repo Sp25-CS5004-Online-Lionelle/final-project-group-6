@@ -23,14 +23,16 @@ public final class NetUtils {
      * Format:
      * https://developer.nps.gov/api/v1/parks?stateCode={state}&limit=20&api_key={key}
      */
-    private static final String NPS_API_BASE_URL = "https://developer.nps.gov/api/v1/parks?stateCode=%s&limit=20&api_key=%s";
+    private static final String NPS_API_BASE_URL = 
+        "https://developer.nps.gov/api/v1/parks?stateCode=%s&limit=20&api_key=%s";
 
     /**
      * Base URL for the NPS API parks endpoint to get a specific park by parkCode.
      * Format:
      * https://developer.nps.gov/api/v1/parks?parkCode={parkCode}&api_key={key}
      */
-    private static final String NPS_API_PARK_BY_CODE_URL = "https://developer.nps.gov/api/v1/parks?parkCode=%s&api_key=%s";
+    private static final String NPS_API_PARK_BY_CODE_URL = 
+        "https://developer.nps.gov/api/v1/parks?parkCode=%s&api_key=%s";
 
     /**
      * Dotenv instance to load environment variables from .env file.

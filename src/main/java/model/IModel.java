@@ -10,35 +10,37 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
 /**
- * Interface representing the model to be used
+ * Interface representing the model to be used.
  */
 public interface IModel {
         /**
-         * Updates the database with a data to be downloaded from the API
+         * Updates the database with a data to be downloaded from the API.
          * @param query
          * @return true if the database was updated successfully, false otherwise
          */
-        public boolean updateDB(String query);
+        boolean updateDB(String query);
 
         /**
          * Update the database with a sub-list.
          * @param pl
+         * @return true if db was updated, else false
          */
-        public boolean updateDB(List<Park> pl);
+        boolean updateDB(List<Park> pl);
 
         /**
          * Returns the list of parks currently being stored in the model.
          * 
          * @return a list of parks, or an empty list if none are stored
          */
-        public List<Park> getParkList();
+        List<Park> getParkList();
 
         /**
          * Get the park by its name.
          * 
+         * @param parkName
          * @return the park with the specified name
          */
-        public Park getParkByName(String parkName);
+        Park getParkByName(String parkName);
 
         /**
          * Get all parks that offer a specific activity.
@@ -46,7 +48,7 @@ public interface IModel {
          * @param activityName the name of the activity
          * @return a list of parks that offer the specified activity
          */
-        public List<Park> getParksByActivityName(String activityName);
+        List<Park> getParksByActivityName(String activityName);
 
         /**
          * Get filtered parks based on a list of selected activities.
@@ -54,14 +56,15 @@ public interface IModel {
          * @param selectedActivities
          * @return filtered list of parks that match the selected activities
          */
-        public List<Park> getFilteredParks(List<String> selectedActivities);
+        List<Park> getFilteredParks(List<String> selectedActivities);
 
         /**
          * Get the park by its park code.
          * 
+         * @param parkCode
          * @return the park with the specified park code
          */
-        public Park getParkByParkCode(String parkCode);
+        Park getParkByParkCode(String parkCode);
 
         /**
          * Returns the list of activities available in the parks.
@@ -69,16 +72,14 @@ public interface IModel {
          * @return a list of activity names, or an empty list if no activities are
          *         available
          */
-        public List<String> getActivityList();
+        List<String> getActivityList();
 
         /**
-         * Takes list of parks and converts it into a json string with all the data
-         * NOTE: I chose to write the value as a string for testing purposes, we could
-         * alternatively changes this to 'writeValueAsBytes()'
-         * We also could refactor to have this method write directly to the file
-         * {@link https://github.com/FasterXML/jackson-databind}
+         * Takes list of parks and converts it into a json string with all the data.
+         * @param parks 
+         * @return The serialized json string
          */
-        public static String serializeList(List<Park> parks) throws JsonProcessingException {
+        static String serializeList(List<Park> parks) throws JsonProcessingException {
                 if (parks == null) {
                         return "";
                 }
@@ -89,12 +90,12 @@ public interface IModel {
         }
 
         /**
-         * Deserialize the response from the API into a Park object
+         * Deserialize the response from the API into a Park object.
          * 
-         * @param Json the JSON received from the API
+         * @param json
          * @return a park object
          */
-        public static List<Park> deserializeResponse(String json) throws JsonProcessingException, JsonMappingException {
+        static List<Park> deserializeResponse(String json) throws JsonProcessingException, JsonMappingException {
                 ObjectMapper om = new ObjectMapper();
                 ParkWrapper wrapper = om.readValue(json, ParkWrapper.class);
                 return wrapper.data();
@@ -104,5 +105,5 @@ public interface IModel {
          * Gets a random park from all national parks.
          * @return true if a random park was successfully loaded, false otherwise
          */
-        public boolean getRandomPark();
+        boolean getRandomPark();
 }
