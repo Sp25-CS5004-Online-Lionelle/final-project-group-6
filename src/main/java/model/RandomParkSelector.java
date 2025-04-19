@@ -12,13 +12,13 @@ import java.util.Random;
  * Follows Single Responsibility Principle by handling only random park selection logic.
  */
 public class RandomParkSelector {
-    /** Path to the file containing all national park codes */
+    /** Path to the file containing all national park codes. */
     private static final String PARK_CODES_FILE = "data/ParkCodes.txt";
 
-    /** Random number generator for selecting random parks */
+    /** Random number generator for selecting random parks. */
     private final Random random;
 
-    /** List of all national park codes */
+    /** List of all national park codes. */
     private List<String> parkCodes;
 
     /**

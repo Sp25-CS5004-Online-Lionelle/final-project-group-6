@@ -12,10 +12,10 @@ import model.Records.ParkWrapper;
 
 public final class FileManager {
 
-    /** Path to the file where user search results are stored */
+    /** Path to the file where user search results are stored. */
     private static final String USER_SEARCH_RESULTS = "src/main/resources/userSearchResults.json";
 
-    /** Path to file where user saved parks are stored */
+    /** Path to file where user saved parks are stored. */
     private static final String USER_SAVED_LIST = "src/main/resources/userSavedParks.json";
 
     /** Private Constructor to prevent instantiation. */
@@ -86,9 +86,9 @@ public final class FileManager {
      */
     public static void updateSavedList(List<Park> parks) {
         try {
-            String JSON = IModel.serializeList(parks);
+            String json = IModel.serializeList(parks);
             FileWriter writer = new FileWriter(USER_SAVED_LIST); // will overwrite here intentionally
-            writer.write(JSON);
+            writer.write(json);
             writer.close();
         } catch (Exception e) {
             System.err.println("Failed to update saved list: " + e.getMessage());
@@ -98,6 +98,7 @@ public final class FileManager {
     /**
      * Loads the user saved park list from a file.
      * 
+     * @param file
      * @return a list of parks saved by the user
      */
     private static List<Park> loadFile(String file) {

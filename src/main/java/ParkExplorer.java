@@ -8,8 +8,18 @@ import javax.swing.SwingUtilities;
  * Main entry point for the Parks Explorer application.
  * Initializes the MVC components and starts the application.
  */
-public class ParkExplorer {
+public final class ParkExplorer {
+
+    /**
+     * Private constructor for utility class.
+     */
+    private ParkExplorer() {
+    }
     
+    /**
+     * Main entry point for the program.
+     * @param args
+     */
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             try {

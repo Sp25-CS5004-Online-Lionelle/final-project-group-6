@@ -10,13 +10,13 @@ import java.util.List;
 import java.util.Set;
 
 public class ParksModel implements IModel {
-    /** List of parks retrieved from the API */
+    /** List of parks retrieved from the API. */
     private List<Park> parkList;
 
-    /** List of activities in String form */
+    /** List of activities in String form. */
     private List<String> activityList;
 
-    /** Random park selector */
+    /** Random park selector. */
     private final RandomParkSelector randomSelector;
 
     /**
@@ -63,7 +63,7 @@ public class ParksModel implements IModel {
     }
 
     /**
-     * Updates the database with a data to be downloaded from the API
+     * Updates the database with a data to be downloaded from the API.
      * 
      * @param query the query to search for parks (e.g., park name, state code, or
      *              zip code)
@@ -76,12 +76,14 @@ public class ParksModel implements IModel {
 
         // Get response from API based on input type
         if (query.matches("\\d{5}")) {
-            if (!strValid("data/ValidZips.txt", query.substring(0, 5))) { // Returning false if invalid state code is passed
+            if (!strValid("data/ValidZips.txt", 
+                query.substring(0, 5))) { // Returning false if invalid state code is passed
                 return false;
             }
             response = NetUtils.getParksByZip(query);
         } else if (query.matches("^[A-Z]{2}$")) { // Matches a 2-letter state code (e.g., MA, WA)
-            if (!strValid("data/StateCodes.txt", query.substring(0, 2))) { // Returning false if invalid state code is passed
+            if (!strValid("data/StateCodes.txt", 
+                query.substring(0, 2))) { // Returning false if invalid state code is passed
                 return false;
             }
             response = NetUtils.getParksByState(query);
@@ -140,6 +142,7 @@ public class ParksModel implements IModel {
     /**
      * Get the park by its name.
      * 
+     * @param parkName
      * @return the park with the specified name
      */
     public Park getParkByName(String parkName) {
@@ -187,6 +190,7 @@ public class ParksModel implements IModel {
     /**
      * Get the park by its park code.
      * 
+     * @param parkCode
      * @return the park with the specified park code
      */
     public Park getParkByParkCode(String parkCode) {

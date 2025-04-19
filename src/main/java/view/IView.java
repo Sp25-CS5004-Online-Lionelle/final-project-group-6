@@ -52,6 +52,7 @@ public interface IView {
     /**
      * Prompts user to choose which save action(s) to take.
      * 
+     * @param message
      * @return List of selected actions
      */
     List<String> promptSaveAction(String message);

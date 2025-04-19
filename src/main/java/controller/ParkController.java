@@ -230,7 +230,8 @@ public final class ParkController implements IController {
 
     private void handleSaveResults() {
         if (FileManager.saveSearchToFile(model.getParkList())) {
-            JOptionPane.showMessageDialog(null, "Search Results added to userSavedParks.json", "Success", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, 
+            "Search Results added to userSavedParks.json", "Success", JOptionPane.INFORMATION_MESSAGE);
         } else {
             JOptionPane.showMessageDialog(null, "Failed to save results:", "Error", JOptionPane.ERROR_MESSAGE);
         }
