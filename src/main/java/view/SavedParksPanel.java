@@ -96,6 +96,10 @@ public class SavedParksPanel extends JPanel {
         return true;
     }
 
+    /**
+     * Update saved list with a list.
+     * @param pl
+     */
     public void updateSavedList(List<Park> pl) {
         if (pl == null || pl.isEmpty()) {
             return;
