@@ -45,17 +45,24 @@
 
   <property name="fileExtensions" value="java, properties, xml"/>
 
-  <!-- Excludes all 'module-info.java' files              -->
+  <!-- Excludes all 'module-info.java' files and test files -->
   <!-- See https://checkstyle.org/filefilters/index.html -->
   <module name="BeforeExecutionExclusionFileFilter">
     <property name="fileNamePattern" value="module\-info\.java$"/>
   </module>
 
-  <!-- https://checkstyle.org/filters/suppressionfilter.html -->
+  <!-- Exclude test files from checkstyle -->
   <module name="SuppressionFilter">
     <property name="file" value="${org.checkstyle.sun.suppressionfilter.config}"
               default="checkstyle-suppressions.xml" />
     <property name="optional" value="true"/>
+  </module>
+
+  <!-- Exclude all files in the test directory -->
+  <module name="SuppressWithPlainTextCommentFilter"/>
+  <module name="SuppressionSingleFilter">
+    <property name="files" value=".*[/\\]test[/\\].*\.java"/>
+    <property name="checks" value=".*"/>
   </module>
 
   <!-- Checks that a package-info.java file exists for each package.     -->

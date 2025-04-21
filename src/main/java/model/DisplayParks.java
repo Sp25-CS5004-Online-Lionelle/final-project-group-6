@@ -50,7 +50,7 @@ public final class DisplayParks {
      */
     public static String formatBasicParkInfo(Park park) {
         if (park == null) {
-            return "No parks found.";
+            return "No parks found. Please try searching again or try another random park.";
         }
         
         // Create a more compact summary for parks

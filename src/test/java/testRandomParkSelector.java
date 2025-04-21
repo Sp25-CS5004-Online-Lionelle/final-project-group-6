@@ -5,13 +5,19 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import model.RandomParkSelector;
+import model.DisplayParks;
 import java.util.List;
 import java.util.Random;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import java.util.ArrayList;
 
 public class testRandomParkSelector {
     private static final String PARK_CODES_FILE = "data/ParkCodes.txt";
     private Random mockRandom;
     private RandomParkSelector selector;
+    private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
+    private final PrintStream originalErr = System.err;
 
     @BeforeEach
     public void setUp() {
@@ -24,6 +30,12 @@ public class testRandomParkSelector {
         };
 
         selector = new RandomParkSelector(mockRandom, PARK_CODES_FILE);
+        System.setErr(new PrintStream(errContent));
+    }
+
+    @Test
+    public void tearDown() {
+        System.setErr(originalErr);
     }
 
     @Test
@@ -46,8 +58,28 @@ public class testRandomParkSelector {
 
     @Test
     public void testGetRandomParkCodeWithInvalidPath() {
-        RandomParkSelector invalidSelector = new RandomParkSelector(mockRandom, "invalid/path.txt");
+        String invalidPath = "invalid/path.txt";
+        RandomParkSelector invalidSelector = new RandomParkSelector(mockRandom, invalidPath);
         String code = invalidSelector.getRandomParkCode();
         assertNull(code);
+        String expectedOutput = String.format("Failed to load park codes from file: %s%n%s%n", 
+            invalidPath, DisplayParks.formatBasicParkInfo(null));
+        assertEquals(expectedOutput, errContent.toString());
+    }
+
+    @Test
+    public void testGetRandomParkCodeWithInvalidCode() {
+        // Create a new selector with an empty park codes list
+        RandomParkSelector emptySelector = new RandomParkSelector(mockRandom, "") {
+            @Override
+            public List<String> getParkCodes() {
+                return new ArrayList<>();
+            }
+        };
+        
+        errContent.reset(); // Clear any previous error messages
+        String code = emptySelector.getRandomParkCode();
+        assertNull(code);
+        assertEquals(DisplayParks.formatBasicParkInfo(null) + System.lineSeparator(), errContent.toString());
     }
 } 

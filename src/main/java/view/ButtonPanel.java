@@ -55,17 +55,19 @@ public class ButtonPanel extends JPanel {
         backButton = createButton(settings.BACK_BUTTON_TEXT);
         backButton.setEnabled(false); // Initially disabled
 
-        // First row
-        add(randomButton);
-        add(viewDetailButton);
-        add(filterButton);
-        add(backButton);
+        // Group buttons by rows
+        JButton[] firstRow = {randomButton, viewDetailButton, filterButton, backButton};
+        JButton[] secondRow = {saveButton, loadButton, addParktoListButton, removeParkFromListButton};
 
-        // Second row
-        add(saveButton);
-        add(loadButton);
-        add(addParktoListButton);
-        add(removeParkFromListButton);
+        // Add first row buttons
+        for (JButton button : firstRow) {
+            add(button);
+        }
+
+        // Add second row buttons
+        for (JButton button : secondRow) {
+            add(button);
+        }
     }
 
     /**

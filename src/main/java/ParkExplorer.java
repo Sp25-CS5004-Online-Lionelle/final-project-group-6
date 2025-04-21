@@ -28,7 +28,7 @@ public final class ParkExplorer {
                 IView view = new JFrameView();
                 IController controller = new ParkController(model, view);
                 
-                // Initialize action listeners
+                // Initialize action listeners in controller
                 controller.initActionListeners();
                 
                 // Start the application
