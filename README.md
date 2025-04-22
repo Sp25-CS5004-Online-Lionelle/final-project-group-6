@@ -18,6 +18,7 @@ Our Application's name is National Park Explorer.  Utilizing a national park API
 
 * Design Document - https://github.com/Sp25-CS5004-Online-Lionelle/final-project-group-6/tree/main/DesignDocuments
 * Manual - https://github.com/Sp25-CS5004-Online-Lionelle/final-project-group-6/blob/main/Manual/README.md
+* GUI testing - see [GUI Testing screenshots](./GUITesting/GuiTesting.md) for documented GUI testing throughout the development process.
 
 ## Setup and Run Instructions
 

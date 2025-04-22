@@ -29,7 +29,7 @@ public final class NetUtils {
     /**
      * Base URL for the NPS API parks endpoint to get a specific park by parkCode.
      * Format:
-     * https://developer.nps.gov/api/v1/parks?parkCode={parkCode}&api_key={key}
+     * https://developer.nps.gov/api/v1/parks?parkCode=%s&api_key=%s
      */
     private static final String NPS_API_PARK_BY_CODE_URL = 
         "https://developer.nps.gov/api/v1/parks?parkCode=%s&api_key=%s";
@@ -37,12 +37,12 @@ public final class NetUtils {
     /**
      * Dotenv instance to load environment variables from .env file.
      */
-    private static final Dotenv dotenv = Dotenv.load();
+    private static final Dotenv DOT_ENV = Dotenv.load();
 
     /**
      * NPS API key loaded from .env file using the NPS_API_KEY environment variable.
      */
-    private static final String API_KEY = dotenv.get("NPS_API_KEY");
+    private static final String API_KEY = DOT_ENV.get("NPS_API_KEY");
 
     /**
      * Prevent instantiation.

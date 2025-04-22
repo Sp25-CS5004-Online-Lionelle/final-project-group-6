@@ -74,6 +74,7 @@ public class RandomParkSelector {
      */
     public String getRandomParkCode() {
         if (parkCodes == null || parkCodes.isEmpty()) {
+            System.err.println(DisplayParks.formatBasicParkInfo(null));
             return null;
         }
         return parkCodes.get(random.nextInt(parkCodes.size()));
